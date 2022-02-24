@@ -1,7 +1,7 @@
 spring:
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/gira
+    url: jdbc:postgresql://localhost:5432/movie
     username: postgres
     password: admin
     
@@ -11,5 +11,5 @@ spring:
       ddl-auto: validate
 
   flyway:
-    enabled: false
+    enabled: true
     driver-class-name: org.postgresql.Driver

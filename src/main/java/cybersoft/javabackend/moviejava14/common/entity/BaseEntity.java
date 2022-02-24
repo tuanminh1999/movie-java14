@@ -1,7 +1,6 @@
-package cybersoft.javabackend.moviejava14.common;
+package cybersoft.javabackend.moviejava14.common.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 

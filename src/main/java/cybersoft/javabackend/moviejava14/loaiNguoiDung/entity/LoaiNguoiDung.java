@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import cybersoft.javabackend.moviejava14.common.BaseEntity;
+import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 

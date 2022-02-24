@@ -1,5 +1,8 @@
 spring:
-
+  
+  config:
+    import: openapi.yml
+  
   datasource:
     url: jdbc:postgresql://localhost:5432/movie
     username: postgres

@@ -1,0 +1,9 @@
+api:
+  info:
+    title: Movie Application
+    description: TX is the largest film distributor and cinema operator in Vietnam.
+    version: v1.0
+ 
+  externalDocs:
+    description: Spring Documentation
+    url: https://docs.spring.io/spring-framework/docs/current/reference/html/

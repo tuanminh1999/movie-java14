@@ -11,12 +11,12 @@ import io.swagger.v3.oas.models.info.Info;
 @Configuration
 public class OpenApiConfiguration {
 	
-	@Value("${api.info.title}") String infoTitle;
-	@Value("${api.info.description}") String infoDescription;
-	@Value("${api.info.version}") String infoVersion;
+	@Value("${openapi.info.title}") String infoTitle;
+	@Value("${openapi.info.description}") String infoDescription;
+	@Value("${openapi.info.version}") String infoVersion;
 	
-	@Value("${api.externalDocs.description}") String externalDocsDescription;
-	@Value("${api.externalDocs.url}") String externalDocsUrl;
+	@Value("${openapi.externalDocs.description}") String externalDocsDescription;
+	@Value("${openapi.externalDocs.url}") String externalDocsUrl;
 	
 	@Bean
 	public OpenAPI getOpenApi() {

@@ -15,7 +15,7 @@ import lombok.Setter;
 public class LoaiNguoiDung extends BaseEntity {
 
 	private static final long serialVersionUID = 5357730766250352828L;
-
+	
 	@Column(name = "ten_loai_nguoi_dung")
 	private String tenLoaiNguoiDung;
 

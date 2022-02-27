@@ -1,4 +1,4 @@
-api:
+openapi:
   info:
     title: Movie Application
     description: TX is the largest film distributor and cinema operator in Vietnam.

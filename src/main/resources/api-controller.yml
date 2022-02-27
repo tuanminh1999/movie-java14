@@ -1,0 +1,37 @@
+api:
+  loai-nguoi-dung:
+    name: Loại người dùng controller
+    description: Chứa các API của loại người dùng
+    
+loai-nguoi-dung:
+
+  get:
+    description: 
+      title: Lấy tất cả loại người dùng
+      ok: Lấy loại người dùng thành công
+      forbidden: Không có ủy quyền chính xác
+      not_found: Không tìm thấy bất kỳ loại người dùng nào
+      
+  post:
+    description:
+      title: Tạo loại người dùng mới
+      bad_request: Loại người dùng không hợp lệ
+      created: Tạo loại người dùng thành công
+      
+  put:
+    description: 
+      title: Cập nhật loại người dùng
+      bad_request: Dữ liệu không hợp lệ
+      ok: Cập nhật người dùng thành công
+      
+  delete:
+    description:
+      title: Xoá loại người dùng
+      bad_request: Id không hợp lệ
+      ok: Xoá loại người dùng thành công
+      
+  parameter:
+    create-dto: Nhập thông tin cho CreateLoaiNguoiDungDTO
+    update-dto: Nhập thông tin cho UpdateLoaiNguoiDungDTO
+    id: Nhập id cho loại người dùng
+    

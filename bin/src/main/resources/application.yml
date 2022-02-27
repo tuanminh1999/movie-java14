@@ -1,0 +1,15 @@
+spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gira
+    username: postgres
+    password: admin
+    
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    enabled: false
+    driver-class-name: org.postgresql.Driver

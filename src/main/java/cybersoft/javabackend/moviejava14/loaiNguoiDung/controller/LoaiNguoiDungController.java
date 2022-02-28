@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
-import cybersoft.javabackend.moviejava14.common.utils.HttpMethodsUtil;
 import cybersoft.javabackend.moviejava14.common.utils.StatusCode;
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.CreateLoaiNguoiDungDTO;
@@ -26,7 +25,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name="${api.task.manage} ${api.name.loai-nguoi-dung}", description="${api.task.description} ${api.name.loai-nguoi-dung}")
 public interface LoaiNguoiDungController {
-	@Operation(method = HttpMethodsUtil.GET, description = "${CRUD.get.description.title} ${api.name.loai-nguoi-dung}")
+	@Operation(method = "GET", description = "${CRUD.get.description.title} ${api.name.loai-nguoi-dung}")
 	@ApiResponses({
 			@ApiResponse(responseCode = StatusCode.OK, description = "${CRUD.get.description.ok} ${api.name.loai-nguoi-dung}"),
 			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
@@ -37,7 +36,7 @@ public interface LoaiNguoiDungController {
 	
 	
 	
-	@Operation(method = HttpMethodsUtil.POST, description = "${CRUD.post.description.title} ${api.name.loai-nguoi-dung}")
+	@Operation(method = "POST", description = "${CRUD.post.description.title} ${api.name.loai-nguoi-dung}")
 	@ApiResponses({
 		@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${api.name.loai-nguoi-dung} ${CRUD.post.description.bad_request}"),
 		@ApiResponse(responseCode = StatusCode.CREATED, description = "${CRUD.post.description.created} ${api.name.loai-nguoi-dung}"),
@@ -50,7 +49,7 @@ public interface LoaiNguoiDungController {
 	
 	
 	
-	@Operation(method = HttpMethodsUtil.PUT, description = "${CRUD.put.description.title} ${api.name.loai-nguoi-dung}")
+	@Operation(method = "PUT", description = "${CRUD.put.description.title} ${api.name.loai-nguoi-dung}")
 	@ApiResponses({
 			@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${CRUD.put.description.bad_request}"),
 			@ApiResponse(responseCode = StatusCode.OK, description = "${CRUD.put.description.ok} ${api.name.loai-nguoi-dung}"),
@@ -65,7 +64,7 @@ public interface LoaiNguoiDungController {
 	
 	
 	
-	@Operation(method = HttpMethodsUtil.DELETE, description = "${CRUD.delete.description.title} ${api.name.loai-nguoi-dung}")
+	@Operation(method = "DELETE", description = "${CRUD.delete.description.title} ${api.name.loai-nguoi-dung}")
 	@ApiResponses({
 		@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${CRUD.delete.description.bad_request}"),
 		@ApiResponse(responseCode = StatusCode.OK, description = "${CRUD.delete.description.ok} ${api.name.loai-nguoi-dung}"),

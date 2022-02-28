@@ -2,6 +2,10 @@ api:
   loai-nguoi-dung:
     name: Loại người dùng controller
     description: Chứa các API của loại người dùng
+  loai-ghe:
+    name: Loại ghe controller
+    description: Chứa các API của loại ghe
+      
     
 loai-nguoi-dung:
 
@@ -34,4 +38,39 @@ loai-nguoi-dung:
     create-dto: Nhập thông tin cho CreateLoaiNguoiDungDTO
     update-dto: Nhập thông tin cho UpdateLoaiNguoiDungDTO
     id: Nhập id cho loại người dùng
+    
+     
+loai-ghe:
+
+  get:
+    description: 
+      title: Lấy tất cả loại ghế
+      ok: Lấy loại ghế
+      forbidden: Không có loại ghế mong muốn
+      not_found: Không tìm thấy bất kỳ loại ghế nào
+      
+  post:
+    description:
+      title: Tạo loại ghế mới
+      bad_request: Loại ghế không hợp lệ
+      created: Tạo loại ghế thành công
+      
+  put:
+    description: 
+      title: Cập nhật loại ghế
+      bad_request: Dữ liệu không hợp lệ
+      ok: Cập nhật loại ghế
+      
+  delete:
+    description:
+      title: Xoá loại ghế
+      bad_request: Id không hợp lệ
+      ok: Xoá loại ghế
+      
+  parameter:
+    create-dto: Nhập thông tin cho CreateLoaiGheDTO
+    update-dto: Nhập thông tin cho UpdateLoaiGheDTO
+    id: Nhập id cho loại ghế
+       
+    
     

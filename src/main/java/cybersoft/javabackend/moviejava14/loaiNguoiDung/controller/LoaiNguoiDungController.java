@@ -24,24 +24,24 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name="${api.loai-nguoi-dung.name}", description="${api.loai-nguoi-dung.description}")
+@Tag(name="${api.task.manage} ${api.name.loai-nguoi-dung}", description="${api.task.description} ${api.name.loai-nguoi-dung}")
 public interface LoaiNguoiDungController {
-	@Operation(method = HttpMethodsUtil.GET, description = "${loai-nguoi-dung.get.description.title}")
+	@Operation(method = HttpMethodsUtil.GET, description = "${CRUD.get.description.title} ${api.name.loai-nguoi-dung}")
 	@ApiResponses({
-			@ApiResponse(responseCode = StatusCode.CREATED, description = "${loai-nguoi-dung.get.description.ok}"),
-			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${loai-nguoi-dung.get.description.forbidden}"),
-			@ApiResponse(responseCode = StatusCode.NOT_FOUND, description = "${loai-nguoi-dung.get.description.not_found}")
+			@ApiResponse(responseCode = StatusCode.OK, description = "${CRUD.get.description.ok} ${api.name.loai-nguoi-dung}"),
+			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
+			@ApiResponse(responseCode = StatusCode.NOT_FOUND, description = "${CRUD.get.description.not_found} ${api.name.loai-nguoi-dung}")
 	})
 	@GetMapping(value = UrlConst.GET_LOAI_NGUOI_DUNG, produces = "application/json")
 	public ResponseEntity<Object> getLoaiNguoiDung();
 	
 	
 	
-	@Operation(method = HttpMethodsUtil.POST, description = "${loai-nguoi-dung.post.description.title}")
+	@Operation(method = HttpMethodsUtil.POST, description = "${CRUD.post.description.title} ${api.name.loai-nguoi-dung}")
 	@ApiResponses({
-		@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${loai-nguoi-dung.post.description.bad_request}"),
-		@ApiResponse(responseCode = StatusCode.CREATED, description = "${loai-nguoi-dung.post.description.created}"),
-		@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${loai-nguoi-dung.get.description.forbidden}"),
+		@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${api.name.loai-nguoi-dung} ${CRUD.post.description.bad_request}"),
+		@ApiResponse(responseCode = StatusCode.CREATED, description = "${CRUD.post.description.created} ${api.name.loai-nguoi-dung}"),
+		@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
 	})
 	@PostMapping(value = UrlConst.POST_LOAI_NGUOI_DUNG)
 	public ResponseEntity<Object> createLoaiNguoiDung(
@@ -50,11 +50,11 @@ public interface LoaiNguoiDungController {
 	
 	
 	
-	@Operation(method = HttpMethodsUtil.PUT, description = "${loai-nguoi-dung.put.description.title}")
+	@Operation(method = HttpMethodsUtil.PUT, description = "${CRUD.put.description.title} ${api.name.loai-nguoi-dung}")
 	@ApiResponses({
-			@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${loai-nguoi-dung.put.description.bad_request}"),
-			@ApiResponse(responseCode = StatusCode.OK, description = "${loai-nguoi-dung.put.description.ok}"),
-			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${loai-nguoi-dung.get.description.forbidden}"),
+			@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${CRUD.put.description.bad_request}"),
+			@ApiResponse(responseCode = StatusCode.OK, description = "${CRUD.put.description.ok} ${api.name.loai-nguoi-dung}"),
+			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
 	})
 	@PutMapping(value = UrlConst.PUT_LOAI_NGUOI_DUNG)
 	public ResponseEntity<Object> updateLoaiNguoiDung(
@@ -65,11 +65,11 @@ public interface LoaiNguoiDungController {
 	
 	
 	
-	@Operation(method = HttpMethodsUtil.DELETE, description = "${loai-nguoi-dung.delete.description.title}")
+	@Operation(method = HttpMethodsUtil.DELETE, description = "${CRUD.delete.description.title} ${api.name.loai-nguoi-dung}")
 	@ApiResponses({
-		@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${loai-nguoi-dung.delete.description.bad_request}"),
-		@ApiResponse(responseCode = StatusCode.OK, description = "${loai-nguoi-dung.delete.description.ok}"),
-		@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${loai-nguoi-dung.get.description.forbidden}"),
+		@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${CRUD.delete.description.bad_request}"),
+		@ApiResponse(responseCode = StatusCode.OK, description = "${CRUD.delete.description.ok} ${api.name.loai-nguoi-dung}"),
+		@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
 	})
 	@DeleteMapping(value = UrlConst.DELETE_LOAI_NGUOI_DUNG)
 	public ResponseEntity<Object> deleteLoaiNguoiDung(

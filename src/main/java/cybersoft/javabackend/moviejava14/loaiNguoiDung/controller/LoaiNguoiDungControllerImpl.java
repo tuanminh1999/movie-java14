@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -17,12 +18,12 @@ import cybersoft.javabackend.moviejava14.loaiNguoiDung.service.LoaiNguoiDungServ
 
 @RestController
 public class LoaiNguoiDungControllerImpl implements LoaiNguoiDungController{
-
+	@Autowired
 	private LoaiNguoiDungService loaiNguoiDungService;
 	
-	public LoaiNguoiDungControllerImpl(LoaiNguoiDungService loaiNguoiDungService) {
-		this.loaiNguoiDungService = loaiNguoiDungService;
-	}
+//	public LoaiNguoiDungControllerImpl(LoaiNguoiDungService loaiNguoiDungService) {
+//		this.loaiNguoiDungService = loaiNguoiDungService;
+//	}
 	
 	@Override
 	public ResponseEntity<Object> getLoaiNguoiDung() {

@@ -1,0 +1,20 @@
+spring:
+  
+  config:
+    import: openapi.yml, api-controller.yml
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/movie
+    username: postgres
+    password: admin
+    
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    enabled: true
+    driver-class-name: org.postgresql.Driver
+    
+server:  port: 8090

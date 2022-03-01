@@ -1,10 +1,13 @@
 package cybersoft.javabackend.moviejava14.loaiNguoiDung.service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungDTO;
+import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungMapper;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.repositoty.LoaiNguoiDungRepository;
 
@@ -12,6 +15,9 @@ import cybersoft.javabackend.moviejava14.loaiNguoiDung.repositoty.LoaiNguoiDungR
 public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 	
 	private LoaiNguoiDungRepository loaiNguoiDungRepositoy;
+	public LoaiNguoiDungServiceImpl(LoaiNguoiDungRepository loaiNguoiDungRepositoy) {
+		this.loaiNguoiDungRepositoy = loaiNguoiDungRepositoy;
+	}
 
 	@Override
 	public Optional<LoaiNguoiDungDTO> findByTenLoaiNguoiDung(String tenLoaiNguoiDung) {
@@ -19,17 +25,17 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 		if (!loaiNguoiDung.isPresent()) {
 			return null;
 		}
-
-        LoaiNguoiDungDTO loaiNguoiDungDTO = new LoaiNguoiDungDTO();
-
-        loaiNguoiDungDTO.setId( loaiNguoiDungDTO.getId() );
-        loaiNguoiDungDTO.setCreatedBy( loaiNguoiDungDTO.getCreatedBy() );
-        loaiNguoiDungDTO.setCreatedDate( loaiNguoiDungDTO.getCreatedDate() );
-        loaiNguoiDungDTO.setModifiedBy( loaiNguoiDungDTO.getModifiedBy() );
-        loaiNguoiDungDTO.setModifiedDate( loaiNguoiDungDTO.getModifiedDate() );
-        loaiNguoiDungDTO.setTenLoaiNguoiDung( loaiNguoiDungDTO.getTenLoaiNguoiDung() );
         
-		return Optional.ofNullable(loaiNguoiDungDTO);
+		return Optional.ofNullable(LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(loaiNguoiDung.get()));
+	}
+
+	@Override
+	public List<LoaiNguoiDungDTO> findAll() {
+		List<LoaiNguoiDung> loaiNguoiDungs =  loaiNguoiDungRepositoy.findAll();
+		
+		return loaiNguoiDungs.stream()
+				.map(o -> LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(o))
+				.collect(Collectors.toList());
 	}
 
 }

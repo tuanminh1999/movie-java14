@@ -29,7 +29,6 @@ public interface LoaiNguoiDungController {
 	@ApiResponses({
 			@ApiResponse(responseCode = StatusCode.OK, description = "${CRUD.get.description.ok} ${api.name.loai-nguoi-dung}"),
 			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
-			@ApiResponse(responseCode = StatusCode.NOT_FOUND, description = "${CRUD.get.description.not_found} ${api.name.loai-nguoi-dung}")
 	})
 	@GetMapping(value = UrlConst.GET_LOAI_NGUOI_DUNG, produces = "application/json")
 	public ResponseEntity<Object> getLoaiNguoiDung();

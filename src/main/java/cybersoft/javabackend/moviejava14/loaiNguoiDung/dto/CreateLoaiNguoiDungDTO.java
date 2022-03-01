@@ -17,3 +17,4 @@ public class CreateLoaiNguoiDungDTO {
 	private String tenLoaiNguoiDung;
 	
 }
+

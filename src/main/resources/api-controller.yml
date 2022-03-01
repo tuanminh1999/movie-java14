@@ -2,6 +2,7 @@ api:
   name:
     loai-nguoi-dung: loại người dùng
     cum-rap: cụm rạp
+    loai-ghe : ghe
     
   task:
     manage: Quản lý
@@ -37,4 +38,10 @@ loai-nguoi-dung:
     create-dto: Nhập thông tin cho CreateLoaiNguoiDungDTO
     update-dto: Nhập thông tin cho UpdateLoaiNguoiDungDTO
     id: Nhập id cho loại người dùng
+    
+loai-ghe: 
+  parameter:
+    create-dto: Nhập thông tin cho CreateLoaiGheDTO
+    update-dto: Nhập thông tin cho UpdateLoaiGheDTO
+    id: Nhập id cho loại ghế    
     

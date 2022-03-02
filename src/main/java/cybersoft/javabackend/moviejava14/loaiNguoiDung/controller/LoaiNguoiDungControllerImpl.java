@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RestController;
 
+import cybersoft.javabackend.moviejava14.common.ResponseHandler;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.CreateLoaiNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.UpdateLoaiNguoiDungDTO;
@@ -33,20 +34,30 @@ public class LoaiNguoiDungControllerImpl implements LoaiNguoiDungController{
 
 	@Override
 	public ResponseEntity<Object> createLoaiNguoiDung(@Valid CreateLoaiNguoiDungDTO dto, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		}
 		
-		return null;
+		LoaiNguoiDungDTO createdLoaiNguoiDung = loaiNguoiDungService.create(dto);
+		
+		return new ResponseEntity<>(createdLoaiNguoiDung, HttpStatus.OK);
 	}
 
 	@Override
-	public ResponseEntity<Object> updateLoaiNguoiDung(UUID id, @Valid UpdateLoaiNguoiDungDTO dto, BindingResult bindingResult) {
+	public ResponseEntity<Object> updateLoaiNguoiDung(@Valid UpdateLoaiNguoiDungDTO dto, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		}
 		
-		return null;
+		LoaiNguoiDungDTO updatedLoaiNguoiDung = loaiNguoiDungService.update(dto);
+		
+		return new ResponseEntity<>(updatedLoaiNguoiDung, HttpStatus.OK);
 	}
 
 	@Override
 	public ResponseEntity<Object> deleteLoaiNguoiDung(UUID id) {
-		
-		return null;
+		loaiNguoiDungService.delete(id);
+		return new ResponseEntity<>("Xoá loại người dùng thành công!", HttpStatus.OK);
 	}
 
 }

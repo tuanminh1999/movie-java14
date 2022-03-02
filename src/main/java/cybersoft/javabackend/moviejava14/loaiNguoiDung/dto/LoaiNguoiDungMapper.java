@@ -12,4 +12,6 @@ public interface LoaiNguoiDungMapper {
 	LoaiNguoiDungDTO fromEntityToLoaiNguoiDungDTO (LoaiNguoiDung loaiNguoiDung);
 	LoaiNguoiDung fromLoaiNguoiDungDTOToEntity (LoaiNguoiDungDTO dto);
 	
+	LoaiNguoiDung fromCreateLoaiNguoiDungDTOtoEntity (CreateLoaiNguoiDungDTO dto);
+	
 }

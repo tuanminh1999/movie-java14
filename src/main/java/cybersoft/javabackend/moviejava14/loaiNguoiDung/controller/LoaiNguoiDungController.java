@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import cybersoft.javabackend.moviejava14.common.utils.StatusCode;
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
@@ -18,7 +19,6 @@ import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.CreateLoaiNguoiDungDT
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.UpdateLoaiNguoiDungDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -56,7 +56,6 @@ public interface LoaiNguoiDungController {
 	})
 	@PutMapping(value = UrlConst.PUT_LOAI_NGUOI_DUNG)
 	public ResponseEntity<Object> updateLoaiNguoiDung(
-			@Parameter(description = "${loai-nguoi-dung.parameter.id}") @PathVariable("id") UUID id,
 			@Parameter(description = "${loai-nguoi-dung.parameter.update-dto}") @Valid @RequestBody UpdateLoaiNguoiDungDTO dto,
 				BindingResult bindingResult
 			);

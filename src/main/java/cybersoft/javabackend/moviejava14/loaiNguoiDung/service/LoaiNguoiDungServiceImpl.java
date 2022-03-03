@@ -7,12 +7,12 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.CreateLoaiNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungMapper;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.UpdateLoaiNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.exception.InvalidLoaiNguoiDungException;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.repositoty.LoaiNguoiDungRepository;
 
 @Service
@@ -54,14 +54,14 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findById(dto.getId());
 		
 		if (!loaiNguoiDungOpt.isPresent()) {
-			throw new InvalidLoaiNguoiDungException("Id loại người dùng không tồn lại");
+			throw new InvalidDataException("Id loại người dùng không tồn lại");
 		}
 		
 		LoaiNguoiDung loaiNguoiDung = loaiNguoiDungOpt.get();
 		
 		if(!loaiNguoiDung.getTenLoaiNguoiDung().equals(dto.getTenLoaiNguoiDung())) {
 			if (loaiNguoiDungRepositoy.findByTenLoaiNguoiDung(dto.getTenLoaiNguoiDung()).isPresent()) {
-				throw new InvalidLoaiNguoiDungException("Tên loại người dùng đã tồn tại");
+				throw new InvalidDataException("Tên loại người dùng đã tồn tại");
 			}
 			loaiNguoiDung.setTenLoaiNguoiDung(dto.getTenLoaiNguoiDung());
 		}
@@ -76,7 +76,7 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findById(id);
 		
 		if(!loaiNguoiDungOpt.isPresent()) {
-			throw new InvalidLoaiNguoiDungException("Id loại người dùng không tồn tại");
+			throw new InvalidDataException("Id loại người dùng không tồn tại");
 		}
 		
 		loaiNguoiDungRepositoy.delete(loaiNguoiDungOpt.get());

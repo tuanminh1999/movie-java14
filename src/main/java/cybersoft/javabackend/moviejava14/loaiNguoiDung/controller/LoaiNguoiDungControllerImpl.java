@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -19,17 +18,17 @@ import cybersoft.javabackend.moviejava14.loaiNguoiDung.service.LoaiNguoiDungServ
 
 @RestController
 public class LoaiNguoiDungControllerImpl implements LoaiNguoiDungController{
-	@Autowired
+	
 	private LoaiNguoiDungService loaiNguoiDungService;
 	
-//	public LoaiNguoiDungControllerImpl(LoaiNguoiDungService loaiNguoiDungService) {
-//		this.loaiNguoiDungService = loaiNguoiDungService;
-//	}
+	public LoaiNguoiDungControllerImpl(LoaiNguoiDungService loaiNguoiDungService) {
+		this.loaiNguoiDungService = loaiNguoiDungService;
+	}
 	
 	@Override
 	public ResponseEntity<Object> getLoaiNguoiDung() {
 		List<LoaiNguoiDungDTO> loaiNguoiDungs = loaiNguoiDungService.findAll();
-		return new ResponseEntity<>(loaiNguoiDungs, HttpStatus.OK);
+		return new ResponseEntity<Object>(loaiNguoiDungs, HttpStatus.OK);
 	}
 
 	@Override
@@ -40,7 +39,7 @@ public class LoaiNguoiDungControllerImpl implements LoaiNguoiDungController{
 		
 		LoaiNguoiDungDTO createdLoaiNguoiDung = loaiNguoiDungService.create(dto);
 		
-		return new ResponseEntity<>(createdLoaiNguoiDung, HttpStatus.OK);
+		return new ResponseEntity<Object>(createdLoaiNguoiDung, HttpStatus.OK);
 	}
 
 	@Override
@@ -51,13 +50,13 @@ public class LoaiNguoiDungControllerImpl implements LoaiNguoiDungController{
 		
 		LoaiNguoiDungDTO updatedLoaiNguoiDung = loaiNguoiDungService.update(dto);
 		
-		return new ResponseEntity<>(updatedLoaiNguoiDung, HttpStatus.OK);
+		return new ResponseEntity<Object>(updatedLoaiNguoiDung, HttpStatus.OK);
 	}
 
 	@Override
 	public ResponseEntity<Object> deleteLoaiNguoiDung(UUID id) {
 		loaiNguoiDungService.delete(id);
-		return new ResponseEntity<>("Xoá loại người dùng thành công!", HttpStatus.OK);
+		return new ResponseEntity<Object>("Xoá loại người dùng thành công!", HttpStatus.OK);
 	}
 
 }

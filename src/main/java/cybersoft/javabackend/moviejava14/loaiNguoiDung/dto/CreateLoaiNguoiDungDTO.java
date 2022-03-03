@@ -13,7 +13,7 @@ public class CreateLoaiNguoiDungDTO {
 
 	@NotBlank(message = "{loai_nguoi_dung.ten.not_blank}")
 	@Size(min = 3, max = 50, message = "{loai_nguoi_dung.ten.size}")
-	@UniqueTenLoaiNguoiDung(message = "{loai_nguoi_dung.ten.unique}")
+	@UniqueTenLoaiNguoiDung
 	private String tenLoaiNguoiDung;
 
 }

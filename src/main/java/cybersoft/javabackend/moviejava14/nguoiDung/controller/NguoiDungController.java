@@ -31,7 +31,7 @@ public interface NguoiDungController {
 			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
 	})
 	@GetMapping(value = UrlConst.GET_NGUOI_DUNG, produces = "application/json")
-	public ResponseEntity<Object> getLoaiNguoiDung();
+	public ResponseEntity<Object> getNguoiDung();
 	
 	
 	

@@ -1,5 +1,7 @@
 package cybersoft.javabackend.moviejava14.nguoiDung.entity;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -35,6 +37,9 @@ public class NguoiDung extends BaseEntity {
 
 	@Column(name = "so_dien_thoai")
 	private String soDienThoai;
+	
+	@Column(name = "loai_nguoi_dung_id")
+	private UUID loaiNguoiDungId;
 	
 	@ManyToOne
     @JoinColumn(name="loai_nguoi_dung_id", insertable = false, updatable=false)

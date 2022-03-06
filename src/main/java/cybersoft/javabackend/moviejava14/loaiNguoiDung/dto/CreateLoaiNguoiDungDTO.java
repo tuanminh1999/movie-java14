@@ -15,12 +15,12 @@ public class CreateLoaiNguoiDungDTO {
 	@NotBlank(message = "{loai_nguoi_dung.id.not_blank}")
 	@Size(min = 3, max = 20, message = "{loai_nguoi_dung.id.size}")
 	@UniqueMaLoaiNguoiDung
-	private String id;
+	private String maLoaiNguoiDung;
 
 	@NotBlank(message = "{loai_nguoi_dung.ten.not_blank}")
 	@Size(min = 3, max = 30, message = "{loai_nguoi_dung.ten.size}")
 	@UniqueTenLoaiNguoiDung
-	private String tenLoaiNguoiDung;
+	private String tenLoai;
 
 }
 

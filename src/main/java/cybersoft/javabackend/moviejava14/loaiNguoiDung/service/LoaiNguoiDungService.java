@@ -10,7 +10,7 @@ import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
 
 public interface LoaiNguoiDungService {
 
-	Optional<LoaiNguoiDungDTO> findByTenLoaiNguoiDung(String tenLoaiNguoiDung);
+	Optional<LoaiNguoiDungDTO> findByTenLoai(String tenLoaiNguoiDung);
 
 	List<LoaiNguoiDungDTO> findAll();
 	

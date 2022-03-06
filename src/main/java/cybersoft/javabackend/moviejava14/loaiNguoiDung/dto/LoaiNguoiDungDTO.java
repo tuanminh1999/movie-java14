@@ -9,8 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class LoaiNguoiDungDTO {
 
-	private String id;
+	private String maLoaiNguoiDung;
 	
-	private String tenLoaiNguoiDung;
+	private String tenLoai;
 
 }

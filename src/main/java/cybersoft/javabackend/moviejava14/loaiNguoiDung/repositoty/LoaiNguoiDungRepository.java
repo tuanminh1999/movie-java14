@@ -9,5 +9,5 @@ import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
 
 @Repository
 public interface LoaiNguoiDungRepository extends JpaRepository<LoaiNguoiDung, String> {
-	Optional<LoaiNguoiDung> findByTenLoaiNguoiDung(String tenLoaiNguoiDung);
+	Optional<LoaiNguoiDung> findByTenLoai(String tenLoai);
 }

@@ -26,7 +26,8 @@ import lombok.Setter;
 public class LoaiNguoiDung {
 	
 	@Id
-	private String id;
+	@Column(name = "id")
+	private String maLoaiNguoiDung;
 	
 	@CreatedDate
 	@Column(name = "created_date")
@@ -45,7 +46,7 @@ public class LoaiNguoiDung {
 	private String modifiedBy;
 	
 	@Column(name = "ten_loai_nguoi_dung", unique = true)
-	private String tenLoaiNguoiDung;
+	private String tenLoai;
 
 	@OneToMany(mappedBy = "loaiNguoiDung", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
 	private Set<NguoiDung> nguoiDungs;

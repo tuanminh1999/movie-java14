@@ -35,8 +35,8 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 	}
 
 	@Override
-	public Optional<LoaiNguoiDungDTO> findByTenLoaiNguoiDung(String tenLoaiNguoiDung) {
-		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findByTenLoaiNguoiDung(tenLoaiNguoiDung);
+	public Optional<LoaiNguoiDungDTO> findByTenLoai(String tenLoai) {
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findByTenLoai(tenLoai);
 		if (!loaiNguoiDungOpt.isPresent()) {
 			return null;
 		}
@@ -61,7 +61,7 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 
 	@Override
 	public LoaiNguoiDungDTO update(UpdateLoaiNguoiDungDTO dto) {
-		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findById(dto.getId());
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findById(dto.getMaLoaiNguoiDung());
 		
 		if (!loaiNguoiDungOpt.isPresent()) {
 			throw new InvalidDataException("Id loại người dùng không tồn lại");
@@ -69,11 +69,11 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 		
 		LoaiNguoiDung loaiNguoiDung = loaiNguoiDungOpt.get();
 		
-		if(!loaiNguoiDung.getTenLoaiNguoiDung().equals(dto.getTenLoaiNguoiDung())) {
-			if (loaiNguoiDungRepositoy.findByTenLoaiNguoiDung(dto.getTenLoaiNguoiDung()).isPresent()) {
+		if(!loaiNguoiDung.getTenLoai().equals(dto.getTenLoai())) {
+			if (loaiNguoiDungRepositoy.findByTenLoai(dto.getTenLoai()).isPresent()) {
 				throw new InvalidDataException("Tên loại người dùng đã tồn tại");
 			}
-			loaiNguoiDung.setTenLoaiNguoiDung(dto.getTenLoaiNguoiDung());
+			loaiNguoiDung.setTenLoai(dto.getTenLoai());
 		}
 		
 		LoaiNguoiDung updatedLoaiNguoiDung = loaiNguoiDungRepositoy.save(loaiNguoiDung);

@@ -10,9 +10,9 @@ import lombok.Setter;
 public class UpdateLoaiNguoiDungDTO {
 
 	@NotBlank(message = "{loai_nguoi_dung.id.not_blank}")
-	private String id;
+	private String maLoaiNguoiDung;
 	
 	@NotBlank(message = "{loai_nguoi_dung.ten.not_blank}")
-	private String tenLoaiNguoiDung;
+	private String tenLoai;
 
 }

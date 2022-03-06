@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import cybersoft.javabackend.moviejava14.loaiGhe.validation.annotation.UniqueTenLoaiGhe;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.service.LoaiNguoiDungService;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation.UniqueTenLoaiNguoiDung;
 
 public class UniqueTenLoaiGheValidator implements ConstraintValidator<UniqueTenLoaiGhe, String> {
 
@@ -27,7 +26,7 @@ public class UniqueTenLoaiGheValidator implements ConstraintValidator<UniqueTenL
 	
 	@Override
 	public boolean isValid(String tenLoaiGhe, ConstraintValidatorContext context) {
-		Optional<LoaiNguoiDungDTO> roleOpt = loaiNguoiDungService.findByTenLoaiNguoiDung(tenLoaiGhe);
+		Optional<LoaiNguoiDungDTO> roleOpt = loaiNguoiDungService.findByTenLoai(tenLoaiGhe);
 		
 		if(roleOpt == null) {
 			return true;

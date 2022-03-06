@@ -1,7 +1,5 @@
 package cybersoft.javabackend.moviejava14.nguoiDung.dto;
 
-import java.util.UUID;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -36,10 +34,10 @@ public class CreateNguoiDungDTO {
 	@NotBlank(message = "{nguoi_dung.so_dien_thoai.not-blank}")
 	@Size(min = 10, max = 10, message = "{nguoi_dung.so_dien_thoai.size}")
 	@UniqueSoDienThoaiNguoiDung
-	private String soDienThoai;
+	private String soDt;
 	
 	@NotBlank(message = "{loai_nguoi_dung.id.not-blank}")
-	private UUID loaiNguoiDungId;
+	private String maLoaiNguoiDung;
 
 }
 

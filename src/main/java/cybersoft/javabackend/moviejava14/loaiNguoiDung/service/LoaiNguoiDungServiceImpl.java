@@ -2,7 +2,6 @@ package cybersoft.javabackend.moviejava14.loaiNguoiDung.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -23,15 +22,26 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 	public LoaiNguoiDungServiceImpl(LoaiNguoiDungRepository loaiNguoiDungRepositoy) {
 		this.loaiNguoiDungRepositoy = loaiNguoiDungRepositoy;
 	}
+	
+	@Override
+	public Optional<LoaiNguoiDungDTO> getNguoiDungById(String id) {
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findById(id);
+
+		if (!loaiNguoiDungOpt.isPresent()) {
+			return null;
+		}
+		
+		return Optional.ofNullable(LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(loaiNguoiDungOpt.get()));
+	}
 
 	@Override
 	public Optional<LoaiNguoiDungDTO> findByTenLoaiNguoiDung(String tenLoaiNguoiDung) {
-		Optional<LoaiNguoiDung> loaiNguoiDung = loaiNguoiDungRepositoy.findByTenLoaiNguoiDung(tenLoaiNguoiDung);
-		if (!loaiNguoiDung.isPresent()) {
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findByTenLoaiNguoiDung(tenLoaiNguoiDung);
+		if (!loaiNguoiDungOpt.isPresent()) {
 			return null;
 		}
 
-		return Optional.ofNullable(LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(loaiNguoiDung.get()));
+		return Optional.ofNullable(LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(loaiNguoiDungOpt.get()));
 	}
 
 	@Override
@@ -72,7 +82,7 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 	}
 
 	@Override
-	public void delete(UUID id) {
+	public void delete(String id) {
 		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findById(id);
 		
 		if(!loaiNguoiDungOpt.isPresent()) {

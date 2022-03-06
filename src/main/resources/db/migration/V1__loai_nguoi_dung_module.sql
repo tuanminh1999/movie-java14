@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS loai_nguoi_dung(
-	id uuid,
+	id varchar(100),
 	created_date timestamp,
 	created_by varchar(36),
 	modified_date timestamp,
@@ -19,10 +19,10 @@ CREATE TABLE IF NOT EXISTS nguoi_dung(
 	mat_khau varchar(255) not null,
 	email varchar(255) not null unique,
 	so_dien_thoai varchar(255) not null unique,
-	loai_nguoi_dung_id uuid not null,
+	loai_nguoi_dung_id varchar(100) not null,
 	primary key (id)
 );
 
 ALTER TABLE nguoi_dung
-	ADD CONSTRAINT fk_nguoidung_loai_nguoi_dung
+	ADD CONSTRAINT fk_nguoi_dung_loai_nguoi_dung
 	FOREIGN KEY (loai_nguoi_dung_id) REFERENCES loai_nguoi_dung(id);

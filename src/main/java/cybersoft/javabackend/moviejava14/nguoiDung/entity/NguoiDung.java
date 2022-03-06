@@ -36,10 +36,10 @@ public class NguoiDung extends BaseEntity {
 	private  String email;
 
 	@Column(name = "so_dien_thoai")
-	private String soDienThoai;
+	private String soDt;
 	
 	@Column(name = "loai_nguoi_dung_id")
-	private UUID loaiNguoiDungId;
+	private String maLoaiNguoiDung;
 	
 	@ManyToOne
     @JoinColumn(name="loai_nguoi_dung_id", insertable = false, updatable=false)

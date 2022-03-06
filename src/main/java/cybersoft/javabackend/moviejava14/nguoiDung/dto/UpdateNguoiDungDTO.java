@@ -29,9 +29,9 @@ public class UpdateNguoiDungDTO {
 	private String email;
 	
 	@NotBlank(message = "{nguoi_dung.so_dien_thoai.not_blank}")
-	private String soDienThoai;
+	private String soDt;
 	
 	@NotBlank(message = "{loai_nguoi_dung.id.not_blank}")
-	private UUID loaiNguoiDungId;
+	private String maLoaiNguoiDung;
 
 }

@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS loai_ghe(
 	modified_date timestamp,
 	modified_by varchar(36),
 	ten_loai_ghe varchar(255),
-	mo_ta integer,
+	mo_ta text,
 	primary key (id)
 );
 

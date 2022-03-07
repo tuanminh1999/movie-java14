@@ -1,7 +1,5 @@
 package cybersoft.javabackend.moviejava14.loaiNguoiDung.controller;
 
-import java.util.UUID;
-
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
@@ -70,7 +68,7 @@ public interface LoaiNguoiDungController {
 	})
 	@DeleteMapping(value = UrlConst.DELETE_LOAI_NGUOI_DUNG)
 	public ResponseEntity<Object> deleteLoaiNguoiDung(
-			@Parameter(description = "${loai-nguoi-dung.parameter.id}") @PathVariable("id") UUID id
+			@Parameter(description = "${loai-nguoi-dung.parameter.id}") @PathVariable("id") String id
 			);
 	
 }

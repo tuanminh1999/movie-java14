@@ -1,6 +1,6 @@
 package cybersoft.javabackend.moviejava14.loaiNguoiDung.dto;
 
-import java.util.UUID;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,10 @@ import lombok.Setter;
 @Setter
 public class UpdateLoaiNguoiDungDTO {
 
-	private UUID id;
-	private String tenLoaiNguoiDung;
+	@NotBlank(message = "{loai_nguoi_dung.id.not_blank}")
+	private String maLoaiNguoiDung;
+	
+	@NotBlank(message = "{loai_nguoi_dung.ten.not_blank}")
+	private String tenLoai;
 
 }

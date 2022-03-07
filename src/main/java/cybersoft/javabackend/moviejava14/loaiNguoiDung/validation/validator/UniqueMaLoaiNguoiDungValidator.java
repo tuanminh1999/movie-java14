@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.service.LoaiNguoiDungService;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation.UniqueTenLoaiNguoiDung;
+import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation.UniqueMaLoaiNguoiDung;
 
-public class UniqueTenLoaiNguoiDungValidator implements ConstraintValidator<UniqueTenLoaiNguoiDung, String> {
+public class UniqueMaLoaiNguoiDungValidator implements ConstraintValidator<UniqueMaLoaiNguoiDung, String> {
 
 	@Autowired
 	private LoaiNguoiDungService loaiNguoiDungService;
@@ -19,14 +19,14 @@ public class UniqueTenLoaiNguoiDungValidator implements ConstraintValidator<Uniq
 	private String message;
 	
 	@Override
-	public void initialize(UniqueTenLoaiNguoiDung uniqueTenLoaiNguoiDung) {
-		ConstraintValidator.super.initialize(uniqueTenLoaiNguoiDung);
-		this.message = uniqueTenLoaiNguoiDung.message();
+	public void initialize(UniqueMaLoaiNguoiDung uniqueMaLoaiNguoiDung) {
+		ConstraintValidator.super.initialize(uniqueMaLoaiNguoiDung);
+		this.message = uniqueMaLoaiNguoiDung.message();
 	}
 	
 	@Override
-	public boolean isValid(String tenLoai, ConstraintValidatorContext context) {
-		Optional<LoaiNguoiDungDTO> roleOpt = loaiNguoiDungService.findByTenLoai(tenLoai);
+	public boolean isValid(String maLoaiNguoiDung, ConstraintValidatorContext context) {
+		Optional<LoaiNguoiDungDTO> roleOpt = loaiNguoiDungService.getNguoiDungById(maLoaiNguoiDung);
 		
 		if(roleOpt == null) {
 			return true;

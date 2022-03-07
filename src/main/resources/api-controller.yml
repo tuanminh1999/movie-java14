@@ -2,7 +2,8 @@ api:
   name:
     loai-nguoi-dung: loại người dùng
     cum-rap: cụm rạp
-    loai-ghe : ghe
+    loai-ghe : ghế
+    nguoi-dung : người dùng
     
   task:
     manage: Quản lý

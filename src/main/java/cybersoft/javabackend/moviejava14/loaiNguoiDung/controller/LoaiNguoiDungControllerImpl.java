@@ -1,7 +1,6 @@
 package cybersoft.javabackend.moviejava14.loaiNguoiDung.controller;
 
 import java.util.List;
-import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -54,7 +53,7 @@ public class LoaiNguoiDungControllerImpl implements LoaiNguoiDungController{
 	}
 
 	@Override
-	public ResponseEntity<Object> deleteLoaiNguoiDung(UUID id) {
+	public ResponseEntity<Object> deleteLoaiNguoiDung(String id) {
 		loaiNguoiDungService.delete(id);
 		return new ResponseEntity<Object>("Xoá loại người dùng thành công!", HttpStatus.OK);
 	}

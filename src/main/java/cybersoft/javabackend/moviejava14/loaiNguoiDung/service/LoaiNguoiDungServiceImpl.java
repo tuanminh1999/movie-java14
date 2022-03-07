@@ -2,7 +2,6 @@ package cybersoft.javabackend.moviejava14.loaiNguoiDung.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -23,15 +22,26 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 	public LoaiNguoiDungServiceImpl(LoaiNguoiDungRepository loaiNguoiDungRepositoy) {
 		this.loaiNguoiDungRepositoy = loaiNguoiDungRepositoy;
 	}
+	
+	@Override
+	public Optional<LoaiNguoiDungDTO> getNguoiDungById(String id) {
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findById(id);
+
+		if (!loaiNguoiDungOpt.isPresent()) {
+			return null;
+		}
+		
+		return Optional.ofNullable(LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(loaiNguoiDungOpt.get()));
+	}
 
 	@Override
-	public Optional<LoaiNguoiDungDTO> findByTenLoaiNguoiDung(String tenLoaiNguoiDung) {
-		Optional<LoaiNguoiDung> loaiNguoiDung = loaiNguoiDungRepositoy.findByTenLoaiNguoiDung(tenLoaiNguoiDung);
-		if (!loaiNguoiDung.isPresent()) {
+	public Optional<LoaiNguoiDungDTO> findByTenLoai(String tenLoai) {
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findByTenLoai(tenLoai);
+		if (!loaiNguoiDungOpt.isPresent()) {
 			return null;
 		}
 
-		return Optional.ofNullable(LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(loaiNguoiDung.get()));
+		return Optional.ofNullable(LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(loaiNguoiDungOpt.get()));
 	}
 
 	@Override
@@ -51,7 +61,7 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 
 	@Override
 	public LoaiNguoiDungDTO update(UpdateLoaiNguoiDungDTO dto) {
-		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findById(dto.getId());
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findById(dto.getMaLoaiNguoiDung());
 		
 		if (!loaiNguoiDungOpt.isPresent()) {
 			throw new InvalidDataException("Id loại người dùng không tồn lại");
@@ -59,11 +69,11 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 		
 		LoaiNguoiDung loaiNguoiDung = loaiNguoiDungOpt.get();
 		
-		if(!loaiNguoiDung.getTenLoaiNguoiDung().equals(dto.getTenLoaiNguoiDung())) {
-			if (loaiNguoiDungRepositoy.findByTenLoaiNguoiDung(dto.getTenLoaiNguoiDung()).isPresent()) {
+		if(!loaiNguoiDung.getTenLoai().equals(dto.getTenLoai())) {
+			if (loaiNguoiDungRepositoy.findByTenLoai(dto.getTenLoai()).isPresent()) {
 				throw new InvalidDataException("Tên loại người dùng đã tồn tại");
 			}
-			loaiNguoiDung.setTenLoaiNguoiDung(dto.getTenLoaiNguoiDung());
+			loaiNguoiDung.setTenLoai(dto.getTenLoai());
 		}
 		
 		LoaiNguoiDung updatedLoaiNguoiDung = loaiNguoiDungRepositoy.save(loaiNguoiDung);
@@ -72,7 +82,7 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 	}
 
 	@Override
-	public void delete(UUID id) {
+	public void delete(String id) {
 		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findById(id);
 		
 		if(!loaiNguoiDungOpt.isPresent()) {

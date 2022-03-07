@@ -29,7 +29,7 @@ public class LoaiNguoiDungControllerImpl implements LoaiNguoiDungController{
 		List<LoaiNguoiDungDTO> loaiNguoiDungs = loaiNguoiDungService.findAll();
 		return new ResponseEntity<Object>(loaiNguoiDungs, HttpStatus.OK);
 	}
-
+//create Loai Nguoi dung
 	@Override
 	public ResponseEntity<Object> createLoaiNguoiDung(@Valid CreateLoaiNguoiDungDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {

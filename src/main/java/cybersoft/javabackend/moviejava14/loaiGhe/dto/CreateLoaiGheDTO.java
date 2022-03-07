@@ -4,6 +4,11 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation.UniqueTenLoaiNguoiDung;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 
 public class CreateLoaiGheDTO {
 	

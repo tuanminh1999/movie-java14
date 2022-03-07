@@ -7,6 +7,8 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import cybersoft.javabackend.moviejava14.loaiGhe.dto.LoaiGheDTO;
+import cybersoft.javabackend.moviejava14.loaiGhe.service.LoaiGheService;
 import cybersoft.javabackend.moviejava14.loaiGhe.validation.annotation.UniqueTenLoaiGhe;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.service.LoaiNguoiDungService;
@@ -15,7 +17,9 @@ import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation.Uni
 public class UniqueTenLoaiGheValidator implements ConstraintValidator<UniqueTenLoaiGhe, String> {
 
 	@Autowired
-	private LoaiNguoiDungService loaiNguoiDungService;
+	private LoaiGheService loaiGheService;
+	
+
 	
 	private String message;
 	
@@ -27,7 +31,7 @@ public class UniqueTenLoaiGheValidator implements ConstraintValidator<UniqueTenL
 	
 	@Override
 	public boolean isValid(String tenLoaiGhe, ConstraintValidatorContext context) {
-		Optional<LoaiNguoiDungDTO> roleOpt = loaiNguoiDungService.findByTenLoaiNguoiDung(tenLoaiGhe);
+		Optional<LoaiGheDTO> roleOpt = loaiGheService.findByTenLoaiGhe(tenLoaiGhe);
 		
 		if(roleOpt == null) {
 			return true;

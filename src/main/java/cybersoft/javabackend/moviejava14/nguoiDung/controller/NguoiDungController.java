@@ -47,6 +47,18 @@ public interface NguoiDungController {
 			BindingResult bindingResult);
 	
 	
+	@Operation(method = "POST", description = "${CRUD.post.description.title} ${api.name.nguoi-dung}")
+	@ApiResponses({
+		@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${api.name.loai-nguoi-dung} ${CRUD.post.description.bad_request}"),
+		@ApiResponse(responseCode = StatusCode.CREATED, description = "${CRUD.post.description.created} ${api.name.loai-nguoi-dung}"),
+		@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
+	})
+	@PostMapping(value = UrlConst.REGISTER_NGUOI_DUNG)
+	public ResponseEntity<Object> register(
+			@Parameter(description = "${loai-nguoi-dung.parameter.create-dto}") @Valid @RequestBody CreateNguoiDungDTO dto,
+			BindingResult bindingResult);
+	
+	
 	
 	@Operation(method = "PUT", description = "${CRUD.put.description.title} ${api.name.nguoi-dung}")
 	@ApiResponses({

@@ -6,15 +6,13 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.loaiGhe.dto.CreateLoaiGheDTO;
 import cybersoft.javabackend.moviejava14.loaiGhe.dto.LoaiGheDTO;
 import cybersoft.javabackend.moviejava14.loaiGhe.dto.LoaiGheMapper;
 import cybersoft.javabackend.moviejava14.loaiGhe.dto.UpdateLoaiGheDTO;
 import cybersoft.javabackend.moviejava14.loaiGhe.entity.LoaiGhe;
 import cybersoft.javabackend.moviejava14.loaiGhe.repository.LoaiGheRepository;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungMapper;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.exception.InvalidLoaiNguoiDungException;
 
 @Service
 public class LoaiGheServiceImpl implements LoaiGheService {
@@ -56,14 +54,14 @@ public class LoaiGheServiceImpl implements LoaiGheService {
 		Optional<LoaiGhe> loaiGheOpt = loaiGheRepository.findById(dto.getId());
 		
 		if (!loaiGheOpt.isPresent()) {
-			throw new InvalidLoaiNguoiDungException("Id loại ghế không tồn tại");
+			throw new InvalidDataException("Id loại ghế không tồn tại");
 		}
 		
 		LoaiGhe loaiGhe = loaiGheOpt.get();
 		
 		if(!loaiGhe.getTenLoaiGhe().equals(dto.getTenLoaiGhe())) {
 			if (loaiGheRepository.findByTenLoaiGhe(dto.getTenLoaiGhe()).isPresent()) {
-				throw new InvalidLoaiNguoiDungException("Tên loại ghế đã tồn tại");
+				throw new InvalidDataException("Tên loại ghế đã tồn tại");
 			}
 			loaiGhe.setTenLoaiGhe(dto.getTenLoaiGhe());
 			loaiGhe.setMoTa(dto.getMoTa());

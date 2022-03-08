@@ -16,14 +16,18 @@ import cybersoft.javabackend.moviejava14.nguoiDung.dto.CreateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.UpdateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.service.NguoiDungService;
+import cybersoft.javabackend.moviejava14.security.jwt.JwtUtils;
 
 @RestController
 public class NguoiDungControllerImpl implements NguoiDungController {
 
 	private NguoiDungService nguoiDungService;
 	
-	public NguoiDungControllerImpl(NguoiDungService nguoiDungService) {
+	private JwtUtils jwtUtils;
+	
+	public NguoiDungControllerImpl(NguoiDungService nguoiDungService, JwtUtils jwtUtils) {
 		this.nguoiDungService = nguoiDungService;
+		this.jwtUtils = jwtUtils;
 	}
 	
 	@Override
@@ -33,9 +37,19 @@ public class NguoiDungControllerImpl implements NguoiDungController {
 	}
 
 	@Override
-	public ResponseEntity<Object> createNguoiDung(@Valid CreateNguoiDungDTO dto, BindingResult bindingResult) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResponseEntity<Object> createNguoiDung(@Valid CreateNguoiDungDTO dto, String token, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		}
+		
+		if(!jwtUtils.validateJwtToken(token)) {
+			return ResponseHandler.getErrorResponse("Token không hợp lệ", HttpStatus.BAD_REQUEST);
+		}
+		
+		
+		NguoiDungDTO createdNguoiDung = nguoiDungService.create(dto);
+		
+		return new ResponseEntity<Object>(createdNguoiDung, HttpStatus.OK);
 	}
 
 	@Override

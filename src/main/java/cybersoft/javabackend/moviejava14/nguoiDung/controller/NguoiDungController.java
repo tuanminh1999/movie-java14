@@ -44,7 +44,7 @@ public interface NguoiDungController {
 	@PostMapping(value = UrlConst.POST_NGUOI_DUNG)
 	public ResponseEntity<Object> createNguoiDung(
 			@Parameter(description = "${loai-nguoi-dung.parameter.create-dto}") @Valid @RequestBody CreateNguoiDungDTO dto,
-			BindingResult bindingResult);
+			@PathVariable String token ,BindingResult bindingResult);
 	
 	
 	@Operation(method = "POST", description = "${CRUD.post.description.title} ${api.name.nguoi-dung}")

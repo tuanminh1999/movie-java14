@@ -10,7 +10,7 @@ public class UrlConst {
 	
 	// LoaiNguoiDung
 	public static final String GET_NGUOI_DUNG = "/api/nguoi-dung";
-	public static final String POST_NGUOI_DUNG = "/api/nguoi-dung";
+	public static final String POST_NGUOI_DUNG = "/api/nguoi-dung/{token}";
 	public static final String REGISTER_NGUOI_DUNG = "/api/dang-ky";
 	public static final String LOGIN_NGUOI_DUNG = "api/dang-nhap";
 	public static final String PUT_NGUOI_DUNG = "/api/nguoi-dung";

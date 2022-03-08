@@ -1,7 +1,7 @@
 spring:
-  
+    
   config:
-    import: openapi.yml, api-controller.yml
+    import: openapi.yml, api-controller.yml, jwt.yml
   
   datasource:
     url: jdbc:postgresql://localhost:5432/movie

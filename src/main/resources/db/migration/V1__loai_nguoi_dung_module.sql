@@ -23,6 +23,14 @@ CREATE TABLE IF NOT EXISTS nguoi_dung(
 	primary key (id)
 );
 
-ALTER TABLE nguoi_dung
-	ADD CONSTRAINT fk_nguoi_dung_loai_nguoi_dung
+CREATE TABLE IF NOT EXISTS nguoi_dung_loai_nguoi_dung(
+	nguoi_dung_id uuid,
+	loai_nguoi_dung_id varchar(100)
+);
+
+ALTER TABLE nguoi_dung_loai_nguoi_dung
+	ADD CONSTRAINT fk_nguoi_dung_nguoi_dung_loai_nguoi_dung
+	FOREIGN KEY (nguoi_dung_id) REFERENCES nguoi_dung(id);
+ALTER TABLE nguoi_dung_loai_nguoi_dung
+	ADD CONSTRAINT fk_loai_nguoi_dung_nguoi_dung_loai_nguoi_dung
 	FOREIGN KEY (loai_nguoi_dung_id) REFERENCES loai_nguoi_dung(id);

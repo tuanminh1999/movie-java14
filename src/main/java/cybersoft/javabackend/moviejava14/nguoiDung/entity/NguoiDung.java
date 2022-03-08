@@ -1,11 +1,14 @@
 package cybersoft.javabackend.moviejava14.nguoiDung.entity;
 
-import java.util.UUID;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
@@ -41,7 +44,9 @@ public class NguoiDung extends BaseEntity {
 	@Column(name = "loai_nguoi_dung_id")
 	private String maLoaiNguoiDung;
 	
-	@ManyToOne
-    @JoinColumn(name="loai_nguoi_dung_id", insertable = false, updatable=false)
-	private LoaiNguoiDung loaiNguoiDung;
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(name = "nguoi_dung_loai_nguoi_dung",
+		joinColumns = @JoinColumn(name = "nguoi_dung_id"),
+		inverseJoinColumns = @JoinColumn(name = "loai_nguoi_dung_id"))
+	private Set<LoaiNguoiDung> loaiNguoiDung = new LinkedHashSet<LoaiNguoiDung>();
 }

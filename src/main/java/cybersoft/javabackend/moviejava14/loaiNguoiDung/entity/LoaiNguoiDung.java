@@ -1,5 +1,6 @@
 package cybersoft.javabackend.moviejava14.loaiNguoiDung.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -7,7 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedBy;
@@ -23,8 +24,10 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "loai_nguoi_dung")
-public class LoaiNguoiDung {
+public class LoaiNguoiDung implements Serializable{
 	
+	private static final long serialVersionUID = 4766770617680553069L;
+
 	@Id
 	@Column(name = "id")
 	private String maLoaiNguoiDung;
@@ -48,6 +51,6 @@ public class LoaiNguoiDung {
 	@Column(name = "ten_loai_nguoi_dung", unique = true)
 	private String tenLoai;
 
-	@OneToMany(mappedBy = "loaiNguoiDung", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
+	@ManyToMany(mappedBy = "loaiNguoiDung", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
 	private Set<NguoiDung> nguoiDungs;
 }

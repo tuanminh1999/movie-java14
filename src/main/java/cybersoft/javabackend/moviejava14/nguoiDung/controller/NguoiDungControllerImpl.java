@@ -11,9 +11,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RestController;
 
 import cybersoft.javabackend.moviejava14.common.ResponseHandler;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.CreateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
+import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungProjection;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.UpdateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.service.NguoiDungService;
 import cybersoft.javabackend.moviejava14.security.jwt.JwtUtils;
@@ -31,41 +31,51 @@ public class NguoiDungControllerImpl implements NguoiDungController {
 	}
 	
 	@Override
-	public ResponseEntity<Object> getNguoiDung() {
-		List<NguoiDungDTO> getNguoiDungs = nguoiDungService.findAll();
+	public Object getNguoiDung() {
+		List<NguoiDungProjection> getNguoiDungs = nguoiDungService.findAllDTO();
 		return new ResponseEntity<>(getNguoiDungs, HttpStatus.OK);
 	}
 
 	@Override
-	public ResponseEntity<Object> createNguoiDung(@Valid CreateNguoiDungDTO dto, String token, BindingResult bindingResult) {
-		if(bindingResult.hasErrors()) {
-			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
-		}
+	public Object createNguoiDung(String token, @Valid CreateNguoiDungDTO dto, BindingResult bindingResult) {
 		
 		if(!jwtUtils.validateJwtToken(token)) {
 			return ResponseHandler.getErrorResponse("Token không hợp lệ", HttpStatus.BAD_REQUEST);
 		}
 		
 		
+		if(bindingResult.hasErrors()) {
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		}
+		
 		NguoiDungDTO createdNguoiDung = nguoiDungService.create(dto);
 		
-		return new ResponseEntity<Object>(createdNguoiDung, HttpStatus.OK);
+		return new ResponseEntity<>(createdNguoiDung, HttpStatus.OK);
 	}
 
 	@Override
-	public ResponseEntity<Object> updateNguoiDung(@Valid UpdateNguoiDungDTO dto, BindingResult bindingResult) {
+	public Object updateNguoiDung(String token, @Valid UpdateNguoiDungDTO dto, BindingResult bindingResult) {
+		if(!jwtUtils.validateJwtToken(token)) {
+			return ResponseHandler.getErrorResponse("Token không hợp lệ", HttpStatus.BAD_REQUEST);
+		}
+		
+		if(bindingResult.hasErrors()) {
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		}
+		
+		NguoiDungDTO updatedNuoiDung = nguoiDungService.update(dto, token);
+		
+		return new ResponseEntity<Object>(updatedNuoiDung, HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<Object> deleteNguoiDung(String token, String taiKhoan) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<Object> deleteNguoiDung(UUID id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<Object> register(@Valid CreateNguoiDungDTO dto, BindingResult bindingResult) {
+	public Object register(@Valid CreateNguoiDungDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}

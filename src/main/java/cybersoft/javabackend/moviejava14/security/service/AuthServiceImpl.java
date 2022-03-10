@@ -43,13 +43,13 @@ public class AuthServiceImpl implements AuthService {
 		
 		// 2. if user is null return IncorrectLoginException
 		if (!userOpt.isPresent()) {
-			throw new MovieIncorrectLoginException("Incorrect username or password.");
+			throw new MovieIncorrectLoginException("Tài khoản hoặc mật khẩu không đúng");
 		}
 		
 		String encodedPassword = userOpt.get().getMatKhau();
 		
 		if (!encoder.matches(dto.getMatKhau(), encodedPassword)) {
-			throw new MovieIncorrectLoginException("Incorrect username or password.");
+			throw new MovieIncorrectLoginException("Tài khoản hoặc mật khẩu không đúng");
 		}
 		
 		// 3. create authentication and set into SecurityContext

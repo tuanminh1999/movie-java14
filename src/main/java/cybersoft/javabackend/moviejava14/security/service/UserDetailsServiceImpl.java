@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
 import cybersoft.javabackend.moviejava14.nguoiDung.entity.NguoiDung;
 import cybersoft.javabackend.moviejava14.nguoiDung.repository.NguoiDungRepository;
 import cybersoft.javabackend.moviejava14.security.dto.CustomUserDetails;
@@ -34,29 +33,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		NguoiDung currentNguoiDung = nguoiDungOpt.get();
 		
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.addAll(getAuthorities(currentNguoiDung));
+		authorities.add(new SimpleGrantedAuthority(currentNguoiDung.getLoaiNguoiDung().getTenLoai()));
 		
 		CustomUserDetails userDetails = new CustomUserDetails(currentNguoiDung.getTaiKhoan(), currentNguoiDung.getMatKhau(), authorities);
 		userDetails.setEmail(currentNguoiDung.getEmail());
 		userDetails.setHoTen(currentNguoiDung.getHoTen());
 		userDetails.setSoDt(currentNguoiDung.getSoDt());
-		userDetails.setMaLoaiNguoiDung(currentNguoiDung.getMaLoaiNguoiDung());
-		
+		userDetails.setMaLoaiNguoiDung(currentNguoiDung.getLoaiNguoiDung().getMaLoaiNguoiDung());
 		return userDetails;
 	}
-
-	private List<? extends GrantedAuthority> getAuthorities(final NguoiDung currentNguoiDung) {
-		List<GrantedAuthority> authories = new ArrayList<>();
-		
-		for (LoaiNguoiDung loai : currentNguoiDung.getLoaiNguoiDung()) {
-			authories.add(new SimpleGrantedAuthority(loai.getTenLoai()));
-		}
-		
-		return authories;
-	}
-
-	
-
 	
 
 }

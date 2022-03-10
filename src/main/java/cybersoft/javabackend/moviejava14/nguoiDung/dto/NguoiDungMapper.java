@@ -9,9 +9,9 @@ import cybersoft.javabackend.moviejava14.nguoiDung.entity.NguoiDung;
 public interface NguoiDungMapper {
 	NguoiDungMapper INSTANCE = Mappers.getMapper(NguoiDungMapper.class);
 	
-	NguoiDungDTO fromEntityToLoaiNguoiDungDTO (NguoiDung nguoiDung);
-	NguoiDung fromLoaiNguoiDungDTOToEntity (NguoiDungDTO dto);
+	NguoiDungDTO fromEntityToNguoiDungDTO (NguoiDung nguoiDung);
+	NguoiDung fromNguoiDungDTOToEntity (NguoiDungDTO dto);
 	
-	NguoiDung fromCreateLoaiNguoiDungDTOtoEntity (CreateNguoiDungDTO dto);
+	NguoiDung fromCreateNguoiDungDTOtoEntity (CreateNguoiDungDTO dto);
 	
 }

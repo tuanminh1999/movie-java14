@@ -4,7 +4,6 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +31,7 @@ public interface LoaiGheController {
 	})
 	@GetMapping(value = UrlConst.GET_LOAI_GHE, produces = "application/json")
 	
-	public ResponseEntity<Object> getLoaiGhe();
+	public Object getLoaiGhe();
 	
 
 	
@@ -44,7 +43,7 @@ public interface LoaiGheController {
 		@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
 	})
 	@PostMapping(value = UrlConst.POST_LOAI_GHE)
-	public ResponseEntity<Object> createLoaiGheDTO(
+	public Object createLoaiGheDTO(
 //			requestbody la cua spring
 			@Parameter(description = "${loai-ghe.parameter.create-dto}") @Valid @RequestBody CreateLoaiGheDTO dto,
 			BindingResult bindingResult);
@@ -58,7 +57,7 @@ public interface LoaiGheController {
 			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
 	})
 	@PutMapping(value = UrlConst.PUT_LOAI_GHE)
-	public ResponseEntity<Object> updateLoaiGhe(
+	public Object updateLoaiGhe(
 			
 			@Parameter(description = "${loai-ghe.parameter.update-dto}") @Valid @RequestBody UpdateLoaiGheDTO dto,
 				BindingResult bindingResult
@@ -73,7 +72,7 @@ public interface LoaiGheController {
 		@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
 	})
 	@DeleteMapping(value = UrlConst.DELETE_LOAI_GHE)
-	public ResponseEntity<Object> deleteLoaiGhe(
+	public Object deleteLoaiGhe(
 			@Parameter(description = "${loai-ghe.parameter.id}") @PathVariable("id") UUID id
 			);
 }

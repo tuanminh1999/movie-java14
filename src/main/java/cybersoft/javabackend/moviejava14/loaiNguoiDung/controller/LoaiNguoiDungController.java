@@ -2,7 +2,6 @@ package cybersoft.javabackend.moviejava14.loaiNguoiDung.controller;
 
 import javax.validation.Valid;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +28,7 @@ public interface LoaiNguoiDungController {
 			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
 	})
 	@GetMapping(value = UrlConst.GET_LOAI_NGUOI_DUNG, produces = "application/json")
-	public ResponseEntity<Object> getLoaiNguoiDung();
+	public Object getLoaiNguoiDung();
 	
 	
 	
@@ -40,7 +39,7 @@ public interface LoaiNguoiDungController {
 		@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
 	})
 	@PostMapping(value = UrlConst.POST_LOAI_NGUOI_DUNG)
-	public ResponseEntity<Object> createLoaiNguoiDung(
+	public Object createLoaiNguoiDung(
 			@Parameter(description = "${loai-nguoi-dung.parameter.create-dto}") @Valid @RequestBody CreateLoaiNguoiDungDTO dto,
 			BindingResult bindingResult);
 	
@@ -53,7 +52,7 @@ public interface LoaiNguoiDungController {
 			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
 	})
 	@PutMapping(value = UrlConst.PUT_LOAI_NGUOI_DUNG)
-	public ResponseEntity<Object> updateLoaiNguoiDung(
+	public Object updateLoaiNguoiDung(
 			@Parameter(description = "${loai-nguoi-dung.parameter.update-dto}") @Valid @RequestBody UpdateLoaiNguoiDungDTO dto,
 				BindingResult bindingResult
 			);
@@ -67,8 +66,8 @@ public interface LoaiNguoiDungController {
 		@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
 	})
 	@DeleteMapping(value = UrlConst.DELETE_LOAI_NGUOI_DUNG)
-	public ResponseEntity<Object> deleteLoaiNguoiDung(
-			@Parameter(description = "${loai-nguoi-dung.parameter.id}") @PathVariable("id") String id
+	public Object deleteLoaiNguoiDung(
+			@Parameter(description = "${loai-nguoi-dung.parameter.id}") @PathVariable("maLoaiNguoiDung") String maLoaiNguoiDung
 			);
 	
 }

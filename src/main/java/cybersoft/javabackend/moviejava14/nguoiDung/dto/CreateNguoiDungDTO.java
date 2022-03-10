@@ -3,9 +3,9 @@ package cybersoft.javabackend.moviejava14.nguoiDung.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation.UniqueTenLoaiNguoiDung;
 import cybersoft.javabackend.moviejava14.nguoiDung.validation.annotation.UniqueEmailNguoiDung;
 import cybersoft.javabackend.moviejava14.nguoiDung.validation.annotation.UniqueSoDienThoaiNguoiDung;
+import cybersoft.javabackend.moviejava14.nguoiDung.validation.annotation.UniqueTaiKhoanNguoiDung;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,12 +15,11 @@ public class CreateNguoiDungDTO {
 
 	@NotBlank(message = "{nguoi_dung.tai_khoan.not-blank}")
 	@Size(min = 3, max = 30, message = "{nguoi_dung.tai-khoan.size}")
-	@UniqueTenLoaiNguoiDung
+	@UniqueTaiKhoanNguoiDung
 	private String taiKhoan;
 	
 	@NotBlank(message = "{nguoi_dung.ten.not_blank}")
 	@Size(min = 3, max = 30, message = "{nguoi_dung.ten.size}")
-	@UniqueTenLoaiNguoiDung
 	private String hoTen;
 	
 	@NotBlank(message = "{nguoi_dung.mat_khau.not-blank}")
@@ -36,7 +35,7 @@ public class CreateNguoiDungDTO {
 	@UniqueSoDienThoaiNguoiDung
 	private String soDt;
 	
-	@NotBlank(message = "{loai_nguoi_dung.id.not-blank}")
+	@NotBlank(message = "{loai_nguoi_dung.id.not_blank}")
 	private String maLoaiNguoiDung;
 
 }

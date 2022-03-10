@@ -25,14 +25,13 @@ public class LoaiNguoiDungControllerImpl implements LoaiNguoiDungController{
 	}
 	
 	@Override
-	public ResponseEntity<Object> getLoaiNguoiDung() {
+	public Object getLoaiNguoiDung() {
 		List<LoaiNguoiDungDTO> loaiNguoiDungs = loaiNguoiDungService.findAll();
 		return new ResponseEntity<Object>(loaiNguoiDungs, HttpStatus.OK);
 	}
 	
-	//create Loai Nguoi dung
 	@Override
-	public ResponseEntity<Object> createLoaiNguoiDung(@Valid CreateLoaiNguoiDungDTO dto, BindingResult bindingResult) {
+	public Object createLoaiNguoiDung(@Valid CreateLoaiNguoiDungDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
@@ -43,7 +42,7 @@ public class LoaiNguoiDungControllerImpl implements LoaiNguoiDungController{
 	}
 
 	@Override
-	public ResponseEntity<Object> updateLoaiNguoiDung(@Valid UpdateLoaiNguoiDungDTO dto, BindingResult bindingResult) {
+	public Object updateLoaiNguoiDung(@Valid UpdateLoaiNguoiDungDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
@@ -54,8 +53,8 @@ public class LoaiNguoiDungControllerImpl implements LoaiNguoiDungController{
 	}
 
 	@Override
-	public ResponseEntity<Object> deleteLoaiNguoiDung(String id) {
-		loaiNguoiDungService.delete(id);
+	public Object deleteLoaiNguoiDung(String maLoaiNguoiDung) {
+		loaiNguoiDungService.delete(maLoaiNguoiDung);
 		return new ResponseEntity<Object>("Xoá loại người dùng thành công!", HttpStatus.OK);
 	}
 

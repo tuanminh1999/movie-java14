@@ -16,10 +16,6 @@ import cybersoft.javabackend.moviejava14.loaiGhe.dto.CreateLoaiGheDTO;
 import cybersoft.javabackend.moviejava14.loaiGhe.dto.LoaiGheDTO;
 import cybersoft.javabackend.moviejava14.loaiGhe.dto.UpdateLoaiGheDTO;
 import cybersoft.javabackend.moviejava14.loaiGhe.service.LoaiGheService;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.CreateLoaiNguoiDungDTO;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungDTO;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.UpdateLoaiNguoiDungDTO;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.service.LoaiNguoiDungService;
 
 @RestController
 public class LoaiGheControllerImpl implements LoaiGheController {
@@ -28,7 +24,7 @@ public class LoaiGheControllerImpl implements LoaiGheController {
 	private LoaiGheService loaiGheService;
 
 	@Override
-	public ResponseEntity<Object> getLoaiGhe() {
+	public Object getLoaiGhe() {
 		List<LoaiGheDTO> loaiGhe = loaiGheService.findAll();
 		return new ResponseEntity<>(loaiGhe, HttpStatus.OK);
 	}
@@ -36,7 +32,7 @@ public class LoaiGheControllerImpl implements LoaiGheController {
 
 	
 	@Override
-	public ResponseEntity<Object> createLoaiGheDTO(@Valid CreateLoaiGheDTO dto, BindingResult bindingResult) {
+	public Object createLoaiGheDTO(@Valid CreateLoaiGheDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
@@ -50,7 +46,7 @@ public class LoaiGheControllerImpl implements LoaiGheController {
 
 
 	@Override
-	public ResponseEntity<Object> updateLoaiGhe( @Valid UpdateLoaiGheDTO dto, BindingResult bindingResult) {
+	public Object updateLoaiGhe( @Valid UpdateLoaiGheDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
@@ -59,7 +55,7 @@ public class LoaiGheControllerImpl implements LoaiGheController {
 	}
 
 	@Override
-	public ResponseEntity<Object> deleteLoaiGhe(UUID id) {
+	public Object deleteLoaiGhe(UUID id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

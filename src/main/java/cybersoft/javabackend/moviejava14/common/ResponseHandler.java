@@ -9,7 +9,7 @@ import cybersoft.javabackend.moviejava14.common.utils.ErrorUtil;
 public class ResponseHandler {
 	
 	
-	public static ResponseEntity<Object> getErrorResponse(Object obj, HttpStatus status){
+	public static Object getErrorResponse(Object obj, HttpStatus status){
 		Object error = null;
 		
 		if (obj instanceof BindingResult) {
@@ -18,7 +18,7 @@ public class ResponseHandler {
 			error = obj;
 		}
 		
-		return new ResponseEntity<Object>(error, status);
+		return new ResponseEntity<>(error, status);
 	}
 
 }

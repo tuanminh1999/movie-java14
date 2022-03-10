@@ -8,6 +8,7 @@ api:
   task:
     manage: Quản lý
     description: Chứa các API của
+    
 CRUD:
   get:
     description: 
@@ -39,6 +40,12 @@ loai-nguoi-dung:
     create-dto: Nhập thông tin cho CreateLoaiNguoiDungDTO
     update-dto: Nhập thông tin cho UpdateLoaiNguoiDungDTO
     id: Nhập id cho loại người dùng
+    
+nguoi-dung:
+  parameter:
+    create-dto: Nhập thông tin cho CreateNguoiDungDTO
+    update-dto: Nhập thông tin cho UpdateNguoiDungDTO
+    id: Nhập id cho người dùng
     
 loai-ghe: 
   parameter:

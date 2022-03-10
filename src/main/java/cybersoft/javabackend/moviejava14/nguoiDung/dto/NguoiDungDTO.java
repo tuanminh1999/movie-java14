@@ -13,9 +13,7 @@ public class NguoiDungDTO extends BaseDTO {
 	private String taiKhoan;
 	
 	private String hoTen;
-	
-	private String matKhau;
-	
+		
 	private String email;
 	
 	private String soDt;

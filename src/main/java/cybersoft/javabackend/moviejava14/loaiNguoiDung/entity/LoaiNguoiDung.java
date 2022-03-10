@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedBy;
@@ -51,6 +52,6 @@ public class LoaiNguoiDung implements Serializable{
 	@Column(name = "ten_loai_nguoi_dung", unique = true)
 	private String tenLoai;
 
-	@ManyToMany(mappedBy = "loaiNguoiDung", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
+	@OneToMany(mappedBy = "loaiNguoiDung", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
 	private Set<NguoiDung> nguoiDungs;
 }

@@ -14,4 +14,5 @@ public class GlobalHandlerException {
 		return ResponseHandler.getErrorResponse(e.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	
+	
 }

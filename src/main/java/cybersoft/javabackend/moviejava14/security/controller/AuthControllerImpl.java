@@ -1,6 +1,5 @@
 package cybersoft.javabackend.moviejava14.security.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -22,7 +21,7 @@ public class AuthControllerImpl implements AuthController {
 	private AuthService authService;
 
 	@Override
-	public ResponseEntity<Object> login(@Valid LoginDTO dto, BindingResult bindingResult) {
+	public Object login(@Valid LoginDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}

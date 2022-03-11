@@ -23,7 +23,7 @@ public class UpdateNguoiDungDTO {
 	@NotBlank(message = "{nguoi_dung.so_dien_thoai.not-blank}")
 	private String soDt;
 	
-	@NotBlank(message = "{nguoi_dung.so_dien_thoai.not-blank}")
+	@NotBlank(message = "{loai_nguoi_dung.id.not_blank}")
 	private String maLoaiNguoiDung;
 
 }

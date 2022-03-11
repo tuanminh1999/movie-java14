@@ -2,7 +2,6 @@ package cybersoft.javabackend.moviejava14.nguoiDung.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -38,7 +37,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	@Override
 	public List<NguoiDungProjection> findAllDTO() {
 		return nguoiDungRepository.findAllDTO();
-		 
+
 	}
 
 	@Override
@@ -125,9 +124,20 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 
 		nguoiDung.setHoTen(dto.getHoTen());
 
+		if (!nguoiDung.getLoaiNguoiDung().getMaLoaiNguoiDung().equals(dto.getMaLoaiNguoiDung())) {
+			Optional<LoaiNguoiDung> loaiNguoiDung = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
+			if (!loaiNguoiDung.isPresent()) {
+				throw new InvalidDataException("Loại người dùng không tồn tại");
+			} else {
+				nguoiDung.setLoaiNguoiDung(loaiNguoiDung.get());
+			}
+		}
+
 		NguoiDung updatedNguoiDung = nguoiDungRepository.save(nguoiDung);
 
-		return NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(updatedNguoiDung);
+		NguoiDungDTO nguoiDungDTO = NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(updatedNguoiDung);
+		nguoiDungDTO.setMaLoaiNguoiDung(updatedNguoiDung.getLoaiNguoiDung().getMaLoaiNguoiDung());
+		return nguoiDungDTO;
 	}
 
 }

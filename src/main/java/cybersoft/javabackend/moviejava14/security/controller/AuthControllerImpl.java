@@ -1,7 +1,5 @@
 package cybersoft.javabackend.moviejava14.security.controller;
 
-import java.util.Map;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +23,8 @@ public class AuthControllerImpl implements AuthController {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
-		Map<String, String> token = authService.login(dto);
-		return new ResponseEntity<Object>(token, HttpStatus.OK);
+		Object token = authService.login(dto);
+		return new ResponseEntity<>(token, HttpStatus.OK);
 	}
 
 }

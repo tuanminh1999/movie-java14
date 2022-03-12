@@ -83,6 +83,6 @@ public interface NguoiDungController {
 	@DeleteMapping(value = UrlConst.DELETE_NGUOI_DUNG)
 	public Object deleteNguoiDung(
 			@RequestHeader String token, 
-			@Parameter(description = "${nguoi-dung.parameter.id}") @RequestParam("id") String taiKhoan
+			@Parameter(description = "${nguoi-dung.parameter.tai-khoan}") @RequestParam("taiKhoan") String taiKhoan
 			);
 }

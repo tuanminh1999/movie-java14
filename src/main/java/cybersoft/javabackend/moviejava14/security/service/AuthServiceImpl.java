@@ -35,7 +35,7 @@ public class AuthServiceImpl implements AuthService {
 	private JwtUtils jwtUtils;
 
 	@Override
-	public Map<String, String> login(LoginDTO dto) {
+	public Object login(LoginDTO dto) {
 		
 		// 1. searcgh nguoiDung by taiKhoan and matKhau
 		Optional<NguoiDung> userOpt = nguoiDungRepository.findByTaiKhoan(

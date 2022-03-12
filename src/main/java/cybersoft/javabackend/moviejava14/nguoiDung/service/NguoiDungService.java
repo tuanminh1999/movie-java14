@@ -22,4 +22,6 @@ public interface NguoiDungService {
 	
 	Optional<NguoiDungDTO> getNguoiDungBySoDt(String soDt);
 
+	void delete(String taiKhoan);
+
 }

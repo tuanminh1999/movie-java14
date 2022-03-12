@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import cybersoft.javabackend.moviejava14.common.utils.StatusCode;
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
@@ -67,7 +68,7 @@ public interface LoaiNguoiDungController {
 	})
 	@DeleteMapping(value = UrlConst.DELETE_LOAI_NGUOI_DUNG)
 	public Object deleteLoaiNguoiDung(
-			@Parameter(description = "${loai-nguoi-dung.parameter.id}") @PathVariable("maLoaiNguoiDung") String maLoaiNguoiDung
+			@Parameter(description = "${loai-nguoi-dung.parameter.id}") @RequestParam("maLoaiNguoiDung") String maLoaiNguoiDung
 			);
 	
 }

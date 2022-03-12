@@ -16,12 +16,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name="Đăng nhập", description="Người dùng đăng nhập để lấy token")
 public interface AuthController {	
 	
-	@Operation(method = "get", description = "Người dùng đăng nhập để lấy token")
+	@Operation(method = "POST", description = "Người dùng đăng nhập để lấy token")
 	@ApiResponses({
 			@ApiResponse(responseCode = "200", description = "Đăng nhập thành công"),
 			@ApiResponse(responseCode = "403", description = "Sai tài khoản hoặc mật khẩu")
 	})
-	@PostMapping(value = UrlConst.LOGIN_NGUOI_DUNG, produces = "application/json")
+	@PostMapping(value = UrlConst.LOGIN_NGUOI_DUNG)
 	public Object login(
 			@Valid @RequestBody LoginDTO dto, BindingResult bindingResult);
 	

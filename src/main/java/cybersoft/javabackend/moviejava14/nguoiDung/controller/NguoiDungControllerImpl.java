@@ -70,8 +70,8 @@ public class NguoiDungControllerImpl implements NguoiDungController {
 
 	@Override
 	public ResponseEntity<Object> deleteNguoiDung(String token, String taiKhoan) {
-		// TODO Auto-generated method stub
-		return null;
+		nguoiDungService.delete(taiKhoan);
+		return new ResponseEntity<Object>("Xoá người dùng thành công!", HttpStatus.OK);
 	}
 
 	@Override

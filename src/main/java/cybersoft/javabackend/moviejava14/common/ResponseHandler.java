@@ -8,7 +8,6 @@ import cybersoft.javabackend.moviejava14.common.utils.ErrorUtil;
 
 public class ResponseHandler {
 	
-	
 	public static Object getErrorResponse(Object obj, HttpStatus status){
 		Object error = null;
 		

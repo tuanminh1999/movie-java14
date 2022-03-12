@@ -140,4 +140,15 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		return nguoiDungDTO;
 	}
 
+	@Override
+	public void delete(String taiKhoan) {
+		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(taiKhoan);
+		
+		if(!nguoiDungOpt.isPresent()) {
+			throw new InvalidDataException("Tài khoản người dùng không tồn tại");
+		}
+		
+		nguoiDungRepository.delete(nguoiDungOpt.get());
+	}
+
 }

@@ -32,7 +32,7 @@ CRUD:
   delete:
     description:
       title: Xoá
-      bad_request: Id không hợp lệ
+      bad_request: Thông tin không hợp lệ
       ok: Xoá loại thành công
     
 loai-nguoi-dung:
@@ -45,7 +45,7 @@ nguoi-dung:
   parameter:
     create-dto: Nhập thông tin cho CreateNguoiDungDTO
     update-dto: Nhập thông tin cho UpdateNguoiDungDTO
-    id: Nhập id cho người dùng
+    tai-khoan: Nhập tài khoản cho người dùng
     
 loai-ghe: 
   parameter:

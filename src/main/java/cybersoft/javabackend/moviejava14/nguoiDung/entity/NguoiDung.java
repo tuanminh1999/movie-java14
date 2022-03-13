@@ -1,12 +1,11 @@
 package cybersoft.javabackend.moviejava14.nguoiDung.entity;
 
-import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
@@ -33,15 +32,13 @@ public class NguoiDung extends BaseEntity {
 	private String matKhau;
 
 	@Column(name = "email")
+	@Pattern(regexp = ".+@.+\\..+", message = "Please provide a valid email address")
 	private  String email;
 
 	@Column(name = "so_dien_thoai")
 	private String soDt;
 	
-	@Column(name = "loai_nguoi_dung_id")
-	private String maLoaiNguoiDung;
-	
 	@ManyToOne
-    @JoinColumn(name="loai_nguoi_dung_id", insertable = false, updatable=false)
+    @JoinColumn(name="loai_nguoi_dung_id")
 	private LoaiNguoiDung loaiNguoiDung;
 }

@@ -13,4 +13,6 @@ public class GlobalHandlerException {
 	public Object handleInvalidLoaiNguoiDungException(InvalidDataException e) {
 		return ResponseHandler.getErrorResponse(e.getMessage(), HttpStatus.BAD_REQUEST);
 	}
+	
+	
 }

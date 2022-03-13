@@ -17,15 +17,15 @@ import cybersoft.javabackend.moviejava14.loaiNguoiDung.repositoty.LoaiNguoiDungR
 @Service
 public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 
-	private LoaiNguoiDungRepository loaiNguoiDungRepositoy;
+	private LoaiNguoiDungRepository loaiNguoiDungRepository;
 
-	public LoaiNguoiDungServiceImpl(LoaiNguoiDungRepository loaiNguoiDungRepositoy) {
-		this.loaiNguoiDungRepositoy = loaiNguoiDungRepositoy;
+	public LoaiNguoiDungServiceImpl(LoaiNguoiDungRepository loaiNguoiDungRepository) {
+		this.loaiNguoiDungRepository = loaiNguoiDungRepository;
 	}
 	
 	@Override
 	public Optional<LoaiNguoiDungDTO> getNguoiDungById(String id) {
-		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findById(id);
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepository.findById(id);
 
 		if (!loaiNguoiDungOpt.isPresent()) {
 			return null;
@@ -36,7 +36,7 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 
 	@Override
 	public Optional<LoaiNguoiDungDTO> findByTenLoai(String tenLoai) {
-		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findByTenLoai(tenLoai);
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepository.findByTenLoai(tenLoai);
 		if (!loaiNguoiDungOpt.isPresent()) {
 			return null;
 		}
@@ -46,7 +46,7 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 
 	@Override
 	public List<LoaiNguoiDungDTO> findAll() {
-		List<LoaiNguoiDung> loaiNguoiDungs = loaiNguoiDungRepositoy.findAll();
+		List<LoaiNguoiDung> loaiNguoiDungs = loaiNguoiDungRepository.findAll();
 
 		return loaiNguoiDungs.stream().map(o -> LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(o))
 				.collect(Collectors.toList());
@@ -55,13 +55,13 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 	@Override
 	public LoaiNguoiDungDTO create(CreateLoaiNguoiDungDTO dto) {
 		LoaiNguoiDung loaiNguoiDung = LoaiNguoiDungMapper.INSTANCE.fromCreateLoaiNguoiDungDTOtoEntity(dto);
-		LoaiNguoiDung createLoaiNguoiDung = loaiNguoiDungRepositoy.save(loaiNguoiDung);
+		LoaiNguoiDung createLoaiNguoiDung = loaiNguoiDungRepository.save(loaiNguoiDung);
 		return LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(createLoaiNguoiDung);
 	}
 
 	@Override
 	public LoaiNguoiDungDTO update(UpdateLoaiNguoiDungDTO dto) {
-		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findById(dto.getMaLoaiNguoiDung());
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
 		
 		if (!loaiNguoiDungOpt.isPresent()) {
 			throw new InvalidDataException("Id loại người dùng không tồn lại");
@@ -70,26 +70,26 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 		LoaiNguoiDung loaiNguoiDung = loaiNguoiDungOpt.get();
 		
 		if(!loaiNguoiDung.getTenLoai().equals(dto.getTenLoai())) {
-			if (loaiNguoiDungRepositoy.findByTenLoai(dto.getTenLoai()).isPresent()) {
+			if (loaiNguoiDungRepository.findByTenLoai(dto.getTenLoai()).isPresent()) {
 				throw new InvalidDataException("Tên loại người dùng đã tồn tại");
 			}
 			loaiNguoiDung.setTenLoai(dto.getTenLoai());
 		}
 		
-		LoaiNguoiDung updatedLoaiNguoiDung = loaiNguoiDungRepositoy.save(loaiNguoiDung);
+		LoaiNguoiDung updatedLoaiNguoiDung = loaiNguoiDungRepository.save(loaiNguoiDung);
 		
 		return LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(updatedLoaiNguoiDung);
 	}
 
 	@Override
 	public void delete(String id) {
-		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepositoy.findById(id);
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepository.findById(id);
 		
 		if(!loaiNguoiDungOpt.isPresent()) {
 			throw new InvalidDataException("Id loại người dùng không tồn tại");
 		}
 		
-		loaiNguoiDungRepositoy.delete(loaiNguoiDungOpt.get());
+		loaiNguoiDungRepository.delete(loaiNguoiDungOpt.get());
 	}
 
 }

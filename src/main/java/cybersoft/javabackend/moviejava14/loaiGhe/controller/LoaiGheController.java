@@ -1,79 +1,66 @@
 package cybersoft.javabackend.moviejava14.loaiGhe.controller;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import cybersoft.javabackend.moviejava14.common.utils.StatusCode;
+import cybersoft.javabackend.moviejava14.common.ResponseHandler;
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.loaiGhe.dto.CreateLoaiGheDTO;
+import cybersoft.javabackend.moviejava14.loaiGhe.dto.LoaiGheDTO;
 import cybersoft.javabackend.moviejava14.loaiGhe.dto.UpdateLoaiGheDTO;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import cybersoft.javabackend.moviejava14.loaiGhe.service.LoaiGheService;
 
-@Tag(name="${api.task.manage} ${api.name.loai-ghe}", description="${api.task.description} ${api.name.loai-ghe}")
-public interface LoaiGheController {
-	@Operation(method = "GET", description = "${CRUD.get.description.title} ${api.name.loai-ghe}")
-	@ApiResponses({
-			@ApiResponse(responseCode = StatusCode.OK, description = "${CRUD.get.description.ok} ${api.name.loai-ghe}"),
-			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
-	})
-	@GetMapping(value = UrlConst.GET_LOAI_GHE, produces = "application/json")
+@RestController
+public class LoaiGheController {
 	
-	public ResponseEntity<Object> getLoaiGhe();
+	@Autowired
+	private LoaiGheService loaiGheService;
+
+	@GetMapping(UrlConst.GET_LOAI_NGUOI_DUNG)
+	public Object getLoaiGhe() {
+		List<LoaiGheDTO> loaiGhe = loaiGheService.findAll();
+		return new ResponseEntity<>(loaiGhe, HttpStatus.OK);
+	}
 	
+	@PostMapping(UrlConst.POST_LOAI_GHE)
+	public Object createLoaiGheDTO(@Valid @RequestBody CreateLoaiGheDTO dto, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		}
+		LoaiGheDTO createLoaiGhe = loaiGheService.create(dto); 
+		
+
+		return new ResponseEntity<>(createLoaiGhe, HttpStatus.OK);
+	}
+
+	@PutMapping(UrlConst.PUT_LOAI_GHE)
+	public Object updateLoaiGhe( @Valid @RequestBody UpdateLoaiGheDTO dto, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		}
+		LoaiGheDTO updataLoaiGhe=loaiGheService.update(dto);
+		return new ResponseEntity<>(updataLoaiGhe, HttpStatus.OK);
+	}
+
+	@DeleteMapping(UrlConst.DELETE_LOAI_GHE)
+	public Object deleteLoaiGhe(UUID id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
-	
-	@Operation(method = "POST", description = "${CRUD.post.description.title} ${api.name.loai-ghe}")
-	@ApiResponses({
-		@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${api.name.loai-ghe} ${CRUD.post.description.bad_request}"),
-		@ApiResponse(responseCode = StatusCode.CREATED, description = "${CRUD.post.description.created} ${api.name.loai-ghe}"),
-		@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
-	})
-	@PostMapping(value = UrlConst.POST_LOAI_GHE)
-	public ResponseEntity<Object> createLoaiGheDTO(
-//			requestbody la cua spring
-			@Parameter(description = "${loai-ghe.parameter.create-dto}") @Valid @RequestBody CreateLoaiGheDTO dto,
-			BindingResult bindingResult);
-	
-	
-	
-	@Operation(method = "PUT", description = "${CRUD.put.description.title} ${api.name.loai-ghe}")
-	@ApiResponses({
-			@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${CRUD.put.description.bad_request}"),
-			@ApiResponse(responseCode = StatusCode.OK, description = "${CRUD.put.description.ok} ${api.name.loai-ghe}"),
-			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
-	})
-	@PutMapping(value = UrlConst.PUT_LOAI_GHE)
-	public ResponseEntity<Object> updateLoaiGhe(
-			
-			@Parameter(description = "${loai-ghe.parameter.update-dto}") @Valid @RequestBody UpdateLoaiGheDTO dto,
-				BindingResult bindingResult
-			);
-	
-	
-	
-	@Operation(method = "DELETE", description = "${CRUD.delete.description.title} ${api.name.loai-ghe}")
-	@ApiResponses({
-		@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${CRUD.delete.description.bad_request}"),
-		@ApiResponse(responseCode = StatusCode.OK, description = "${CRUD.delete.description.ok} ${api.name.loai-ghe}"),
-		@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
-	})
-	@DeleteMapping(value = UrlConst.DELETE_LOAI_GHE)
-	public ResponseEntity<Object> deleteLoaiGhe(
-			@Parameter(description = "${loai-ghe.parameter.id}") @PathVariable("id") UUID id
-			);
+
 }

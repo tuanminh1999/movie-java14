@@ -1,79 +1,62 @@
 package cybersoft.javabackend.moviejava14.loaiNguoiDung.controller;
 
-import java.util.UUID;
+import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import cybersoft.javabackend.moviejava14.common.utils.HttpMethodsUtil;
-import cybersoft.javabackend.moviejava14.common.utils.StatusCode;
-import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
+import cybersoft.javabackend.moviejava14.common.ResponseHandler;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.CreateLoaiNguoiDungDTO;
+import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.UpdateLoaiNguoiDungDTO;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import cybersoft.javabackend.moviejava14.loaiNguoiDung.service.LoaiNguoiDungService;
 
-@Tag(name="${api.task.manage} ${api.name.loai-nguoi-dung}", description="${api.task.description} ${api.name.loai-nguoi-dung}")
-public interface LoaiNguoiDungController {
-	@Operation(method = HttpMethodsUtil.GET, description = "${CRUD.get.description.title} ${api.name.loai-nguoi-dung}")
-	@ApiResponses({
-			@ApiResponse(responseCode = StatusCode.OK, description = "${CRUD.get.description.ok} ${api.name.loai-nguoi-dung}"),
-			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
-			@ApiResponse(responseCode = StatusCode.NOT_FOUND, description = "${CRUD.get.description.not_found} ${api.name.loai-nguoi-dung}")
-	})
-	@GetMapping(value = UrlConst.GET_LOAI_NGUOI_DUNG, produces = "application/json")
-	public ResponseEntity<Object> getLoaiNguoiDung();
+@RestController
+public class LoaiNguoiDungController{
+	
+	private LoaiNguoiDungService loaiNguoiDungService;
+	
+	public LoaiNguoiDungController(LoaiNguoiDungService loaiNguoiDungService) {
+		this.loaiNguoiDungService = loaiNguoiDungService;
+	}
 	
 	
-	
-	@Operation(method = HttpMethodsUtil.POST, description = "${CRUD.post.description.title} ${api.name.loai-nguoi-dung}")
-	@ApiResponses({
-		@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${api.name.loai-nguoi-dung} ${CRUD.post.description.bad_request}"),
-		@ApiResponse(responseCode = StatusCode.CREATED, description = "${CRUD.post.description.created} ${api.name.loai-nguoi-dung}"),
-		@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
-	})
-	@PostMapping(value = UrlConst.POST_LOAI_NGUOI_DUNG)
-	public ResponseEntity<Object> createLoaiNguoiDung(
-			@Parameter(description = "${loai-nguoi-dung.parameter.create-dto}") @Valid @RequestBody CreateLoaiNguoiDungDTO dto,
-			BindingResult bindingResult);
+	public Object getLoaiNguoiDung() {
+		List<LoaiNguoiDungDTO> loaiNguoiDungs = loaiNguoiDungService.findAll();
+		return new ResponseEntity<Object>(loaiNguoiDungs, HttpStatus.OK);
+	}
 	
 	
+	public Object createLoaiNguoiDung(@Valid @RequestBody CreateLoaiNguoiDungDTO dto, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		}
+		
+		LoaiNguoiDungDTO createdLoaiNguoiDung = loaiNguoiDungService.create(dto);
+		
+		return new ResponseEntity<Object>(createdLoaiNguoiDung, HttpStatus.OK);
+	}
+
 	
-	@Operation(method = HttpMethodsUtil.PUT, description = "${CRUD.put.description.title} ${api.name.loai-nguoi-dung}")
-	@ApiResponses({
-			@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${CRUD.put.description.bad_request}"),
-			@ApiResponse(responseCode = StatusCode.OK, description = "${CRUD.put.description.ok} ${api.name.loai-nguoi-dung}"),
-			@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
-	})
-	@PutMapping(value = UrlConst.PUT_LOAI_NGUOI_DUNG)
-	public ResponseEntity<Object> updateLoaiNguoiDung(
-			@Parameter(description = "${loai-nguoi-dung.parameter.id}") @PathVariable("id") UUID id,
-			@Parameter(description = "${loai-nguoi-dung.parameter.update-dto}") @Valid @RequestBody UpdateLoaiNguoiDungDTO dto,
-				BindingResult bindingResult
-			);
+	public Object updateLoaiNguoiDung(@Valid @RequestBody UpdateLoaiNguoiDungDTO dto, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		}
+		
+		LoaiNguoiDungDTO updatedLoaiNguoiDung = loaiNguoiDungService.update(dto);
+		
+		return new ResponseEntity<Object>(updatedLoaiNguoiDung, HttpStatus.OK);
+	}
+
 	
-	
-	
-	@Operation(method = HttpMethodsUtil.DELETE, description = "${CRUD.delete.description.title} ${api.name.loai-nguoi-dung}")
-	@ApiResponses({
-		@ApiResponse(responseCode = StatusCode.BAD_REQUEST, description = "${CRUD.delete.description.bad_request}"),
-		@ApiResponse(responseCode = StatusCode.OK, description = "${CRUD.delete.description.ok} ${api.name.loai-nguoi-dung}"),
-		@ApiResponse(responseCode = StatusCode.FORBIDDEN, description = "${CRUD.get.description.forbidden}"),
-	})
-	@DeleteMapping(value = UrlConst.DELETE_LOAI_NGUOI_DUNG)
-	public ResponseEntity<Object> deleteLoaiNguoiDung(
-			@Parameter(description = "${loai-nguoi-dung.parameter.id}") @PathVariable("id") UUID id
-			);
-	
+	public Object deleteLoaiNguoiDung(String maLoaiNguoiDung) {
+		loaiNguoiDungService.delete(maLoaiNguoiDung);
+		return new ResponseEntity<Object>("Xoá loại người dùng thành công!", HttpStatus.OK);
+	}
+
 }

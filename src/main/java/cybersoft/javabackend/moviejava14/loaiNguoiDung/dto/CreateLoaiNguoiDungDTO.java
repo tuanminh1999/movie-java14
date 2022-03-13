@@ -3,6 +3,7 @@ package cybersoft.javabackend.moviejava14.loaiNguoiDung.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation.UniqueMaLoaiNguoiDung;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation.UniqueTenLoaiNguoiDung;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,15 @@ import lombok.Setter;
 @Setter
 public class CreateLoaiNguoiDungDTO {
 	
+	@NotBlank(message = "{loai_nguoi_dung.id.not_blank}")
+	@Size(min = 3, max = 20, message = "{loai_nguoi_dung.id.size}")
+	@UniqueMaLoaiNguoiDung
+	private String maLoaiNguoiDung;
+
 	@NotBlank(message = "{loai_nguoi_dung.ten.not_blank}")
-	@Size(min = 3, max = 50, message = "{loai_nguoi_dung.ten.size}")
-	@UniqueTenLoaiNguoiDung(message = "{{loai_nguoi_dung.ten.unique}")
-	private String tenLoaiNguoiDung;
-	
+	@Size(min = 3, max = 30, message = "{loai_nguoi_dung.ten.size}")
+	@UniqueTenLoaiNguoiDung
+	private String tenLoai;
+
 }
+

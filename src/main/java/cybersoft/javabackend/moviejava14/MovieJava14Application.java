@@ -9,5 +9,7 @@ public class MovieJava14Application {
 	public static void main(String[] args) {
 		SpringApplication.run(MovieJava14Application.class, args);
 	}
+	
+	
 
 }

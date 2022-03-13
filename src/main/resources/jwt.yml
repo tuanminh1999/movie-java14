@@ -1,0 +1,3 @@
+jwt:
+  expiration: 9000000
+  secret: thisismysecret

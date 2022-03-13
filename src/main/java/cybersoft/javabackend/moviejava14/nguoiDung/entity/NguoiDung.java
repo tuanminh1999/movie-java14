@@ -32,7 +32,6 @@ public class NguoiDung extends BaseEntity {
 	private String matKhau;
 
 	@Column(name = "email")
-	@Pattern(regexp = ".+@.+\\..+", message = "Please provide a valid email address")
 	private  String email;
 
 	@Column(name = "so_dien_thoai")

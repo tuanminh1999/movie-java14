@@ -24,14 +24,12 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	private NguoiDungRepository nguoiDungRepository;
 	private LoaiNguoiDungRepository loaiNguoiDungRepository;
 	private PasswordEncoder encoder;
-	private JwtUtils jwtUtils;
 
-	public NguoiDungServiceImpl(NguoiDungRepository nguoiDungRepository, PasswordEncoder encoder, JwtUtils jwtUtils,
+	public NguoiDungServiceImpl(NguoiDungRepository nguoiDungRepository, PasswordEncoder encoder,
 			LoaiNguoiDungRepository loaiNguoiDungRepository) {
 		this.nguoiDungRepository = nguoiDungRepository;
 		this.loaiNguoiDungRepository = loaiNguoiDungRepository;
 		this.encoder = encoder;
-		this.jwtUtils = jwtUtils;
 	}
 
 	@Override
@@ -64,7 +62,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 
 	@Override
 	public Optional<NguoiDungDTO> getNguoiDungBySoDt(String soDt) {
-		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(soDt);
+		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findBySoDt(soDt);
 
 		if (!nguoiDungOpt.isPresent()) {
 			return null;
@@ -90,23 +88,15 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	}
 
 	@Override
-	public NguoiDungDTO update(UpdateNguoiDungDTO dto, String token) {
-		String taiKhoan = jwtUtils.getUsernameFromToken(token);
+	public NguoiDungDTO update(UpdateNguoiDungDTO dto) {
 
-		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(taiKhoan);
+		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(dto.getTaiKhoan());
 
 		if (!nguoiDungOpt.isPresent()) {
-			throw new InvalidDataException("Tài người dùng không tồn lại");
+			throw new InvalidDataException("Tài khoản người dùng không tồn tại");
 		}
 
 		NguoiDung nguoiDung = nguoiDungOpt.get();
-
-		if (!nguoiDung.getTaiKhoan().equals(dto.getTaiKhoan())) {
-			if (nguoiDungRepository.findByTaiKhoan(dto.getTaiKhoan()).isPresent()) {
-				throw new InvalidDataException("Tài khoản người dùng đã tồn tại");
-			}
-			nguoiDung.setTaiKhoan(dto.getTaiKhoan());
-		}
 
 		if (!nguoiDung.getEmail().equals(dto.getEmail())) {
 			if (nguoiDungRepository.findByEmail(dto.getEmail()).isPresent()) {

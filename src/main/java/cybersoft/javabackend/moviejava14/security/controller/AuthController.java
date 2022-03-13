@@ -2,27 +2,32 @@ package cybersoft.javabackend.moviejava14.security.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import cybersoft.javabackend.moviejava14.common.ResponseHandler;
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.security.dto.LoginDTO;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import cybersoft.javabackend.moviejava14.security.service.AuthService;
 
-@Tag(name="Đăng nhập", description="Người dùng đăng nhập để lấy token")
-public interface AuthController {	
+@RestController
+public class AuthController {
 	
-	@Operation(method = "POST", description = "Người dùng đăng nhập để lấy token")
-	@ApiResponses({
-			@ApiResponse(responseCode = "200", description = "Đăng nhập thành công"),
-			@ApiResponse(responseCode = "403", description = "Sai tài khoản hoặc mật khẩu")
-	})
-	@PostMapping(value = UrlConst.LOGIN_NGUOI_DUNG)
-	public Object login(
-			@Valid @RequestBody LoginDTO dto, BindingResult bindingResult);
-	
+	@Autowired
+	private AuthService authService;
+
+	@PostMapping(UrlConst.LOGIN)
+	public Object login(@RequestBody @Valid LoginDTO dto, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		}
+		Object token = authService.login(dto);
+		return new ResponseEntity<>(token, HttpStatus.OK);
+	}
+
 }

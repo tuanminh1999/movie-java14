@@ -1,7 +1,7 @@
 spring:
     
   config:
-    import: openapi.yml, api-controller.yml, jwt.yml
+    import: jwt.yml
   
   datasource:
     url: jdbc:postgresql://localhost:5432/movie
@@ -17,4 +17,6 @@ spring:
     enabled: true
     driver-class-name: org.postgresql.Driver
     
+    
 server:  port: 8090
+

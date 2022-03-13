@@ -10,7 +10,12 @@ import cybersoft.javabackend.moviejava14.common.ResponseHandler;
 public class SecurityHandlerException {
 	
 	@ExceptionHandler(value = {MovieIncorrectLoginException.class})
-	public Object handleInvalidLoaiNguoiDungException(MovieIncorrectLoginException e) {
+	public Object handleMovieIllegalJwtException(MovieIncorrectLoginException e) {
+		return ResponseHandler.getErrorResponse(e.getMessage(), HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(value = {MovieIllegalJwtException.class})
+	public Object handleMovieIllegalJwtException(MovieIllegalJwtException e) {
 		return ResponseHandler.getErrorResponse(e.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	

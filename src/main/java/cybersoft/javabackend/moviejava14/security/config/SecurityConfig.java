@@ -3,9 +3,11 @@ package cybersoft.javabackend.moviejava14.security.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -60,10 +62,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		 
 		// cấu hình xác thực cho các api
 		http.antMatcher("/**").authorizeRequests()
-			.antMatchers("/swagger-ui.html").permitAll()
-			.antMatchers("/swagger-ui/**").permitAll()
-			.antMatchers("/v3/**").permitAll()
-			.antMatchers("/api/**").permitAll()
-			.anyRequest().authenticated();
+	        .antMatchers(AUTH_WHITELIST).permitAll()
+	        .antMatchers(HttpMethod.GET).permitAll()
+	        .anyRequest().authenticated();
 	}
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		// TODO Auto-generated method stub
+		super.configure(web);
+	}
+	
+	private static final String[] AUTH_WHITELIST = {
+			"/swagger-resources/**",
+			"/swagger-ui.html",
+			"/v2/api-docs",
+			"/webjars/**",
+			"/configuration/ui",
+			"/configuration/security",
+			"/api/DangNhap",
+			"/api/DangKy"
+    };
 }

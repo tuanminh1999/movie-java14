@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
@@ -31,6 +32,7 @@ public class NguoiDung extends BaseEntity {
 	private String matKhau;
 
 	@Column(name = "email")
+	@Pattern(regexp = ".+@.+\\..+", message = "Please provide a valid email address")
 	private  String email;
 
 	@Column(name = "so_dien_thoai")

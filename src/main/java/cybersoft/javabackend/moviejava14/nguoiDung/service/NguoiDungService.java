@@ -14,7 +14,7 @@ public interface NguoiDungService {
 
 	NguoiDungDTO create(CreateNguoiDungDTO dto);
 
-	NguoiDungDTO update(UpdateNguoiDungDTO dto, String token);
+	NguoiDungDTO update(UpdateNguoiDungDTO dto);
 
 	Optional<NguoiDungDTO> getNguoiDungByEmail(String emailNguoiDung);
 	

@@ -10,7 +10,7 @@ CRUD:
   get:
     description: 
       title: Lấy tất cả
-      ok: Lấy thành công
+      ok: Lấy thành công tất cả
       forbidden: Không có ủy quyền chính xác
       not_found: Không tìm thấy bất kỳ
       

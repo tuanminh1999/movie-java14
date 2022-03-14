@@ -30,7 +30,6 @@ public class NguoiDung extends BaseEntity {
 	@Column(name = "mat_khau")
 	private String matKhau;
 
-
 	@Column(name = "email", unique = true)
 	private  String email;
 
@@ -38,6 +37,7 @@ public class NguoiDung extends BaseEntity {
 	private String soDt;
 	
 	@ManyToOne
-    @JoinColumn(name="loai_nguoi_dung_id")
+  @JoinColumn(name="loai_nguoi_dung_id")
 	private LoaiNguoiDung loaiNguoiDung;
+  
 }

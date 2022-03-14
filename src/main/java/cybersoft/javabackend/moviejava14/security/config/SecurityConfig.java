@@ -46,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.passwordEncoder(getPasswordEncoder());
 	}
 
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// cấu hình CORS
@@ -65,12 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        .antMatchers(AUTH_WHITELIST).permitAll()
 	        .antMatchers(HttpMethod.GET).permitAll()
 	        .anyRequest().authenticated();
-	}
-	
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		// TODO Auto-generated method stub
-		super.configure(web);
+		
 	}
 	
 	private static final String[] AUTH_WHITELIST = {
@@ -80,7 +76,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/webjars/**",
 			"/configuration/ui",
 			"/configuration/security",
-			"/api/DangNhap",
-			"/api/DangKy"
+			"/api/QuanLyNguoiDung/DangNhap",
+			"/api/QuanLyNguoiDung/DangKy",
+			"/static/**"
     };
 }

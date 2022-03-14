@@ -28,6 +28,4 @@ public class UrlConst {
 	public static final String PUT_LOAI_GHE = "/api/QuanLyLoaiGhe/CapNhatThongTinLoaiGhe";
 	public static final String DELETE_LOAI_GHE = "/api/QuanLyLoaiGhe/XoaLoaiGhe";
 	
-	//Login
-	public static final String LOGIN = "api/DangNhap";
 }

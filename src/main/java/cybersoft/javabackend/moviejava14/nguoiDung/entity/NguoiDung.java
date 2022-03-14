@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 
 import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
@@ -22,7 +21,7 @@ public class NguoiDung extends BaseEntity {
 
 	private static final long serialVersionUID = 94647127648272572L;
 
-	@Column(name = "tai_khoan")
+	@Column(name = "tai_khoan", unique = true)
 	private String taiKhoan;
 
 	@Column(name = "ho_ten")
@@ -31,13 +30,14 @@ public class NguoiDung extends BaseEntity {
 	@Column(name = "mat_khau")
 	private String matKhau;
 
-	@Column(name = "email")
+	@Column(name = "email", unique = true)
 	private  String email;
 
-	@Column(name = "so_dien_thoai")
+	@Column(name = "so_dien_thoai", unique = true)
 	private String soDt;
 	
 	@ManyToOne
-    @JoinColumn(name="loai_nguoi_dung_id")
+  @JoinColumn(name="loai_nguoi_dung_id")
 	private LoaiNguoiDung loaiNguoiDung;
+  
 }

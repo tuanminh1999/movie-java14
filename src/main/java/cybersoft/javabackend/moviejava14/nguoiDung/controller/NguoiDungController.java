@@ -7,12 +7,14 @@ import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cybersoft.javabackend.moviejava14.common.ResponseHandler;
@@ -24,6 +26,7 @@ import cybersoft.javabackend.moviejava14.nguoiDung.dto.UpdateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.service.NguoiDungService;
 
 @RestController
+@CrossOrigin
 public class NguoiDungController {
 
 	private NguoiDungService nguoiDungService;
@@ -64,7 +67,7 @@ public class NguoiDungController {
 	}
 
 	@DeleteMapping(UrlConst.DELETE_NGUOI_DUNG)
-	public ResponseEntity<Object> deleteNguoiDung(@RequestHeader String authorization, String taiKhoan) {
+	public ResponseEntity<Object> deleteNguoiDung(@RequestHeader String authorization, @RequestParam("TaiKhoan") String taiKhoan) {
 		nguoiDungService.delete(taiKhoan);
 		return new ResponseEntity<Object>("Xoá người dùng thành công!", HttpStatus.OK);
 	}

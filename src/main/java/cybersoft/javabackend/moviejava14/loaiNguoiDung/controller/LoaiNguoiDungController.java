@@ -7,10 +7,15 @@ import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import cybersoft.javabackend.moviejava14.common.ResponseHandler;
+import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.CreateLoaiNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.UpdateLoaiNguoiDungDTO;
@@ -25,13 +30,13 @@ public class LoaiNguoiDungController{
 		this.loaiNguoiDungService = loaiNguoiDungService;
 	}
 	
-	
+	@GetMapping(UrlConst.GET_LOAI_NGUOI_DUNG)
 	public Object getLoaiNguoiDung() {
 		List<LoaiNguoiDungDTO> loaiNguoiDungs = loaiNguoiDungService.findAll();
 		return new ResponseEntity<Object>(loaiNguoiDungs, HttpStatus.OK);
 	}
 	
-	
+	@PostMapping(UrlConst.POST_LOAI_NGUOI_DUNG)
 	public Object createLoaiNguoiDung(@Valid @RequestBody CreateLoaiNguoiDungDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
@@ -42,7 +47,7 @@ public class LoaiNguoiDungController{
 		return new ResponseEntity<Object>(createdLoaiNguoiDung, HttpStatus.OK);
 	}
 
-	
+	@PutMapping(UrlConst.PUT_LOAI_NGUOI_DUNG)
 	public Object updateLoaiNguoiDung(@Valid @RequestBody UpdateLoaiNguoiDungDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
@@ -53,7 +58,7 @@ public class LoaiNguoiDungController{
 		return new ResponseEntity<Object>(updatedLoaiNguoiDung, HttpStatus.OK);
 	}
 
-	
+	@DeleteMapping(UrlConst.DELETE_LOAI_NGUOI_DUNG)
 	public Object deleteLoaiNguoiDung(String maLoaiNguoiDung) {
 		loaiNguoiDungService.delete(maLoaiNguoiDung);
 		return new ResponseEntity<Object>("Xoá loại người dùng thành công!", HttpStatus.OK);

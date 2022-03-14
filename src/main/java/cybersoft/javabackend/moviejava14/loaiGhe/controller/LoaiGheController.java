@@ -29,7 +29,7 @@ public class LoaiGheController {
 	@Autowired
 	private LoaiGheService loaiGheService;
 
-	@GetMapping(UrlConst.GET_LOAI_NGUOI_DUNG)
+	@GetMapping(UrlConst.GET_LOAI_GHE)
 	public Object getLoaiGhe() {
 		List<LoaiGheDTO> loaiGhe = loaiGheService.findAll();
 		return new ResponseEntity<>(loaiGhe, HttpStatus.OK);

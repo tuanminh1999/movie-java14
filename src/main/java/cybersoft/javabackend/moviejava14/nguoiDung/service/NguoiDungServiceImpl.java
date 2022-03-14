@@ -16,7 +16,6 @@ import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungProjection;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.UpdateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.entity.NguoiDung;
 import cybersoft.javabackend.moviejava14.nguoiDung.repository.NguoiDungRepository;
-import cybersoft.javabackend.moviejava14.security.jwt.JwtUtils;
 
 @Service
 public class NguoiDungServiceImpl implements NguoiDungService {

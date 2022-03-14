@@ -21,7 +21,7 @@ public class AuthController {
 	@Autowired
 	private AuthService authService;
 
-	@PostMapping(UrlConst.LOGIN)
+	@PostMapping(UrlConst.LOGIN_NGUOI_DUNG)
 	public Object login(@RequestBody @Valid LoginDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);

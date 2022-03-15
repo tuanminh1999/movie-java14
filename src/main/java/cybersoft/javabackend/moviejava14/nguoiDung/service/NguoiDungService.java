@@ -3,6 +3,8 @@ package cybersoft.javabackend.moviejava14.nguoiDung.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Pageable;
+
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.CreateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungProjection;
@@ -25,5 +27,7 @@ public interface NguoiDungService {
 	void delete(String taiKhoan);
 	
 	List<NguoiDungProjection> searchNguoiDung(String tuKhoa);
+
+	List<NguoiDungDTO> findAll(Pageable pageable);
 
 }

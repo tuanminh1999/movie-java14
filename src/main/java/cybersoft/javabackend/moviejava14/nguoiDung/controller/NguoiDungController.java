@@ -1,10 +1,12 @@
 package cybersoft.javabackend.moviejava14.nguoiDung.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.querydsl.QPageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -23,7 +25,6 @@ import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.CreateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungProjection;
-import cybersoft.javabackend.moviejava14.nguoiDung.dto.TaiKhoanNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.UpdateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.service.NguoiDungService;
 
@@ -89,6 +90,14 @@ public class NguoiDungController {
 	public Object seachNguoiDung(String tuKhoa) {
 		List<NguoiDungProjection> getNguoiDungs = nguoiDungService.searchNguoiDung(tuKhoa);
 		return new ResponseEntity<>(getNguoiDungs, HttpStatus.OK);
+	}
+	
+	@GetMapping(UrlConst.GET_NGUOIDUNG_PAGING)
+	public Object getNguoiDungPaging(String tuKhoa, @RequestParam(defaultValue = "1") int soTrang,
+									 @RequestParam(defaultValue = "5") int soPhanTuTrenTrang) {
+		Pageable pageable = PageRequest.of(soTrang - 1, soPhanTuTrenTrang);
+		List<NguoiDungDTO> nguoiDungs = nguoiDungService.findAll(pageable);
+		return new ResponseEntity<List<NguoiDungDTO>>(nguoiDungs, HttpStatus.OK);
 	}
 	
 //	@PostMapping(UrlConst.GET_NGUOI_DUNG_FROM_TAIKHOAN)

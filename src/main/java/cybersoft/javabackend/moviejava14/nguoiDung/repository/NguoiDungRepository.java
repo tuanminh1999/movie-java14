@@ -28,4 +28,10 @@ public interface NguoiDungRepository extends JpaRepository<NguoiDung, UUID>{
 			+ " FROM NguoiDung nd LEFT JOIN nd.loaiNguoiDung l WHERE nd.taiKhoan LIKE %:tuKhoa% OR nd.hoTen LIKE %:tuKhoa%")
 	List<NguoiDungProjection> searchByTaiKhoanOrHoTen(String tuKhoa);
 	
+	// Paging
+	
+//	List<NguoiDungProjection> findAllPaging(int pageIndex, int pageSize);
+//	
+//	List<NguoiDungProjection> searchPaging(String keywork, int pageIndex, int pageSize);
+	
 }

@@ -2,7 +2,9 @@ package cybersoft.javabackend.moviejava14.nguoiDung.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -146,6 +148,12 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 			return nguoiDungRepository.findAllDTO();
 		}
 		return nguoiDungRepository.searchByTaiKhoanOrHoTen(tuKhoa);
+	}
+
+	@Override
+	public List<NguoiDungDTO> findAll(Pageable pageable) {
+		List<NguoiDung> nguoiDungs = nguoiDungRepository.findAll(pageable).getContent();
+		return nguoiDungs.stream().map(nd -> NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(nd)).collect(Collectors.toList());
 	}
 
 }

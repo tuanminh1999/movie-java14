@@ -140,4 +140,12 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		nguoiDungRepository.delete(nguoiDungOpt.get());
 	}
 
+	@Override
+	public List<NguoiDungProjection> searchNguoiDung(String tuKhoa) {
+		if(tuKhoa == null) {
+			return nguoiDungRepository.findAllDTO();
+		}
+		return nguoiDungRepository.searchByTaiKhoanOrHoTen(tuKhoa);
+	}
+
 }

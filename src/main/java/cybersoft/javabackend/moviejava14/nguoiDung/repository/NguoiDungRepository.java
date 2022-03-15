@@ -24,4 +24,8 @@ public interface NguoiDungRepository extends JpaRepository<NguoiDung, UUID>{
 			+ " FROM NguoiDung nd LEFT JOIN nd.loaiNguoiDung l")
 	List<NguoiDungProjection> findAllDTO();
 	
+	@Query("SELECT nd.taiKhoan as taiKhoan, nd.hoTen as hoTen, nd.email as email, nd.soDt as soDt, l.maLoaiNguoiDung as maLoaiNguoiDung"
+			+ " FROM NguoiDung nd LEFT JOIN nd.loaiNguoiDung l WHERE nd.taiKhoan LIKE %:tuKhoa% OR nd.hoTen LIKE %:tuKhoa%")
+	List<NguoiDungProjection> searchByTaiKhoanOrHoTen(String tuKhoa);
+	
 }

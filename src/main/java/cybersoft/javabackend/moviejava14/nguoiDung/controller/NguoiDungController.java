@@ -39,8 +39,8 @@ public class NguoiDungController {
 	}
 	
 	@GetMapping(UrlConst.GET_NGUOI_DUNG)
-	public Object getNguoiDung() {
-		List<NguoiDungProjection> getNguoiDungs = nguoiDungService.findAllDTO();
+	public Object getNguoiDung(String tuKhoa) {
+		List<NguoiDungProjection> getNguoiDungs = nguoiDungService.searchNguoiDung(tuKhoa);
 		return new ResponseEntity<>(getNguoiDungs, HttpStatus.OK);
 	}
 
@@ -83,6 +83,12 @@ public class NguoiDungController {
 		NguoiDungDTO creatednguoiDung = nguoiDungService.create(dto);
 		
 		return new ResponseEntity<Object>(creatednguoiDung, HttpStatus.OK);
+	}
+	
+	@GetMapping(UrlConst.SEARCH_NGUOIDUNG)
+	public Object seachNguoiDung(String tuKhoa) {
+		List<NguoiDungProjection> getNguoiDungs = nguoiDungService.searchNguoiDung(tuKhoa);
+		return new ResponseEntity<>(getNguoiDungs, HttpStatus.OK);
 	}
 	
 //	@PostMapping(UrlConst.GET_NGUOI_DUNG_FROM_TAIKHOAN)

@@ -1,15 +1,13 @@
-package cybersoft.javabackend.moviejava14.cumRap.entity;
+package cybersoft.javabackend.moviejava14.heThongRap.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,22 +16,21 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import cybersoft.javabackend.moviejava14.heThongRap.entity.HeThongRap;
-import cybersoft.javabackend.moviejava14.rap.entity.Rap;
+import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "cum_rap")
-public class CumRap implements Serializable {
-	
-	private static final long serialVersionUID = 5194453491499231201L;
+@Table(name = "he_thong_rap")
+public class HeThongRap implements Serializable {
+
+	private static final long serialVersionUID = 2503631661050612697L;
 	
 	@Id
-	@Column (name = "id")
-	private String maCumRap;
+	@Column(name = "id")
+	private String maHeThongRap;
 	
 	@CreatedDate
 	@Column(name = "created_date")
@@ -51,16 +48,16 @@ public class CumRap implements Serializable {
 	@Column(name = "modified_by")
 	private String modifiedBy;
 	
-	@Column(name="ten_cum_rap")
-	private String tenCumRap;
+	@Column(name="ten_he_thong_rap")
+	private String tenHeThongRap;
 	
-	@Column(name="dia_chi")
-	private String diaChi;
+	@Column(name="bi_danh")
+	private String biDanh;
 	
-	@ManyToOne
-	@JoinColumn(name = "he_thong_rap_id")
-	private HeThongRap heThongRap;
+	@Column(name="logo")
+	private String logo;
 	
-	@OneToMany(mappedBy = "cumRap")
-	private Set<Rap> raps = new HashSet<Rap>();
+	@OneToMany(mappedBy = "heThongRap", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
+	private Set<CumRap> cumRaps;
+	
 }

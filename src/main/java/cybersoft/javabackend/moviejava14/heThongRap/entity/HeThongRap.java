@@ -16,7 +16,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import cybersoft.javabackend.moviejava14.nguoiDung.entity.NguoiDung;
+import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,9 +26,6 @@ import lombok.Setter;
 @Table(name = "he_thong_rap")
 public class HeThongRap implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2503631661050612697L;
 	
 	@Id
@@ -60,7 +57,7 @@ public class HeThongRap implements Serializable {
 	@Column(name="logo")
 	private String logo;
 	
-	@OneToMany(mappedBy = "cumRap", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
-	private Set<NguoiDung> cumRaps;
+	@OneToMany(mappedBy = "heThongRap", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
+	private Set<CumRap> cumRaps;
 	
 }

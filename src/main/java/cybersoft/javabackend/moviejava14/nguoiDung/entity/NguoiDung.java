@@ -37,7 +37,7 @@ public class NguoiDung extends BaseEntity {
 	private String soDt;
 	
 	@ManyToOne
-  @JoinColumn(name="loai_nguoi_dung_id")
+	@JoinColumn(name="loai_nguoi_dung_id")
 	private LoaiNguoiDung loaiNguoiDung;
   
 }

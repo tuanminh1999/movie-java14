@@ -1,6 +1,7 @@
 package cybersoft.javabackend.moviejava14.nguoiDung.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -22,6 +23,7 @@ import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.CreateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungProjection;
+import cybersoft.javabackend.moviejava14.nguoiDung.dto.TaiKhoanNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.UpdateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.service.NguoiDungService;
 
@@ -82,5 +84,11 @@ public class NguoiDungController {
 		
 		return new ResponseEntity<Object>(creatednguoiDung, HttpStatus.OK);
 	}
+	
+//	@PostMapping(UrlConst.GET_NGUOI_DUNG_FROM_TAIKHOAN)
+//	public Object getNguoiDungByTaiKhoan(@RequestBody TaiKhoanNguoiDungDTO taiKhoanNguoiDungDTO) {
+//		Optional<NguoiDungDTO> nguoiDungDTO = nguoiDungService.getNguoiDungByTaiKhoan(taiKhoanNguoiDungDTO.getTaiKhoan());
+//		return new ResponseEntity<Object>(nguoiDungDTO, HttpStatus.OK);
+//	}
 	
 }

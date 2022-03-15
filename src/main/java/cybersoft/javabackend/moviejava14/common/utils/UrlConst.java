@@ -15,6 +15,7 @@ public class UrlConst {
 	public static final String LOGIN_NGUOI_DUNG = "api/QuanLyNguoiDung/DangNhap";
 	public static final String PUT_NGUOI_DUNG = "/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung";
 	public static final String DELETE_NGUOI_DUNG = "/api/QuanLyNguoiDung/XoaNguoiDung";
+	public static final String GET_NGUOI_DUNG_FROM_TAIKHOAN = "/api/QuanLyNguoiDung/ThongTinTaiKhoan";
 	
 	// CumRap
 	public static final String GET_CUM_RAP = "/api/QuanLyCumRap/LayDanhSachCumRap";

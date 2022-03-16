@@ -25,8 +25,8 @@ public class UniqueTenLoaiNguoiDungValidator implements ConstraintValidator<Uniq
 	}
 	
 	@Override
-	public boolean isValid(String tenLoaiNguoiDung, ConstraintValidatorContext context) {
-		Optional<LoaiNguoiDungDTO> roleOpt = loaiNguoiDungService.findByTenLoaiNguoiDung(tenLoaiNguoiDung);
+	public boolean isValid(String tenLoai, ConstraintValidatorContext context) {
+		Optional<LoaiNguoiDungDTO> roleOpt = loaiNguoiDungService.findByTenLoai(tenLoai);
 		
 		if(roleOpt == null) {
 			return true;

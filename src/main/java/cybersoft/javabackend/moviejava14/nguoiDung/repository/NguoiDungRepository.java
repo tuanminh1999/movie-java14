@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungProjection;
 import cybersoft.javabackend.moviejava14.nguoiDung.entity.NguoiDung;
 
 @Repository
@@ -19,19 +19,11 @@ public interface NguoiDungRepository extends JpaRepository<NguoiDung, UUID>{
 	Optional<NguoiDung> findByEmail(String email);
 
 	Optional<NguoiDung> findBySoDt(String soDt);
-
-	@Query("SELECT nd.taiKhoan as taiKhoan, nd.hoTen as hoTen, nd.email as email, nd.soDt as soDt, l.maLoaiNguoiDung as maLoaiNguoiDung"
-			+ " FROM NguoiDung nd LEFT JOIN nd.loaiNguoiDung l")
-	List<NguoiDungProjection> findAllDTO();
 	
-	@Query("SELECT nd.taiKhoan as taiKhoan, nd.hoTen as hoTen, nd.email as email, nd.soDt as soDt, l.maLoaiNguoiDung as maLoaiNguoiDung"
-			+ " FROM NguoiDung nd LEFT JOIN nd.loaiNguoiDung l WHERE nd.taiKhoan LIKE %:tuKhoa% OR nd.hoTen LIKE %:tuKhoa%")
-	List<NguoiDungProjection> searchByTaiKhoanOrHoTen(String tuKhoa);
+	@Query("FROM NguoiDung nd WHERE nd.taiKhoan LIKE %:tuKhoa% OR nd.hoTen LIKE %:tuKhoa%")
+	List<NguoiDung> searchByTaiKhoanOrHoTen(String tuKhoa);
 	
-	// Paging
-	
-//	List<NguoiDungProjection> findAllPaging(int pageIndex, int pageSize);
-//	
-//	List<NguoiDungProjection> searchPaging(String keywork, int pageIndex, int pageSize);
+	@Query("FROM NguoiDung nd WHERE nd.taiKhoan LIKE %:tuKhoa% OR nd.hoTen LIKE %:tuKhoa%")
+	List<NguoiDung> searchByTaiKhoanOrHoTen(String tuKhoa, Pageable pageable);
 	
 }

@@ -6,7 +6,6 @@ import javax.validation.Valid;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.querydsl.QPageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -21,10 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cybersoft.javabackend.moviejava14.common.ResponseHandler;
+import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.CreateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
-import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungProjection;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.UpdateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.service.NguoiDungService;
 
@@ -41,7 +40,7 @@ public class NguoiDungController {
 	
 	@GetMapping(UrlConst.GET_NGUOI_DUNG)
 	public Object getNguoiDung(String tuKhoa) {
-		List<NguoiDungProjection> getNguoiDungs = nguoiDungService.searchNguoiDung(tuKhoa);
+		List<NguoiDungDTO> getNguoiDungs = nguoiDungService.searchNguoiDung(tuKhoa, null);
 		return new ResponseEntity<>(getNguoiDungs, HttpStatus.OK);
 	}
 
@@ -88,16 +87,24 @@ public class NguoiDungController {
 	
 	@GetMapping(UrlConst.SEARCH_NGUOIDUNG)
 	public Object seachNguoiDung(String tuKhoa) {
-		List<NguoiDungProjection> getNguoiDungs = nguoiDungService.searchNguoiDung(tuKhoa);
+		List<NguoiDungDTO> getNguoiDungs = nguoiDungService.searchNguoiDung(tuKhoa, null);
 		return new ResponseEntity<>(getNguoiDungs, HttpStatus.OK);
 	}
 	
 	@GetMapping(UrlConst.GET_NGUOIDUNG_PAGING)
-	public Object getNguoiDungPaging(String tuKhoa, @RequestParam(defaultValue = "1") int soTrang,
+	public ResponseEntity<PageDTO<NguoiDungDTO>> getNguoiDungPaging(String tuKhoa, @RequestParam(defaultValue = "1") int soTrang,
 									 @RequestParam(defaultValue = "5") int soPhanTuTrenTrang) {
 		Pageable pageable = PageRequest.of(soTrang - 1, soPhanTuTrenTrang);
-		List<NguoiDungDTO> nguoiDungs = nguoiDungService.findAll(pageable);
-		return new ResponseEntity<List<NguoiDungDTO>>(nguoiDungs, HttpStatus.OK);
+		PageDTO<NguoiDungDTO> nguoiDungs = nguoiDungService.searchNguoiDungPaging(tuKhoa, pageable);
+		return new ResponseEntity<>(nguoiDungs, HttpStatus.OK);
+	}
+	
+	@GetMapping(UrlConst.SEARCH_NGUOIDUNG_PAGING)
+	public ResponseEntity<PageDTO<NguoiDungDTO>> searchNguoiDungPaging(String tuKhoa, @RequestParam(defaultValue = "1") int soTrang,
+									 @RequestParam(defaultValue = "5") int soPhanTuTrenTrang) {
+		Pageable pageable = PageRequest.of(soTrang - 1, soPhanTuTrenTrang);
+		PageDTO<NguoiDungDTO> nguoiDungs = nguoiDungService.searchNguoiDungPaging(tuKhoa, pageable);
+		return new ResponseEntity<>(nguoiDungs, HttpStatus.OK);
 	}
 	
 //	@PostMapping(UrlConst.GET_NGUOI_DUNG_FROM_TAIKHOAN)

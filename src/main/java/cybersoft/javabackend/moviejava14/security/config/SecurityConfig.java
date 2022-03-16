@@ -64,6 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// cấu hình xác thực cho các api
 		http.antMatcher("/**").authorizeRequests()
 	        .antMatchers(AUTH_WHITELIST).permitAll()
+	        .antMatchers(HttpMethod.GET).permitAll()
 	        .anyRequest().authenticated();
 		
 	}
@@ -75,6 +76,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/webjars/**",
 			"/configuration/ui",
 			"/configuration/security",
-			"/api/**"
+			"/api/QuanLyNguoiDung/DangNhap",
+			"/api/QuanLyNguoiDung/DangKy",
+			"/static/**"
     };
 }

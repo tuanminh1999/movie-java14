@@ -1,20 +1,18 @@
 package cybersoft.javabackend.moviejava14.nguoiDung.service;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
 import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.repositoty.LoaiNguoiDungRepository;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.CreateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungMapper;
+import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungProjection;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.UpdateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.entity.NguoiDung;
 import cybersoft.javabackend.moviejava14.nguoiDung.repository.NguoiDungRepository;
@@ -31,6 +29,12 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		this.nguoiDungRepository = nguoiDungRepository;
 		this.loaiNguoiDungRepository = loaiNguoiDungRepository;
 		this.encoder = encoder;
+	}
+
+	@Override
+	public List<NguoiDungProjection> findAllDTO() {
+		return nguoiDungRepository.findAllDTO();
+
 	}
 
 	@Override
@@ -134,40 +138,6 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		}
 		
 		nguoiDungRepository.delete(nguoiDungOpt.get());
-	}
-
-	@Override
-	public List<NguoiDungDTO> searchNguoiDung(String tuKhoa, Pageable pageable) {
-		List<NguoiDung> nguoiDungs = null;
-		List<NguoiDungDTO> nguoiDungDTOs = new LinkedList<NguoiDungDTO>();
-		if(tuKhoa == null) {
-			nguoiDungs = nguoiDungRepository.findAll();
-		} else {
-			if(pageable == null) {
-				nguoiDungs = nguoiDungRepository.searchByTaiKhoanOrHoTen(tuKhoa);
-			}else {
-				nguoiDungs = nguoiDungRepository.searchByTaiKhoanOrHoTen(tuKhoa, pageable);
-			}
-		}
-		for(NguoiDung o: nguoiDungs) {
-			NguoiDungDTO nd = NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(o);
-			nd.setMaLoaiNguoiDung(o.getLoaiNguoiDung().getMaLoaiNguoiDung());
-			nguoiDungDTOs.add(nd);
-		}
-		return nguoiDungDTOs;
-	}
-
-	@Override
-	public PageDTO<NguoiDungDTO> searchNguoiDungPaging(String tuKhoa, Pageable pageable) {
-		List<NguoiDungDTO> nguoiDungs = searchNguoiDung(tuKhoa, pageable);
-		PageDTO<NguoiDungDTO> page = new PageDTO<NguoiDungDTO>();
-		page.setCurrentPage(pageable.getPageNumber() + 1);
-		page.setCount(nguoiDungs.size());
-		page.setTotalCount(searchNguoiDung(tuKhoa, null).size());
-		int totalPages = (int)Math.ceil((double)page.getTotalCount()/pageable.getPageSize());
-		page.setTotalPages(totalPages);
-		page.setItems(nguoiDungs);
-		return page;
 	}
 
 }

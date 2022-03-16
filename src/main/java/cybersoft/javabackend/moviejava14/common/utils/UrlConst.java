@@ -32,4 +32,11 @@ public class UrlConst {
 	public static final String PUT_LOAI_GHE = "/api/QuanLyLoaiGhe/CapNhatThongTinLoaiGhe";
 	public static final String DELETE_LOAI_GHE = "/api/QuanLyLoaiGhe/XoaLoaiGhe";
 	
+//	Ghe
+	
+	public static final String GET_GHE = "/api/QuanLyLoaiGhe/LayDanhSachGhe";
+	public static final String POST_GHE = "/api/QuanLyLoaiGhe/ThemGhe";
+	public static final String PUT_GHE = "/api/QuanLyLoaiGhe/CapNhatThongTinGhe";
+	public static final String DELETE_GHE = "/api/QuanLyLoaiGhe/XoaGhe";
+	
 }

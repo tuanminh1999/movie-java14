@@ -18,47 +18,57 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cybersoft.javabackend.moviejava14.common.ResponseHandler;
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
+import cybersoft.javabackend.moviejava14.ghe.dto.CreateGheDTO;
+import cybersoft.javabackend.moviejava14.ghe.dto.GheDTO;
+import cybersoft.javabackend.moviejava14.ghe.dto.UpdateGheDTO;
+import cybersoft.javabackend.moviejava14.ghe.service.GheService;
 import cybersoft.javabackend.moviejava14.loaiGhe.dto.CreateLoaiGheDTO;
 import cybersoft.javabackend.moviejava14.loaiGhe.dto.LoaiGheDTO;
 import cybersoft.javabackend.moviejava14.loaiGhe.dto.UpdateLoaiGheDTO;
 import cybersoft.javabackend.moviejava14.loaiGhe.service.LoaiGheService;
+import cybersoft.javabackend.moviejava14.loaiNguoiDung.service.LoaiNguoiDungService;
 
 @RestController
 public class GheController {
 	
 	@Autowired
 	private GheService gheService;
+	
+	public GheController(GheService gheService) {
+		this.gheService = gheService;
+	}
 
-	@GetMapping(UrlConst.GET_LOAI_GHE)
-	public Object getLoaiGhe() {
-		List<LoaiGheDTO> loaiGhe = loaiGheService.findAll();
+	@GetMapping(UrlConst.GET_GHE)
+	public Object getGhe() {
+		List<GheDTO> loaiGhe = gheService.findAll();
 		return new ResponseEntity<>(loaiGhe, HttpStatus.OK);
 	}
 	
 	@PostMapping(UrlConst.POST_GHE)
-	public Object createLoaiGheDTO(@Valid @RequestBody CreateLoaiGheDTO dto, BindingResult bindingResult) {
+	public Object createGheDTO(@Valid @RequestBody CreateGheDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
-		LoaiGheDTO createLoaiGhe = loaiGheService.create(dto); 
+		GheDTO createGhe = gheService.create(dto); 
 		
 
-		return new ResponseEntity<>(createLoaiGhe, HttpStatus.OK);
+		return new ResponseEntity<>(createGhe, HttpStatus.OK);
 	}
 
 	@PutMapping(UrlConst.PUT_GHE)
-	public Object updateLoaiGhe( @Valid @RequestBody UpdateLoaiGheDTO dto, BindingResult bindingResult) {
+	public Object updateGhe( @Valid @RequestBody UpdateGheDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
-		LoaiGheDTO updataLoaiGhe=loaiGheService.update(dto);
-		return new ResponseEntity<>(updataLoaiGhe, HttpStatus.OK);
+		GheDTO updataGhe=gheService.update(dto);
+		return new ResponseEntity<>(updataGhe, HttpStatus.OK);
 	}
 
 	@DeleteMapping(UrlConst.DELETE_GHE)
-	public Object deleteLoaiGhe(UUID id) {
-		// TODO Auto-generated method stub
-		return null;
+
+		public Object deleteGhe(UUID id) {
+			gheService.delete(id);
+			return new ResponseEntity<Object>("Xoá ghế thành công!", HttpStatus.OK);
 	}
 
 	

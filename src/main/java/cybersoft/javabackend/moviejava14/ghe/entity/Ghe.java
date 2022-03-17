@@ -1,5 +1,7 @@
 package cybersoft.javabackend.moviejava14.ghe.entity;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -18,22 +20,27 @@ public class Ghe extends BaseEntity {
 	
 		
 		private static final long serialVersionUID = 1L;
+		
 		@Column(name="ma_ghe")
-		private String maGhe;
+		private int maGhe;
 		@Column(name="ten_ghe")
 		private String tenGhe;
 		@Column(name="ma_rap")
-		private String maRap;
+		private int maRap;
 		@Column(name="loai_ghe")
 		private String loaiGhe;
-		@Column(name="ma_ghe")
-		private String maGhe;
-		@Column(name="ten_ghe")
-		private String tenGhe;
-		@Column(name="ma_rap")
-		private String maRap;
-		@Column(name="loai_ghe")
-		private String loaiGhe;
+		@Column(name="gia_ve")
+		private int giaVe;
+		@Column(name="da_dat")
+		private boolean daDat;
+		@Column(name="so_thu_tu")
+		private int soThuTU;
+		@Column(name="kich_hoat")
+		private int kichHoat;
+		@Column(name = "rap_id")
+		private int rapId;
+		@Column(name = "loai_ghe_id")
+		private UUID loaiGheId;
 
 
 }		

@@ -4,67 +4,82 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
 import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
-import cybersoft.javabackend.moviejava14.loaiGhe.dto.CreateLoaiGheDTO;
-import cybersoft.javabackend.moviejava14.loaiGhe.dto.LoaiGheDTO;
+import cybersoft.javabackend.moviejava14.ghe.dto.CreateGheDTO;
+import cybersoft.javabackend.moviejava14.ghe.dto.GheDTO;
+import cybersoft.javabackend.moviejava14.ghe.dto.GheMapper;
+import cybersoft.javabackend.moviejava14.ghe.dto.UpdateGheDTO;
+import cybersoft.javabackend.moviejava14.ghe.entity.Ghe;
+import cybersoft.javabackend.moviejava14.ghe.repository.GheRepository;
 import cybersoft.javabackend.moviejava14.loaiGhe.dto.LoaiGheMapper;
-import cybersoft.javabackend.moviejava14.loaiGhe.dto.UpdateLoaiGheDTO;
 import cybersoft.javabackend.moviejava14.loaiGhe.entity.LoaiGhe;
-import cybersoft.javabackend.moviejava14.loaiGhe.repository.LoaiGheRepository;
 
-public class GheServiceImpl {
-	private LoaiGheRepository loaiGheRepository;
-	public LoaiGheServiceImpl(LoaiGheRepository loaiGheRepository) {
-		this.loaiGheRepository = loaiGheRepository;
+
+@Service
+public class GheServiceImpl implements GheService {
+	private GheRepository gheRepository;
+	
+	public GheServiceImpl(GheRepository gheRepository) {
+		this.gheRepository = gheRepository;
 	}
-
 	@Override
-	public Optional<LoaiGheDTO> findByTenLoaiGhe(String tenLoaiGhe) {
-		Optional<LoaiGhe> loaiGhe = loaiGheRepository.findByTenLoaiGhe(tenLoaiGhe);
-		if (!loaiGhe.isPresent()) {
+	public Optional<GheDTO> findByTenGhe(String tenGhe) {
+		Optional<Ghe> ghe = gheRepository.findByTenGhe(tenGhe);
+		if (!ghe.isPresent()) {
 			return null;
 		}
         
-		return Optional.ofNullable(LoaiGheMapper.INSTANCE.fromEntityToLoaiGheDTO(loaiGhe.get()));
+		return Optional.ofNullable(GheMapper.INSTANCE.fromEntityToGheDTO(ghe.get()));
+		
 	}
 
 	@Override
-	public List<LoaiGheDTO> findAll() {
-		List<LoaiGhe> loaiGhe =  loaiGheRepository.findAll();
+	public List<GheDTO> findAll() {
+		List<Ghe> ghe = gheRepository.findAll();
+
 		
-		return loaiGhe.stream()
-				.map(o -> LoaiGheMapper.INSTANCE.fromEntityToLoaiGheDTO(o))
+		return ghe.stream()
+				.map(o -> GheMapper.INSTANCE.fromEntityToGheDTO(o))
 				.collect(Collectors.toList());
-	}
-
-	@Override
-	public LoaiGheDTO create(CreateLoaiGheDTO dto) {
-		LoaiGhe loaiGhe = LoaiGheMapper.INSTANCE.fromCreateLoaiGheDTOtoEntity(dto);
-		LoaiGhe creteLoaiGhe = loaiGheRepository.save(loaiGhe);
-		return LoaiGheMapper.INSTANCE.fromEntityToLoaiGheDTO(creteLoaiGhe);
+		
 		
 	}
 
 	@Override
-	public LoaiGheDTO update(UpdateLoaiGheDTO dto) {
-		Optional<LoaiGhe> loaiGheOpt = loaiGheRepository.findById(dto.getId());
+	public GheDTO create(CreateGheDTO dto) {
+		Ghe ghe = GheMapper.INSTANCE.fromCreateGheDTOtoEntity(dto);
+		Ghe creteGhe = gheRepository.save(ghe);
+		return GheMapper.INSTANCE.fromEntityToGheDTO(creteGhe);
+	}
+
+	@Override
+	public GheDTO update(UpdateGheDTO dto) {
+Optional<Ghe> gheOpt = gheRepository.findById(dto.getId());
 		
-		if (!loaiGheOpt.isPresent()) {
-			throw new InvalidDataException("Id loại ghế không tồn tại");
+		if (!gheOpt.isPresent()) {
+			throw new InvalidDataException("Id  ghế không tồn tại");
 		}
 		
-		LoaiGhe loaiGhe = loaiGheOpt.get();
+		Ghe ghe = gheOpt.get();
 		
-		if(!loaiGhe.getTenLoaiGhe().equals(dto.getTenLoaiGhe())) {
-			if (loaiGheRepository.findByTenLoaiGhe(dto.getTenLoaiGhe()).isPresent()) {
+		if(!ghe.getTenGhe().equals(dto.getTenGhe())) {
+			if (gheRepository.findByTenGhe(dto.getTenGhe()).isPresent()) {
 				throw new InvalidDataException("Tên loại ghế đã tồn tại");
 			}
-			loaiGhe.setTenLoaiGhe(dto.getTenLoaiGhe());
-			loaiGhe.setMoTa(dto.getMoTa());
+			ghe.setTenGhe(dto.getTenGhe());
+			ghe.setMoTa(dto.getMoTa());
 		}
 		
-		LoaiGhe updateLoaiGhe = loaiGheRepository.save(loaiGhe);
+		LoaiGhe updateGhe = gheRepository.save(ghe);
 		
-		return LoaiGheMapper.INSTANCE.fromEntityToLoaiGheDTO(updateLoaiGhe);
+		return GheMapper.INSTANCE.fromEntityToGheDTO(updateGhe);
+		
+		
+	}
+	
+
+	
 
 }

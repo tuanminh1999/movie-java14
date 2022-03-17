@@ -58,9 +58,10 @@ public class HeThongRapServiceImpl implements HeThongRapService{
 				throw new InvalidDataException("Tên hệ thống rạp đã tồn tại");
 			}
 			heThongRap.setTenHeThongRap(dto.getTenHeThongRap());
-			heThongRap.setBiDanh(dto.getBiDanh());
-			heThongRap.setLogo(dto.getLogo());
+			
 		}
+		heThongRap.setBiDanh(dto.getBiDanh());
+		heThongRap.setLogo(dto.getLogo());
 		
 		HeThongRap updatedHeThongRap = heThongRapRepository.save(heThongRap);
 		

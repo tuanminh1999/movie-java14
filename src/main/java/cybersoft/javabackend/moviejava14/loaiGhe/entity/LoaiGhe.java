@@ -1,10 +1,15 @@
 package cybersoft.javabackend.moviejava14.loaiGhe.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
+import cybersoft.javabackend.moviejava14.ghe.entity.Ghe;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +25,8 @@ public class LoaiGhe extends BaseEntity {
 	@Column(name="ten_loai_ghe")
 	private String tenLoaiGhe;
 	
+	@OneToMany (mappedBy = "loaiGhe" , cascade = {CascadeType.PERSIST , CascadeType.MERGE} )
+	private Set<Ghe> ghes;
 	
 	
 

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
 
 @Repository
-public interface CumRapRepository extends JpaRepository<CumRap, UUID> {
+public interface CumRapRepository extends JpaRepository<CumRap, String> {
+
+	boolean findByTenCumRap(String tenCumRap);
 
 }

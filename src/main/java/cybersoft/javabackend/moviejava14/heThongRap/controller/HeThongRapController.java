@@ -45,7 +45,7 @@ public class HeThongRapController {
 		return new ResponseEntity<Object>(createdheThongRapDTO,HttpStatus.OK);
 	}
 	
-	@PutMapping(UrlConst.POST_HT_RAP)
+	@PutMapping(UrlConst.PUT_HT_RAP)
 	public Object updateHeThongRap(@RequestBody UpdateHeThongRapDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);

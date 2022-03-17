@@ -1,5 +1,6 @@
 package cybersoft.javabackend.moviejava14.cumRap.dto;
 
+
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -14,3 +15,5 @@ public interface CumRapMapper {
 	
 	CumRap fromCreateCumRapDTOtoEntity (CreateCumRapDTO dto);
 }
+
+

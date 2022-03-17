@@ -34,6 +34,7 @@ public class HeThongRapController {
 		return new ResponseEntity<Object>(heThongRaps, HttpStatus.OK);
 	}
 	
+	// chua valid
 	@PostMapping(UrlConst.POST_HT_RAP)
 	public Object createHeThongRap(@RequestBody CreateHeThongRapDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
@@ -45,6 +46,7 @@ public class HeThongRapController {
 		return new ResponseEntity<Object>(createdheThongRapDTO,HttpStatus.OK);
 	}
 	
+	// chua valid
 	@PutMapping(UrlConst.PUT_HT_RAP)
 	public Object updateHeThongRap(@RequestBody UpdateHeThongRapDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {

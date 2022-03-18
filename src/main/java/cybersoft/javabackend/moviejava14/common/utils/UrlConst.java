@@ -38,9 +38,11 @@ public class UrlConst {
 	public static final String PUT_LOAI_GHE = "/api/QuanLyLoaiGhe/CapNhatThongTinLoaiGhe";
 	public static final String DELETE_LOAI_GHE = "/api/QuanLyLoaiGhe/XoaLoaiGhe";
 	
-	//Phimsss
+	//Phim
 	public static final String GET_PHIM = "/api/QuanLyPhim/LayDanhSachPhim";
 	public static final String POST_PHIM = "/api/QuanLyPhim/TemPhim";
 	public static final String PUT_PHIM = "/api/QuanLyPhim/CapNhatPhim";
 	public static final String DELETE_PHIM = "/api/QuanLyPhim/XoaPhim";
+	public static final String GET_PHIM_PAGING = "/api/QuanLyPhim/LayDanhSachPhimPhanTrang";
+	public static final String GET_PHIM_BY_DATE_PAGING = "/api/QuanLyPhim/LayDanhSachPhimTheoNgay";
 }

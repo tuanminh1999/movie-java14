@@ -32,12 +32,11 @@ import cybersoft.javabackend.moviejava14.nguoiDung.service.NguoiDungService;
 public class NguoiDungController {
 
 	private NguoiDungService nguoiDungService;
-	
-	
+
 	public NguoiDungController(NguoiDungService nguoiDungService) {
 		this.nguoiDungService = nguoiDungService;
 	}
-	
+
 	@GetMapping(UrlConst.GET_NGUOI_DUNG)
 	public Object getNguoiDung(String tuKhoa) {
 		List<NguoiDungDTO> getNguoiDungs = nguoiDungService.searchNguoiDung(tuKhoa, null);
@@ -45,72 +44,81 @@ public class NguoiDungController {
 	}
 
 	@PostMapping(UrlConst.POST_NGUOI_DUNG)
-	public Object createNguoiDung(@RequestHeader String authorization, @Valid @RequestBody CreateNguoiDungDTO dto, BindingResult bindingResult) {
-		
-		if(bindingResult.hasErrors()) {
+	public Object createNguoiDung(@RequestHeader String authorization, @Valid @RequestBody CreateNguoiDungDTO dto,
+			BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
-		
+
 		NguoiDungDTO createdNguoiDung = nguoiDungService.create(dto);
-		
+
 		return new ResponseEntity<>(createdNguoiDung, HttpStatus.OK);
 	}
 
 	@PutMapping(UrlConst.PUT_NGUOI_DUNG)
-	public Object updateNguoiDung(@RequestHeader String authorization, @Valid @RequestBody UpdateNguoiDungDTO dto, BindingResult bindingResult) {
-		
-		if(bindingResult.hasErrors()) {
+	public Object updateNguoiDung(@RequestHeader String authorization, @Valid @RequestBody UpdateNguoiDungDTO dto,
+			BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
-		
+
 		NguoiDungDTO updatedNuoiDung = nguoiDungService.update(dto);
-		
+
 		return new ResponseEntity<Object>(updatedNuoiDung, HttpStatus.OK);
 	}
 
 	@DeleteMapping(UrlConst.DELETE_NGUOI_DUNG)
-	public ResponseEntity<Object> deleteNguoiDung(@RequestHeader String authorization, @RequestParam("TaiKhoan") String taiKhoan) {
+	public Object deleteNguoiDung(@RequestHeader String authorization,
+			@RequestParam("TaiKhoan") String taiKhoan) {
 		nguoiDungService.delete(taiKhoan);
-		return new ResponseEntity<Object>("Xoá người dùng thành công!", HttpStatus.OK);
+		return new ResponseEntity<>("Xoá người dùng thành công!", HttpStatus.OK);
 	}
 
 	@PostMapping(UrlConst.REGISTER_NGUOI_DUNG)
 	public Object register(@Valid @RequestBody CreateNguoiDungDTO dto, BindingResult bindingResult) {
-		if(bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
-		
+
 		NguoiDungDTO creatednguoiDung = nguoiDungService.create(dto);
-		
+
 		return new ResponseEntity<Object>(creatednguoiDung, HttpStatus.OK);
 	}
-	
+
 	@GetMapping(UrlConst.SEARCH_NGUOIDUNG)
 	public Object seachNguoiDung(String tuKhoa) {
 		List<NguoiDungDTO> getNguoiDungs = nguoiDungService.searchNguoiDung(tuKhoa, null);
 		return new ResponseEntity<>(getNguoiDungs, HttpStatus.OK);
 	}
-	
+
 	@GetMapping(UrlConst.GET_NGUOIDUNG_PAGING)
-	public ResponseEntity<PageDTO<NguoiDungDTO>> getNguoiDungPaging(String tuKhoa, @RequestParam(defaultValue = "1") int soTrang,
-									 @RequestParam(defaultValue = "5") int soPhanTuTrenTrang) {
+	public Object getNguoiDungPaging(String tuKhoa, @RequestParam(defaultValue = "1") int soTrang,
+			@RequestParam(defaultValue = "5") int soPhanTuTrenTrang) {
+		if (soTrang <= 0 || soPhanTuTrenTrang <= 0) {
+			return new ResponseEntity<>("Số trang hoặc số phần tử trên một trang phải > 0", HttpStatus.BAD_REQUEST);
+		}
 		Pageable pageable = PageRequest.of(soTrang - 1, soPhanTuTrenTrang);
 		PageDTO<NguoiDungDTO> nguoiDungs = nguoiDungService.searchNguoiDungPaging(tuKhoa, pageable);
 		return new ResponseEntity<>(nguoiDungs, HttpStatus.OK);
 	}
-	
+
 	@GetMapping(UrlConst.SEARCH_NGUOIDUNG_PAGING)
-	public ResponseEntity<PageDTO<NguoiDungDTO>> searchNguoiDungPaging(String tuKhoa, @RequestParam(defaultValue = "1") int soTrang,
-									 @RequestParam(defaultValue = "5") int soPhanTuTrenTrang) {
+	public Object searchNguoiDungPaging(String tuKhoa,
+			@RequestParam(defaultValue = "1") int soTrang, @RequestParam(defaultValue = "5") int soPhanTuTrenTrang) {
+		if (soTrang <= 0 || soPhanTuTrenTrang <= 0) {
+			return new ResponseEntity<>("Số trang hoặc số phần tử trên một trang phải > 0", HttpStatus.BAD_REQUEST);
+		}
 		Pageable pageable = PageRequest.of(soTrang - 1, soPhanTuTrenTrang);
 		PageDTO<NguoiDungDTO> nguoiDungs = nguoiDungService.searchNguoiDungPaging(tuKhoa, pageable);
 		return new ResponseEntity<>(nguoiDungs, HttpStatus.OK);
 	}
-	
+
 //	@PostMapping(UrlConst.GET_NGUOI_DUNG_FROM_TAIKHOAN)
 //	public Object getNguoiDungByTaiKhoan(@RequestBody TaiKhoanNguoiDungDTO taiKhoanNguoiDungDTO) {
 //		Optional<NguoiDungDTO> nguoiDungDTO = nguoiDungService.getNguoiDungByTaiKhoan(taiKhoanNguoiDungDTO.getTaiKhoan());
 //		return new ResponseEntity<Object>(nguoiDungDTO, HttpStatus.OK);
 //	}
-	
+
 }

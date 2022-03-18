@@ -128,11 +128,11 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	@Override
 	public void delete(String taiKhoan) {
 		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(taiKhoan);
-		
-		if(!nguoiDungOpt.isPresent()) {
+
+		if (!nguoiDungOpt.isPresent()) {
 			throw new InvalidDataException("Tài khoản người dùng không tồn tại");
 		}
-		
+
 		nguoiDungRepository.delete(nguoiDungOpt.get());
 	}
 
@@ -140,16 +140,18 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	public List<NguoiDungDTO> searchNguoiDung(String tuKhoa, Pageable pageable) {
 		List<NguoiDung> nguoiDungs = null;
 		List<NguoiDungDTO> nguoiDungDTOs = new LinkedList<NguoiDungDTO>();
-		if(tuKhoa == null) {
-			nguoiDungs = nguoiDungRepository.findAll();
+		
+		if (tuKhoa != null && pageable == null) {
+			nguoiDungs = nguoiDungRepository.findByTaiKhoanContainingOrHoTenContaining(tuKhoa, tuKhoa);
+		} else if (tuKhoa == null && pageable != null) {
+			nguoiDungs = nguoiDungRepository.findAllPaging(pageable);
+		} else if (tuKhoa != null && pageable != null) {
+			nguoiDungs = nguoiDungRepository.findByTaiKhoanContainingOrHoTenContaining(tuKhoa, tuKhoa, pageable);
 		} else {
-			if(pageable == null) {
-				nguoiDungs = nguoiDungRepository.searchByTaiKhoanOrHoTen(tuKhoa);
-			}else {
-				nguoiDungs = nguoiDungRepository.searchByTaiKhoanOrHoTen(tuKhoa, pageable);
-			}
+			nguoiDungs = nguoiDungRepository.findAll();
 		}
-		for(NguoiDung o: nguoiDungs) {
+
+		for (NguoiDung o : nguoiDungs) {
 			NguoiDungDTO nd = NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(o);
 			nd.setMaLoaiNguoiDung(o.getLoaiNguoiDung().getMaLoaiNguoiDung());
 			nguoiDungDTOs.add(nd);
@@ -164,7 +166,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		page.setCurrentPage(pageable.getPageNumber() + 1);
 		page.setCount(nguoiDungs.size());
 		page.setTotalCount(searchNguoiDung(tuKhoa, null).size());
-		int totalPages = (int)Math.ceil((double)page.getTotalCount()/pageable.getPageSize());
+		int totalPages = (int) Math.ceil((double) page.getTotalCount() / pageable.getPageSize());
 		page.setTotalPages(totalPages);
 		page.setItems(nguoiDungs);
 		return page;

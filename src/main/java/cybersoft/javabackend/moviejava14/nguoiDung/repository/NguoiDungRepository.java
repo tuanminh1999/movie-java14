@@ -20,10 +20,13 @@ public interface NguoiDungRepository extends JpaRepository<NguoiDung, UUID>{
 
 	Optional<NguoiDung> findBySoDt(String soDt);
 	
-	@Query("FROM NguoiDung nd WHERE nd.taiKhoan LIKE %:tuKhoa% OR nd.hoTen LIKE %:tuKhoa%")
-	List<NguoiDung> searchByTaiKhoanOrHoTen(String tuKhoa);
+	@Query("FROM NguoiDung nd")
+	List<NguoiDung> findAllPaging(Pageable pageable);
 	
-	@Query("FROM NguoiDung nd WHERE nd.taiKhoan LIKE %:tuKhoa% OR nd.hoTen LIKE %:tuKhoa%")
-	List<NguoiDung> searchByTaiKhoanOrHoTen(String tuKhoa, Pageable pageable);
+	//@Query("FROM NguoiDung nd WHERE nd.taiKhoan LIKE %:tuKhoa% OR nd.hoTen LIKE %:tuKhoa%")
+	List<NguoiDung> findByTaiKhoanContainingOrHoTenContaining(String taiKhoan, String hoTen);
+	
+	//@Query("FROM NguoiDung nd WHERE nd.taiKhoan LIKE %:tuKhoa% OR nd.hoTen LIKE %:tuKhoa%")
+	List<NguoiDung> findByTaiKhoanContainingOrHoTenContaining(String taiKhoan, String hoTen, Pageable pageable);
 	
 }

@@ -22,9 +22,15 @@ public class UrlConst {
 
 	// CumRap
 	public static final String GET_CUM_RAP = "/api/QuanLyCumRap/LayDanhSachCumRap";
-	public static final String POST_CUM_RAP = "/api/QuanLyCumRap/ThemCumCumRap";
+	public static final String POST_CUM_RAP = "/api/QuanLyCumRap/ThemCumRap";
 	public static final String PUT_CUM_RAP = "/api/QuanLyCumRap/CapNhatThongTinCumRap";
 	public static final String DELETE_CUM_RAP = "/api/QuanLyCumRap/XoaCumRap";
+	
+	// CumRap
+	public static final String GET_HT_RAP = "/api/QuanLyCumRap/LayDanhSachHeThongRap";
+	public static final String POST_HT_RAP = "/api/QuanLyCumRap/ThemHeThongRap";
+	public static final String PUT_HT_RAP = "/api/QuanLyCumRap/CapNhatThongTinHeThongRap";
+	public static final String DELETE_HT_RAP = "/api/QuanLyCumRap/XoaHeThongRap";
 	
 	//Loai Ghe
 	public static final String GET_LOAI_GHE = "/api/QuanLyLoaiGhe/LayDanhSachLoaiGhe";

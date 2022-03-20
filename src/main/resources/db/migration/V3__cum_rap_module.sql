@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS cum_rap(
 );
 
 CREATE TABLE IF NOT EXISTS rap(
-	id uuid,
+	id varchar(255),
 	created_date timestamp,
 	created_by varchar(36),
 	modified_date timestamp,

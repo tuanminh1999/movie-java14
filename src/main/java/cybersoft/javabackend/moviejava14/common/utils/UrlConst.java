@@ -19,6 +19,13 @@ public class UrlConst {
 	public static final String SEARCH_NGUOIDUNG = "/api/QuanLyNguoiDung/TimKiemNguoiDung";
 	public static final String GET_NGUOIDUNG_PAGING = "/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang";
 	public static final String SEARCH_NGUOIDUNG_PAGING = "/api/QuanLyNguoiDung/TimKiemNguoiDungPhanTrang";
+	
+	// Rap
+	public static final String GET_RAP = "/api/QuanLyRap/LayDanhSachRap";
+	public static final String POST_RAP = "/api/QuanLyRap/ThemRap";
+	public static final String PUT_RAP = "/api/QuanLyRap/CapNhatThongTinRap";
+	public static final String DELETE_RAP = "/api/QuanLyRap/XoaRap";
+	
 
 	// CumRap
 	public static final String GET_CUM_RAP = "/api/QuanLyCumRap/LayDanhSachCumRap";
@@ -26,11 +33,11 @@ public class UrlConst {
 	public static final String PUT_CUM_RAP = "/api/QuanLyCumRap/CapNhatThongTinCumRap";
 	public static final String DELETE_CUM_RAP = "/api/QuanLyCumRap/XoaCumRap";
 	
-	// CumRap
-	public static final String GET_HT_RAP = "/api/QuanLyCumRap/LayDanhSachHeThongRap";
-	public static final String POST_HT_RAP = "/api/QuanLyCumRap/ThemHeThongRap";
-	public static final String PUT_HT_RAP = "/api/QuanLyCumRap/CapNhatThongTinHeThongRap";
-	public static final String DELETE_HT_RAP = "/api/QuanLyCumRap/XoaHeThongRap";
+	// HeThongRap
+	public static final String GET_HT_RAP = "/api/QuanLyHeThongRap/LayDanhSachHeThongRap";
+	public static final String POST_HT_RAP = "/api/QuanLyHeThongRap/ThemHeThongRap";
+	public static final String PUT_HT_RAP = "/api/QuanLyHeThongRap/CapNhatThongTinHeThongRap";
+	public static final String DELETE_HT_RAP = "/api/QuanLyHeThongRap/XoaHeThongRap";
 	
 	//Loai Ghe
 	public static final String GET_LOAI_GHE = "/api/QuanLyLoaiGhe/LayDanhSachLoaiGhe";

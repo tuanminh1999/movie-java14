@@ -16,7 +16,9 @@ spring:
   flyway:
     enabled: true
     driver-class-name: org.postgresql.Driver
-    
-    
+      servlet:    multipart:      enabled: true
+      max-file-size: 200GB
+      max-request-size: 215GB
+         
 server:  port: 8090
 

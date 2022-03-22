@@ -1,6 +1,5 @@
 package cybersoft.javabackend.moviejava14.ghe.entity;
 
-import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,37 +15,29 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="ghe")
-
+@Table(name = "ghe")
 public class Ghe extends BaseEntity {
+
+	private static final long serialVersionUID = 1L;
 	
-//	so_thu_tu integer,
-//	kich_hoat integer,
-//	rap_id integer,
-//	loai_ghe_id uuid,
-		
-		private static final long serialVersionUID = 1L;
-		
-		
+	@Column(name = "ten_ghe")
+	private String tenGhe;
 	
+	@Column(name = "so_thu_tu")
+	private int stt;
+	
+	@Column(name = "kich_hoat")
+	private boolean daDat;
 		
-		
-		
-		@Column(name="so_thu_tu")
-		private int soThuTu;
-		@Column(name="kich_hoat")
-		private int kichHoat;
-		@Column(name = "rap_id")
-		private int rapId;
-		
-//		@Column(name = "loai_ghe_id")
-//		private UUID loaiGheId;
-		@ManyToOne
-		@JoinColumn(name = "loai_ghe_id")
-		private LoaiGhe loaiGhe;
-		
-		
+	@Column(name = "gia_ve")
+	private int giaVe;
+	
+//	@ManyToOne
+//	@JoinColumn(name = "rap_id")
+//	private Rap rap;
+	
+	@ManyToOne
+	@JoinColumn(name = "loai_ghe_id")
+	private LoaiGhe loaiGhe;
 
-
-}		
-
+}

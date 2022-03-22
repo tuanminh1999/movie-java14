@@ -52,4 +52,11 @@ public class UrlConst {
 	public static final String DELETE_PHIM = "/api/QuanLyPhim/XoaPhim";
 	public static final String GET_PHIM_PAGING = "/api/QuanLyPhim/LayDanhSachPhimPhanTrang";
 	public static final String GET_PHIM_BY_DATE_PAGING = "/api/QuanLyPhim/LayDanhSachPhimTheoNgay";
+
+  //	Ghe
+	public static final String GET_GHE = "/api/QuanLyLoaiGhe/LayDanhSachGhe";
+	public static final String POST_GHE = "/api/QuanLyLoaiGhe/ThemGhe";
+	public static final String PUT_GHE = "/api/QuanLyLoaiGhe/CapNhatThongTinGhe";
+	public static final String DELETE_GHE = "/api/QuanLyLoaiGhe/XoaGhe";
+	
 }

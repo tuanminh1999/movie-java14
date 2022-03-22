@@ -79,7 +79,4 @@ public class GheServiceImpl implements GheService {
 //		
 //	}
 	
-
-	
-
 }

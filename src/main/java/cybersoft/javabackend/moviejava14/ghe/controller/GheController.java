@@ -1,5 +1,7 @@
 package cybersoft.javabackend.moviejava14.ghe.controller;
 
+public class GheController {
+=======
 import java.util.List;
 import java.util.UUID;
 
@@ -70,7 +72,5 @@ public class GheController {
 //			gheService.delete(id);
 //			return new ResponseEntity<Object>("Xoá ghế thành công!", HttpStatus.OK);
 //	}
-
-	
 
 }

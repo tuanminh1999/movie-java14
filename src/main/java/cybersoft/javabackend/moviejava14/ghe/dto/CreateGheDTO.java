@@ -1,8 +1,5 @@
 package cybersoft.javabackend.moviejava14.ghe.dto;
 
-import java.util.UUID;
-
-import javax.persistence.Column;
 
 public class CreateGheDTO {
 	

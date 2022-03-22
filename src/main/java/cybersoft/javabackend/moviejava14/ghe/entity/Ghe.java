@@ -1,5 +1,6 @@
 package cybersoft.javabackend.moviejava14.ghe.entity;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;

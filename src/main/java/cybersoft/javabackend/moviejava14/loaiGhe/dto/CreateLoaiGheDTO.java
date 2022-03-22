@@ -9,9 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 public class CreateLoaiGheDTO {
-	
 
 	@NotBlank(message = "{loai_ghe.not_blank}")
 	@Size(min = 3, max = 50, message = "{loai_ghe.ten.size}")

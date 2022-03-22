@@ -55,21 +55,21 @@ public class GheController {
 		return new ResponseEntity<>(createGhe, HttpStatus.OK);
 	}
 
-	@PutMapping(UrlConst.PUT_GHE)
-	public Object updateGhe( @Valid @RequestBody UpdateGheDTO dto, BindingResult bindingResult) {
-		if(bindingResult.hasErrors()) {
-			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
-		}
-		GheDTO updataGhe=gheService.update(dto);
-		return new ResponseEntity<>(updataGhe, HttpStatus.OK);
-	}
-
-	@DeleteMapping(UrlConst.DELETE_GHE)
-
-		public Object deleteGhe(UUID id) {
-			gheService.delete(id);
-			return new ResponseEntity<Object>("Xoá ghế thành công!", HttpStatus.OK);
-	}
+//	@PutMapping(UrlConst.PUT_GHE)
+//	public Object updateGhe( @Valid @RequestBody UpdateGheDTO dto, BindingResult bindingResult) {
+//		if(bindingResult.hasErrors()) {
+//			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+//		}
+//		GheDTO updataGhe=gheService.update(dto);
+//		return new ResponseEntity<>(updataGhe, HttpStatus.OK);
+//	}
+//
+//	@DeleteMapping(UrlConst.DELETE_GHE)
+//
+//		public Object deleteGhe(UUID id) {
+//			gheService.delete(id);
+//			return new ResponseEntity<Object>("Xoá ghế thành công!", HttpStatus.OK);
+//	}
 
 	
 

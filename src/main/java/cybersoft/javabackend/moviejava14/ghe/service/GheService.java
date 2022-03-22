@@ -19,6 +19,6 @@ public interface GheService {
 	
 	GheDTO create(CreateGheDTO dto);
 	
-	GheDTO update(UpdateGheDTO dto);
+//	GheDTO update(UpdateGheDTO dto);
 
 }

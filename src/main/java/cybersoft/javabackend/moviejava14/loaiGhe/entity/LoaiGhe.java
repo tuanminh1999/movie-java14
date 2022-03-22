@@ -15,12 +15,11 @@ import lombok.Setter;
 public class LoaiGhe extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
+	
 	@Column(name="mo_ta")
 	private String moTa;
+	
 	@Column(name="ten_loai_ghe")
 	private String tenLoaiGhe;
-	
-	
-	
 
 }

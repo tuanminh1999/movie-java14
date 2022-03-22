@@ -54,30 +54,30 @@ public class GheServiceImpl implements GheService {
 		return GheMapper.INSTANCE.fromEntityToGheDTO(creteGhe);
 	}
 
-	@Override
-	public GheDTO update(UpdateGheDTO dto) {
-Optional<Ghe> gheOpt = gheRepository.findById(dto.getId());
-		
-		if (!gheOpt.isPresent()) {
-			throw new InvalidDataException("Id  ghế không tồn tại");
-		}
-		
-		Ghe ghe = gheOpt.get();
-		
-		if(!ghe.getTenGhe().equals(dto.getTenGhe())) {
-			if (gheRepository.findByTenGhe(dto.getTenGhe()).isPresent()) {
-				throw new InvalidDataException("Tên loại ghế đã tồn tại");
-			}
-			ghe.setTenGhe(dto.getTenGhe());
-			ghe.setMoTa(dto.getMoTa());
-		}
-		
-		LoaiGhe updateGhe = gheRepository.save(ghe);
-		
-		return GheMapper.INSTANCE.fromEntityToGheDTO(updateGhe);
-		
-		
-	}
+//	@Override
+//	public GheDTO update(UpdateGheDTO dto) {
+//		Optional<Ghe> gheOpt = gheRepository.findById(dto.getId());
+//		
+//		if (!gheOpt.isPresent()) {
+//			throw new InvalidDataException("Id ghế không tồn tại");
+//		}
+//		
+//		Ghe ghe = gheOpt.get();
+//		
+//		if(!ghe.getTenGhe().equals(dto.getTenGhe())) {
+//			if (gheRepository.findByTenGhe(dto.getTenGhe()).isPresent()) {
+//				throw new InvalidDataException("Tên loại ghế đã tồn tại");
+//			}
+//			ghe.setTenGhe(dto.getTenGhe());
+//			ghe.setMoTa(dto.getMoTa());
+//		}
+//		
+//		LoaiGhe updateGhe = gheRepository.save(ghe);
+//		
+//		return GheMapper.INSTANCE.fromEntityToGheDTO(updateGhe);
+//		
+//		
+//	}
 	
 
 	

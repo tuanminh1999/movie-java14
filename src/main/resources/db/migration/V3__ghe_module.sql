@@ -8,12 +8,12 @@ CREATE TABLE IF NOT EXISTS ghe(
 	so_thu_tu int,
 	kich_hoat boolean,
 	rap_id varchar(255),
-	loai_ghe_id uuid,
+	loai_ghe_id varchar(255),
 	primary key (id)
 );
 
 CREATE TABLE IF NOT EXISTS loai_ghe(
-	id uuid,
+	id varchar(255),
 	created_date timestamp,
 	created_by varchar(36),
 	modified_date timestamp,

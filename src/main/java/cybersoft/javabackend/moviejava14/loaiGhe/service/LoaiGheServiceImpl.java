@@ -51,7 +51,7 @@ public class LoaiGheServiceImpl implements LoaiGheService {
 
 	@Override
 	public LoaiGheDTO update(UpdateLoaiGheDTO dto) {
-		Optional<LoaiGhe> loaiGheOpt = loaiGheRepository.findById(dto.getId());
+		Optional<LoaiGhe> loaiGheOpt = loaiGheRepository.findById(dto.getMaLoaiGhe());
 		
 		if (!loaiGheOpt.isPresent()) {
 			throw new InvalidDataException("Id loại ghế không tồn tại");

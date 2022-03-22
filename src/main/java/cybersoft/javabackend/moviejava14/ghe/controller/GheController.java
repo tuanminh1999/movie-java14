@@ -1,9 +1,6 @@
 package cybersoft.javabackend.moviejava14.ghe.controller;
 
-public class GheController {
-=======
 import java.util.List;
-import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -11,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,13 +17,7 @@ import cybersoft.javabackend.moviejava14.common.ResponseHandler;
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.ghe.dto.CreateGheDTO;
 import cybersoft.javabackend.moviejava14.ghe.dto.GheDTO;
-import cybersoft.javabackend.moviejava14.ghe.dto.UpdateGheDTO;
 import cybersoft.javabackend.moviejava14.ghe.service.GheService;
-import cybersoft.javabackend.moviejava14.loaiGhe.dto.CreateLoaiGheDTO;
-import cybersoft.javabackend.moviejava14.loaiGhe.dto.LoaiGheDTO;
-import cybersoft.javabackend.moviejava14.loaiGhe.dto.UpdateLoaiGheDTO;
-import cybersoft.javabackend.moviejava14.loaiGhe.service.LoaiGheService;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.service.LoaiNguoiDungService;
 
 @RestController
 public class GheController {

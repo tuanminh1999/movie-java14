@@ -10,26 +10,16 @@ import lombok.Setter;
 @Setter
 public class UpdateGheDTO {
 	
-	private UUID id;
-	
-	private int maGhe;
+	private UUID maGhe;
 
 	private String tenGhe;
-	
-	private int maRap;
-	
-	private String loaiGhe;
-	
-	private int giaVe;
-	
+
 	private boolean daDat;
 	
-	private int soThuTU;
-	
-	private int kichHoat;
-	
-	private int rapId;
-	
-	private UUID loaiGheId;
+	private int stt;
+		
+	private String maRap;
+		
+	private String loaiGhe;
 
 }

@@ -9,7 +9,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class LoaiGheDTO extends BaseDTO {
+public class LoaiGheDTO {
+	
+	private String maLoaiGhe;
 	private String tenLoaiGhe;
 	private String moTa;
 }

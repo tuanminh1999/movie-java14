@@ -11,6 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DateFormatter {
 	public static Timestamp convertStringToTimestamp(String strDate) {
+		if(strDate == null) {
+			return null;
+		}
+		
 		try {
 			DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 			// you can change format of date

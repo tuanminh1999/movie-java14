@@ -1,6 +1,7 @@
 package cybersoft.javabackend.moviejava14.phịm.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Pageable;
 
@@ -17,4 +18,8 @@ public interface PhimService {
 	PageDTO<PhimDTO> searchPhimByNgayKhoiChieuPaging(String tuNgay, String denNgay, Pageable pageable);
 
 	PhimDTO create(CreatePhimDTO dto, String fileName);
+
+	Optional<PhimDTO> getPhimByTenPhim(String tenPhim);
+
+	Optional<PhimDTO> getPhimByBiDanh(String biDanh);
 }

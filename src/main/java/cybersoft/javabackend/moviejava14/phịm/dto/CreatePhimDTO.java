@@ -29,7 +29,7 @@ public class CreatePhimDTO {
 	private String moTa;
 	
 	@NotBlank(message = "{phim.ngay_khoi_chieu.not-blank}")
-	@CorrectDateFormat()
+	@CorrectDateFormat
 	private String ngayKhoiChieu;
 	
 	private int danhGia;

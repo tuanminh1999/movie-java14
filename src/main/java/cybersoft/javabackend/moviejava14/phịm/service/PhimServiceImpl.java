@@ -2,6 +2,7 @@ package cybersoft.javabackend.moviejava14.phịm.service;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Pageable;
@@ -109,6 +110,28 @@ public class PhimServiceImpl implements PhimService {
 		Phim createPhim = phimRepository.save(phim);
 		PhimDTO phimDTO = PhimMapper.INSTANCE.fromEntityToPhimDTO(createPhim);
 		return phimDTO;
+	}
+
+	@Override
+	public Optional<PhimDTO> getPhimByTenPhim(String tenPhim) {
+		Optional<Phim> phimOpt = phimRepository.findByTenPhim(tenPhim);
+		
+		if(!phimOpt.isPresent()) {
+			return null;
+		}
+		
+		return Optional.ofNullable(PhimMapper.INSTANCE.fromEntityToPhimDTO(phimOpt.get()));
+	}
+
+	@Override
+	public Optional<PhimDTO> getPhimByBiDanh(String biDanh) {
+		Optional<Phim> phimOpt = phimRepository.findByBiDanh(biDanh);
+		
+		if(!phimOpt.isPresent()) {
+			return null;
+		}
+		
+		return Optional.ofNullable(PhimMapper.INSTANCE.fromEntityToPhimDTO(phimOpt.get()));
 	}
 
 }

@@ -12,8 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,6 +23,7 @@ import cybersoft.javabackend.moviejava14.common.utils.FileUpload;
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.phịm.dto.CreatePhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.PhimDTO;
+import cybersoft.javabackend.moviejava14.phịm.dto.UpdatePhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.service.PhimService;
 
 @RestController
@@ -74,6 +74,18 @@ public class PhimController {
 		PhimDTO createdPhim = phimService.create(createPhimDTO, fileName);
 		
 		return new ResponseEntity<>(createdPhim, HttpStatus.OK);
+	}
+	
+	@PutMapping(UrlConst.PUT_PHIM)
+	public Object updatePhim(MultipartFile file, @Valid UpdatePhimDTO updatePhimDTO, BindingResult bindingResult) {
+		
+		if (bindingResult.hasErrors()) {
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		}
+		String fileName = FileUpload.uploadFile(file);
+		PhimDTO updatePhim = phimService.update(updatePhimDTO, fileName);
+		
+		return new ResponseEntity<>(updatePhim, HttpStatus.OK);
 	}
 	
 }

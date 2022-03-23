@@ -2,6 +2,7 @@ package cybersoft.javabackend.moviejava14.phịm.repository;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.domain.Pageable;
@@ -24,5 +25,9 @@ public interface PhimRepository extends JpaRepository<Phim, UUID> {
 	List<Phim> findByNgayKhoiChieuAfter(Timestamp tuNgay, Pageable pageable);
 	
 	List<Phim> findByNgayKhoiChieuBefore(Timestamp denNgay, Pageable pageable);
+
+	Optional<Phim> findByTenPhim(String tenPhim);
+
+	Optional<Phim> findByBiDanh(String biDanh);
 
 }

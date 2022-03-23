@@ -12,6 +12,6 @@ public interface NguoiDungMapper {
 	NguoiDungDTO fromEntityToNguoiDungDTO (NguoiDung nguoiDung);
 	NguoiDung fromNguoiDungDTOToEntity (NguoiDungDTO dto);
 	
-	NguoiDung fromCreateNguoiDungDTOtoEntity (CreateNguoiDungDTO dto);
+	NguoiDung fromCreateNguoiDungDTOToEntity (CreateNguoiDungDTO dto);
 	
 }

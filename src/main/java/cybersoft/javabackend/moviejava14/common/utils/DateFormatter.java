@@ -6,8 +6,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class DateFormatter {
 	public static Timestamp convertStringToTimestamp(String strDate) {
+		if(strDate == null) {
+			return null;
+		}
+		
 		try {
 			DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 			// you can change format of date
@@ -16,7 +23,7 @@ public class DateFormatter {
 
 			return timeStampDate;
 		} catch (ParseException e) {
-			System.out.println("Exception :" + e);
+			log.error("Can not parse date: {}", e.getMessage());
 			return null;
 		}
 	}

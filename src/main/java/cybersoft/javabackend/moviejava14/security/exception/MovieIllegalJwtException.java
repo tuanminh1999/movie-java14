@@ -1,7 +1,5 @@
 package cybersoft.javabackend.moviejava14.security.exception;
 
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
 import io.jsonwebtoken.JwtException;
 
 public class MovieIllegalJwtException extends JwtException{

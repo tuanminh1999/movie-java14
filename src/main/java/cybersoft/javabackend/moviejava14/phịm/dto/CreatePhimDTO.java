@@ -32,5 +32,5 @@ public class CreatePhimDTO {
 	@CorrectDateFormat
 	private String ngayKhoiChieu;
 	
-	private int danhGia;
+	private Integer danhGia;
 }

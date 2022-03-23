@@ -3,6 +3,7 @@ package cybersoft.javabackend.moviejava14.phịm.service;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Pageable;
@@ -12,10 +13,6 @@ import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
 import cybersoft.javabackend.moviejava14.common.exeption.DateFormatException;
 import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.common.utils.DateFormatter;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
-import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
-import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungMapper;
-import cybersoft.javabackend.moviejava14.nguoiDung.dto.UpdateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.entity.NguoiDung;
 import cybersoft.javabackend.moviejava14.phịm.dto.CreatePhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.PhimDTO;
@@ -174,48 +171,16 @@ public class PhimServiceImpl implements PhimService {
 		PhimDTO phimDTO = PhimMapper.INSTANCE.fromEntityToPhimDTO(createPhim);
 		return phimDTO;
 	}
-	
-//	@Override
-//	public NguoiDungDTO update(UpdateNguoiDungDTO dto) {
-//
-//		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(dto.getTaiKhoan());
-//
-//		if (!nguoiDungOpt.isPresent()) {
-//			throw new InvalidDataException("Tài khoản người dùng không tồn tại");
-//		}
-//
-//		NguoiDung nguoiDung = nguoiDungOpt.get();
-//
-//		if (!nguoiDung.getEmail().equals(dto.getEmail())) {
-//			if (nguoiDungRepository.findByEmail(dto.getEmail()).isPresent()) {
-//				throw new InvalidDataException("Email người dùng đã tồn tại");
-//			}
-//			nguoiDung.setEmail(dto.getEmail());
-//		}
-//
-//		if (!nguoiDung.getSoDt().equals(dto.getSoDt())) {
-//			if (nguoiDungRepository.findBySoDt(dto.getSoDt()).isPresent()) {
-//				throw new InvalidDataException("Số điện thoại người dùng đã tồn tại");
-//			}
-//			nguoiDung.setSoDt(dto.getSoDt());
-//		}
-//
-//		nguoiDung.setHoTen(dto.getHoTen());
-//
-//		if (!nguoiDung.getLoaiNguoiDung().getMaLoaiNguoiDung().equals(dto.getMaLoaiNguoiDung())) {
-//			Optional<LoaiNguoiDung> loaiNguoiDung = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
-//			if (!loaiNguoiDung.isPresent()) {
-//				throw new InvalidDataException("Loại người dùng không tồn tại");
-//			} else {
-//				nguoiDung.setLoaiNguoiDung(loaiNguoiDung.get());
-//			}
-//		}
-//
-//		NguoiDung updatedNguoiDung = nguoiDungRepository.save(nguoiDung);
-//
-//		NguoiDungDTO nguoiDungDTO = NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(updatedNguoiDung);
-//		nguoiDungDTO.setMaLoaiNguoiDung(updatedNguoiDung.getLoaiNguoiDung().getMaLoaiNguoiDung());
-//		return nguoiDungDTO;
-//	}
+
+	@Override
+	public void delete(UUID maPhim) {
+		Optional<Phim> phimOpt = phimRepository.findById(maPhim);
+
+		if (!phimOpt.isPresent()) {
+			throw new InvalidDataException("Id phim không tồn tại");
+		}
+
+		phimRepository.delete(phimOpt.get());
+	}
 
 }

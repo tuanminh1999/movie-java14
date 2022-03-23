@@ -2,6 +2,7 @@ package cybersoft.javabackend.moviejava14.phịm.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.data.domain.Pageable;
 
@@ -25,4 +26,6 @@ public interface PhimService {
 	Optional<PhimDTO> getPhimByTenPhim(String tenPhim);
 
 	Optional<PhimDTO> getPhimByBiDanh(String biDanh);
+
+	void delete(UUID maPhim);
 }

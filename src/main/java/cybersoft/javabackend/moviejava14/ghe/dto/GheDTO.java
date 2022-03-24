@@ -1,8 +1,6 @@
 package cybersoft.javabackend.moviejava14.ghe.dto;
 
 
-import java.util.UUID;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class GheDTO {
 	
-	private UUID maGhe;
+	private int maGhe;
 
 	private String tenGhe;
 

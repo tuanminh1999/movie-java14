@@ -68,7 +68,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 
 	@Override
 	public NguoiDungDTO create(CreateNguoiDungDTO dto) {
-		NguoiDung nguoiDung = NguoiDungMapper.INSTANCE.fromCreateNguoiDungDTOtoEntity(dto);
+		NguoiDung nguoiDung = NguoiDungMapper.INSTANCE.fromCreateNguoiDungDTOToEntity(dto);
 		nguoiDung.setMatKhau(encoder.encode(dto.getMatKhau()));
 		Optional<LoaiNguoiDung> loaiNguoiDung = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
 		if (!loaiNguoiDung.isPresent()) {

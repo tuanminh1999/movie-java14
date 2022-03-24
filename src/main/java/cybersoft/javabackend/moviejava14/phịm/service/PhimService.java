@@ -1,11 +1,15 @@
 package cybersoft.javabackend.moviejava14.phịm.service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.data.domain.Pageable;
 
 import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
+import cybersoft.javabackend.moviejava14.phịm.dto.CreatePhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.PhimDTO;
+import cybersoft.javabackend.moviejava14.phịm.dto.UpdatePhimDTO;
 
 public interface PhimService {
 	
@@ -14,4 +18,14 @@ public interface PhimService {
 	PageDTO<PhimDTO> searchPhimPaging(String tuKhoa, Pageable pageable);
 
 	PageDTO<PhimDTO> searchPhimByNgayKhoiChieuPaging(String tuNgay, String denNgay, Pageable pageable);
+
+	PhimDTO create(CreatePhimDTO dto, String fileName);
+	
+	PhimDTO update(UpdatePhimDTO dto, String fileName);
+
+	Optional<PhimDTO> getPhimByTenPhim(String tenPhim);
+
+	Optional<PhimDTO> getPhimByBiDanh(String biDanh);
+
+	void delete(UUID maPhim);
 }

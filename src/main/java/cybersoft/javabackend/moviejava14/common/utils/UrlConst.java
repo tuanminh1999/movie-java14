@@ -47,7 +47,8 @@ public class UrlConst {
 	
 	//Phim
 	public static final String GET_PHIM = "/api/QuanLyPhim/LayDanhSachPhim";
-	public static final String POST_PHIM = "/api/QuanLyPhim/TemPhim";
+	public static final String POST_PHIM = "/api/QuanLyPhim/ThemPhim";
+	public static final String POST_PHIM_UPLOAD_HINH = "/api/QuanLyPhim/ThemPhimUploadHinh";
 	public static final String PUT_PHIM = "/api/QuanLyPhim/CapNhatPhim";
 	public static final String DELETE_PHIM = "/api/QuanLyPhim/XoaPhim";
 	public static final String GET_PHIM_PAGING = "/api/QuanLyPhim/LayDanhSachPhimPhanTrang";

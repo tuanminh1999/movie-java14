@@ -70,11 +70,11 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	public NguoiDungDTO create(CreateNguoiDungDTO dto) {
 		NguoiDung nguoiDung = NguoiDungMapper.INSTANCE.fromCreateNguoiDungDTOToEntity(dto);
 		nguoiDung.setMatKhau(encoder.encode(dto.getMatKhau()));
-		LoaiNguoiDung loaiNguoiDung = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung()).get();
-		if (loaiNguoiDung == null) {
+		Optional<LoaiNguoiDung> loaiNguoiDung = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
+		if (!loaiNguoiDung.isPresent()) {
 			throw new InvalidDataException("Loại người dùng không tồn tại");
 		} else {
-			nguoiDung.setLoaiNguoiDung(loaiNguoiDung);
+			nguoiDung.setLoaiNguoiDung(loaiNguoiDung.get());
 		}
 		NguoiDung createNguoiDung = nguoiDungRepository.save(nguoiDung);
 		NguoiDungDTO nguoiDungDTO = NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(createNguoiDung);

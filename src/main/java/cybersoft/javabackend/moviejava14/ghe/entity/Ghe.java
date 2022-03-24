@@ -1,14 +1,25 @@
 package cybersoft.javabackend.moviejava14.ghe.entity;
 
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import cybersoft.javabackend.moviejava14.loaiGhe.entity.LoaiGhe;
+import cybersoft.javabackend.moviejava14.rap.entity.Rap;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,9 +27,28 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "ghe")
-public class Ghe extends BaseEntity {
+public class Ghe {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int maGhe;
 
-	private static final long serialVersionUID = 1L;
+	@CreatedDate
+	@Column(name = "created_date")
+	private LocalDateTime createdDate;
+
+	@CreatedBy
+	@Column(name = "created_by")
+	private String createdBy;
+
+	@LastModifiedDate
+	@Column(name = "modified_date")
+	private LocalDateTime modifiedDate;
+
+	@LastModifiedBy
+	@Column(name = "modified_by")
+	private String modifiedBy;
 	
 	@Column(name = "ten_ghe")
 	private String tenGhe;
@@ -28,16 +58,13 @@ public class Ghe extends BaseEntity {
 	
 	@Column(name = "kich_hoat")
 	private boolean daDat;
-		
-	@Column(name = "gia_ve")
-	private int giaVe;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "rap_id")
-//	private Rap rap;
+	@ManyToOne
+	@JoinColumn(name = "rap_id")
+	private Rap rap;
 	
 	@ManyToOne
 	@JoinColumn(name = "loai_ghe_id")
-	private LoaiGhe loaiGhe;
+	private LoaiGhe loaiGheEntity;
 
 }

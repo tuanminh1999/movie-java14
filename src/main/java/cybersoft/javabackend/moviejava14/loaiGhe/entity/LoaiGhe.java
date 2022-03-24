@@ -1,14 +1,19 @@
 package cybersoft.javabackend.moviejava14.loaiGhe.entity;
 
-import java.util.Set;
+import java.time.LocalDateTime;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import cybersoft.javabackend.moviejava14.ghe.entity.Ghe;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,14 +22,35 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="loai_ghe")
-public class LoaiGhe extends BaseEntity {
+public class LoaiGhe {
 	
-	private static final long serialVersionUID = 1L;
+	@Id
+	@Column(name = "id")
+	private String maLoaiGhe;
+
+	@CreatedDate
+	@Column(name = "created_date")
+	private LocalDateTime createdDate;
+
+	@CreatedBy
+	@Column(name = "created_by")
+	private String createdBy;
+
+	@LastModifiedDate
+	@Column(name = "modified_date")
+	private LocalDateTime modifiedDate;
+
+	@LastModifiedBy
+	@Column(name = "modified_by")
+	private String modifiedBy;
 	
 	@Column(name="mo_ta")
 	private String moTa;
 	
 	@Column(name="ten_loai_ghe")
 	private String tenLoaiGhe;
+	
+	@OneToMany(mappedBy = "loaiGheEntity")
+	private List<Ghe> ghes;
 
 }

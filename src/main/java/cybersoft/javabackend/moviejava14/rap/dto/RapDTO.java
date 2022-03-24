@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class RapDTO {
-	private UUID maRap;
+	private String maRap;
 	
 	private String tenRap;
 }

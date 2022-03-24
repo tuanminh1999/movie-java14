@@ -1,26 +1,24 @@
 package cybersoft.javabackend.moviejava14.ghe.dto;
 
+import javax.validation.constraints.NotBlank;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class CreateGheDTO {
 	
-	private int maGhe;
-
+	@NotBlank(message = "{ghe.id.not_blank}")
 	private String tenGhe;
-	
-	private int maRap;
-	
-	private String loaiGhe;
-	
-	private int giaVe;
-	
+
 	private boolean daDat;
 	
-	private int soThuTU;
+	private int stt;
 	
-	private int kichHoat;
+	@NotBlank(message = "{rap.id.not_blank}")
+	private String maRap;
 	
-	private int rapId;
-	
-	private UUID loaiGheId;
-
+	@NotBlank(message = "{loai_ghe.id.not_blank}")	
+	private String loaiGhe;
 }

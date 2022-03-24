@@ -1,12 +1,14 @@
 package cybersoft.javabackend.moviejava14.rap.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedBy;
@@ -14,8 +16,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
+import cybersoft.javabackend.moviejava14.ghe.entity.Ghe;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -51,4 +53,7 @@ public class Rap{
 	@ManyToOne
 	@JoinColumn(name = "cum_rap_id")
 	private CumRap cumRap;
+	
+	@OneToMany(mappedBy = "rap")
+	private List<Ghe> ghes;
 }

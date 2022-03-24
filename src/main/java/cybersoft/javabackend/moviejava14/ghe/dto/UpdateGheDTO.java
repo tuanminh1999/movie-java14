@@ -3,6 +3,8 @@ package cybersoft.javabackend.moviejava14.ghe.dto;
 
 import java.util.UUID;
 
+import javax.validation.constraints.NotBlank;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,26 +12,19 @@ import lombok.Setter;
 @Setter
 public class UpdateGheDTO {
 	
-	private UUID id;
-	
 	private int maGhe;
 
+	@NotBlank
 	private String tenGhe;
-	
-	private int maRap;
-	
-	private String loaiGhe;
-	
-	private int giaVe;
-	
+
 	private boolean daDat;
+
+	private int stt;
 	
-	private int soThuTU;
-	
-	private int kichHoat;
-	
-	private int rapId;
-	
-	private UUID loaiGheId;
+	@NotBlank
+	private String maRap;
+		
+	@NotBlank
+	private String loaiGhe;
 
 }

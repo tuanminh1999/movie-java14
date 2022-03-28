@@ -3,7 +3,6 @@ package cybersoft.javabackend.moviejava14.phịm.service;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Pageable;
@@ -13,7 +12,6 @@ import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
 import cybersoft.javabackend.moviejava14.common.exeption.DateFormatException;
 import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.common.utils.DateFormatter;
-import cybersoft.javabackend.moviejava14.nguoiDung.entity.NguoiDung;
 import cybersoft.javabackend.moviejava14.phịm.dto.CreatePhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.PhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.PhimMapper;
@@ -66,22 +64,22 @@ public class PhimServiceImpl implements PhimService {
 		if ((tuNgay == null || tuNgay.isBlank()) && (denNgay == null || denNgay.isBlank())) {
 			return searchPhimPaging(null, pageable);
 		} else if (tuNgay != null && (denNgay == null || denNgay.isBlank())) {
-			tuNgayT = DateFormatter.convertStringToTimestamp(tuNgay);
+			tuNgayT = DateFormatter.convertStringToDate(tuNgay);
 			if (tuNgayT == null) {
 				throw new DateFormatException("Ngày không hợp lệ, Ngày có định dạng dd/MM/yyyy !");
 			}
 			phims = phimRepository.findByNgayKhoiChieuAfter(tuNgayT, pageable);
 			totalCounts = phimRepository.findByNgayKhoiChieuAfter(tuNgayT, null).size();
 		} else if ((tuNgay == null || tuNgay.isBlank()) && denNgay != null) {
-			denNgayT = DateFormatter.convertStringToTimestamp(denNgay);
+			denNgayT = DateFormatter.convertStringToDate(denNgay);
 			if (denNgayT == null) {
 				throw new DateFormatException("Ngày không hợp lệ, Ngày có định dạng dd/MM/yyyy !");
 			}
 			phims = phimRepository.findByNgayKhoiChieuBefore(denNgayT, pageable);
 			totalCounts = phimRepository.findByNgayKhoiChieuBefore(denNgayT, null).size();
 		} else {
-			tuNgayT = DateFormatter.convertStringToTimestamp(tuNgay);
-			denNgayT = DateFormatter.convertStringToTimestamp(denNgay);
+			tuNgayT = DateFormatter.convertStringToDate(tuNgay);
+			denNgayT = DateFormatter.convertStringToDate(denNgay);
 			if (tuNgayT == null || denNgayT == null) {
 				throw new DateFormatException("Ngày không hợp lệ, Ngày có định dạng dd/MM/yyyy !");
 			}
@@ -131,7 +129,7 @@ public class PhimServiceImpl implements PhimService {
         phim.setTrailer( dto.getTrailer() );
         phim.setHinhAnh(fileName);
         phim.setMoTa( dto.getMoTa() );
-        phim.setNgayKhoiChieu( DateFormatter.convertStringToTimestamp(dto.getNgayKhoiChieu()) );
+        phim.setNgayKhoiChieu( DateFormatter.convertStringToDate(dto.getNgayKhoiChieu()) );
         phim.setDanhGia( dto.getDanhGia() );
 		Phim createPhim = phimRepository.save(phim);
 		PhimDTO phimDTO = PhimMapper.INSTANCE.fromEntityToPhimDTO(createPhim);
@@ -163,7 +161,7 @@ public class PhimServiceImpl implements PhimService {
 		phim.setTrailer( dto.getTrailer() );
         phim.setHinhAnh(fileName);
         phim.setMoTa( dto.getMoTa() );
-        phim.setNgayKhoiChieu( DateFormatter.convertStringToTimestamp(dto.getNgayKhoiChieu()) );
+        phim.setNgayKhoiChieu( DateFormatter.convertStringToDate(dto.getNgayKhoiChieu()) );
         phim.setDanhGia( dto.getDanhGia() );
         
 		Phim createPhim = phimRepository.save(phim);
@@ -173,7 +171,7 @@ public class PhimServiceImpl implements PhimService {
 	}
 
 	@Override
-	public void delete(UUID maPhim) {
+	public void delete(int maPhim) {
 		Optional<Phim> phimOpt = phimRepository.findById(maPhim);
 
 		if (!phimOpt.isPresent()) {

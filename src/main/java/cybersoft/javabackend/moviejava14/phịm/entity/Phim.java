@@ -2,12 +2,15 @@ package cybersoft.javabackend.moviejava14.phịm.entity;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.UUID;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedBy;
@@ -15,6 +18,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import cybersoft.javabackend.moviejava14.lichchieu.entity.LichChieu;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,9 +29,9 @@ import lombok.Setter;
 public class Phim {
 	
 	@Id
-	@GeneratedValue // tự động sinh id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private UUID maPhim;
+	private int maPhim;
 
 	@CreatedDate
 	@Column(name = "created_date")
@@ -64,4 +68,7 @@ public class Phim {
 	
 	@Column(name = "danh_gia")
 	private int danhGia;
+	
+	@OneToMany(mappedBy = "phim", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
+	private Set<LichChieu> lichChieuPhims;
 }

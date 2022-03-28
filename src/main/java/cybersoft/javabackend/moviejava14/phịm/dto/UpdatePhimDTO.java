@@ -1,11 +1,9 @@
 package cybersoft.javabackend.moviejava14.phịm.dto;
 
-import java.util.UUID;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import cybersoft.javabackend.moviejava14.phịm.validation.anotation.CorrectDateFormat;
+import cybersoft.javabackend.moviejava14.common.validation.anotation.CorrectDateFormat;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +11,7 @@ import lombok.Setter;
 @Setter
 public class UpdatePhimDTO {
 	
-	private UUID maPhim;
+	private int maPhim;
 	
 	@NotBlank(message = "{phim.ten_phim.not-blank}")
 	private String tenPhim;

@@ -1,15 +1,15 @@
-package cybersoft.javabackend.moviejava14.rap.entity;
+package cybersoft.javabackend.moviejava14.lichchieu.entity;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedBy;
@@ -17,22 +17,22 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
-import cybersoft.javabackend.moviejava14.ghe.entity.Ghe;
-import cybersoft.javabackend.moviejava14.lichchieu.entity.LichChieu;
+import cybersoft.javabackend.moviejava14.phịm.entity.Phim;
+import cybersoft.javabackend.moviejava14.rap.entity.Rap;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "rap")
-public class Rap{
+@Table(name = "lich_chieu")
+public class LichChieu {
 	
 	@Id
-	@Column (name = "id")
-	private String maRap;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int maLichChieu;
+
 	@CreatedDate
 	@Column(name = "created_date")
 	private LocalDateTime createdDate;
@@ -49,16 +49,18 @@ public class Rap{
 	@Column(name = "modified_by")
 	private String modifiedBy;
 	
-	@Column(name = "ten_rap")
-	private String tenRap;
+	@ManyToOne
+	@JoinColumn(name = "rap_id")
+	private Rap rapLichChieu;
 	
 	@ManyToOne
-	@JoinColumn(name = "cum_rap_id")
-	private CumRap cumRap;
+	@JoinColumn(name = "phim_id")
+	private Phim phim;
 	
-	@OneToMany(mappedBy = "rap")
-	private Set<Ghe> ghes;
+	@Column(name = "ngay_chieu_gio_chieu")
+	private Timestamp ngayChieuGioChieu;
 	
-	@OneToMany(mappedBy = "rapLichChieu", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
-	private Set<LichChieu> lichChieuRaps;
+	@Column(name = "gia_ve")
+	private int giaVe;
+	
 }

@@ -1,0 +1,37 @@
+package cybersoft.javabackend.moviejava14.lichchieu.controller;
+
+import javax.validation.Valid;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
+
+import cybersoft.javabackend.moviejava14.common.ResponseHandler;
+import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
+import cybersoft.javabackend.moviejava14.lichchieu.dto.CreateLichChieuDTO;
+import cybersoft.javabackend.moviejava14.lichchieu.dto.LichChieuDTO;
+import cybersoft.javabackend.moviejava14.lichchieu.service.LichChieuService;
+
+@RestController
+public class LichChieuController {
+	
+	private LichChieuService lichChieuService;
+	
+	public LichChieuController(LichChieuService lichChieuService) {
+		this.lichChieuService = lichChieuService;
+	}
+	
+	@PostMapping(UrlConst.POST_LICH_CHIEU)
+	public Object createPhim(@RequestHeader String authorization, @Valid @RequestBody CreateLichChieuDTO dto, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		}
+		
+		LichChieuDTO createLichChieu = lichChieuService.create(dto);
+		
+		return createLichChieu == null ? "Thêm thất bại" : "Thêm thành công";
+	}
+}

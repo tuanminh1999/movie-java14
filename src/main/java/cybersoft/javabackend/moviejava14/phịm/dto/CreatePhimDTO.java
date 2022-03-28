@@ -3,7 +3,7 @@ package cybersoft.javabackend.moviejava14.phịm.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import cybersoft.javabackend.moviejava14.phịm.validation.anotation.CorrectDateFormat;
+import cybersoft.javabackend.moviejava14.common.validation.anotation.CorrectDateFormat;
 import cybersoft.javabackend.moviejava14.phịm.validation.anotation.UniqueBiDanh;
 import cybersoft.javabackend.moviejava14.phịm.validation.anotation.UniqueTenPhim;
 import lombok.Getter;
@@ -32,5 +32,5 @@ public class CreatePhimDTO {
 	@CorrectDateFormat
 	private String ngayKhoiChieu;
 	
-	private Integer danhGia;
+	private int danhGia;
 }

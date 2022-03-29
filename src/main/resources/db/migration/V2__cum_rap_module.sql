@@ -45,17 +45,17 @@ ALTER TABLE rap
 INSERT INTO he_thong_rap(id, created_date, created_by, modified_date, modified_by, ten_he_thong_rap, bi_danh,
 				 logo)
 VALUES ('BHDStar', null, '', null, '', 'BHD Star Cineplex', 'bhd-star-cineplex',
-		'https://drive.google.com/file/d/11mdHbq44-iuu0L_CFClRZtjgj_mNeMeU/view?usp=sharing'),
+		null),
 		('CGV', null, '', null, '', 'cgv', 'cgv',
-		'https://drive.google.com/file/d/1HbzsL6IA3fgWxQZyBzq-rVNscycGzbBv/view?usp=sharing'),
+		null),
 		('CineStar', null, '', null, '', 'CineStar', 'cinestar',
-		'https://drive.google.com/file/d/16mHVbrS4e2TpdZ9DcquFdxfHmFqC0yL4/view?usp=sharing'),
+		null),
 		('Galaxy', null, '', null, '', 'Galaxy Cinema', 'galaxy-cinema',
-		'https://drive.google.com/file/d/1bVS7jccJGcNQRQ0ESaZX54VOgAs8KnKr/view?usp=sharing'),
+		null),
 		('LotteCinima', null, '', null, '', 'Lotte Cinema', 'lotte-cinema',
-		'https://drive.google.com/file/d/1esjm2PZTbUdBeizS4BASapx-DTkPS4sA/view?usp=sharing'),
+		null),
 		('MegaGS', null, '', null, '', 'MegaGS', 'megags',
-		'https://drive.google.com/file/d/1IBtaKH3Xztp_5JUS6rBsHmBDCFN_4Fi3/view?usp=sharing');
+		null);
 
 -- INSERT CUM RAP
 INSERT INTO cum_rap(id, created_date, created_by, modified_date, modified_by, ten_cum_rap, dia_chi, he_thong_rap_id)

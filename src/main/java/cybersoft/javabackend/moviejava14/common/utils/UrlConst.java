@@ -26,6 +26,7 @@ public class UrlConst {
 	public static final String PUT_RAP = "/api/QuanLyRap/CapNhatThongTinRap";
 	public static final String DELETE_RAP = "/api/QuanLyRap/XoaRap";
 	
+	public static final String GET_THONG_TIN_LICH_CHIEU = "/api/QuanLyRap/LayThongTinLichChieuPhim";
 
 	// CumRap
 	public static final String GET_CUM_RAP = "/api/QuanLyCumRap/LayDanhSachCumRap";

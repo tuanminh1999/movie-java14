@@ -63,4 +63,7 @@ public class LichChieu {
 	@Column(name = "gia_ve")
 	private int giaVe;
 	
+	@Column(name = "thoi_luong")
+	private int thoiLuong;
+	
 }

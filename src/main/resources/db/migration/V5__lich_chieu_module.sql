@@ -4,10 +4,11 @@ CREATE TABLE IF NOT EXISTS lich_chieu (
 	created_by varchar(36),
 	modified_date timestamp,
 	modified_by varchar(36),
-	phim_id int,
+	phim_id int not null,
 	ngay_chieu_gio_chieu timestamp not null,
-	rap_id varchar(255),
+	rap_id varchar(255) not null,
 	gia_ve int not null,
+	thoi_luong int not null,
 	primary key(id)
 );
 

@@ -4,6 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import cybersoft.javabackend.moviejava14.lichchieu.entity.LichChieu;
+import cybersoft.javabackend.moviejava14.phịm.entity.Phim;
 
 @Mapper
 public interface LichChieuMapper {
@@ -12,7 +13,7 @@ public interface LichChieuMapper {
 	
 	LichChieuDTO fromEntityToLichChieuDTO (LichChieu lichChieu);
 	LichChieu fromLichChieuDTOToEntity (LichChieuDTO dto);
-	
-	LichChieu fromCreateLichChieuDTOToEntity (CreateLichChieuDTO dto);
+		
+	ThongTinLichChieuPhimDTO fromEntityToThongTinLichChieuDTO(Phim phim);
 	
 }

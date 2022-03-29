@@ -4,9 +4,11 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cybersoft.javabackend.moviejava14.common.ResponseHandler;
@@ -25,7 +27,7 @@ public class LichChieuController {
 	}
 	
 	@PostMapping(UrlConst.POST_LICH_CHIEU)
-	public Object createPhim(@RequestHeader String authorization, @Valid @RequestBody CreateLichChieuDTO dto, BindingResult bindingResult) {
+	public Object createLichChieu(@RequestHeader String authorization, @Valid @RequestBody CreateLichChieuDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
@@ -33,5 +35,10 @@ public class LichChieuController {
 		LichChieuDTO createLichChieu = lichChieuService.create(dto);
 		
 		return createLichChieu == null ? "Thêm thất bại" : "Thêm thành công";
+	}
+	
+	@GetMapping(UrlConst.GET_THONG_TIN_LICH_CHIEU)
+	public Object getThongTinLichChieu(@RequestParam("MaPhim") int maPhim) {
+		return lichChieuService.searchThongTinLichChieu(maPhim);
 	}
 }

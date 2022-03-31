@@ -3,6 +3,7 @@ package cybersoft.javabackend.moviejava14.lichchieu.dto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import cybersoft.javabackend.moviejava14.heThongRap.entity.HeThongRap;
 import cybersoft.javabackend.moviejava14.lichchieu.entity.LichChieu;
 import cybersoft.javabackend.moviejava14.phịm.entity.Phim;
 
@@ -15,5 +16,7 @@ public interface LichChieuMapper {
 	LichChieu fromLichChieuDTOToEntity (LichChieuDTO dto);
 		
 	ThongTinLichChieuPhimDTO fromEntityToThongTinLichChieuDTO(Phim phim);
+	
+	ThongTinLichChieuHeThongRapDTO fromEntityToThongTinLichChieuHeThongRapDTO(HeThongRap heThongRap);
 	
 }

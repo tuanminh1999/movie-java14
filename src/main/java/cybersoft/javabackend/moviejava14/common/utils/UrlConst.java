@@ -27,6 +27,7 @@ public class UrlConst {
 	public static final String DELETE_RAP = "/api/QuanLyRap/XoaRap";
 	
 	public static final String GET_THONG_TIN_LICH_CHIEU = "/api/QuanLyRap/LayThongTinLichChieuPhim";
+	public static final String GET_THONG_TIN_LICH_CHIEU_HE_THONG_RAP = "/api/QuanLyRap/LayThongTinLichChieuHeThongRap";
 
 	// CumRap
 	public static final String GET_CUM_RAP = "/api/QuanLyCumRap/LayDanhSachCumRap";
@@ -35,7 +36,7 @@ public class UrlConst {
 	public static final String DELETE_CUM_RAP = "/api/QuanLyCumRap/XoaCumRap";
 	
 	// HeThongRap
-	public static final String GET_HT_RAP = "/api/QuanLyHeThongRap/LayDanhSachHeThongRap";
+	public static final String GET_HT_RAP = "/api/QuanLyRap/LayThongTinHeThongRap";
 	public static final String POST_HT_RAP = "/api/QuanLyHeThongRap/ThemHeThongRap";
 	public static final String PUT_HT_RAP = "/api/QuanLyHeThongRap/CapNhatThongTinHeThongRap";
 	public static final String DELETE_HT_RAP = "/api/QuanLyHeThongRap/XoaHeThongRap";

@@ -1,5 +1,6 @@
 package cybersoft.javabackend.moviejava14.rap.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,5 +13,7 @@ import cybersoft.javabackend.moviejava14.rap.entity.Rap;
 public interface RapRepository extends JpaRepository<Rap, String>{
 
 	boolean findByTenRap(String tenRap);
+
+	Optional<List<Rap>> findByCumRap(CumRap byId);
 	
 }

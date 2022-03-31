@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import cybersoft.javabackend.moviejava14.lichchieu.dto.LichChieuDTO;
 import cybersoft.javabackend.moviejava14.lichchieu.service.LichChieuService;
 
 @RestController
+@CrossOrigin
 public class LichChieuController {
 	
 	private LichChieuService lichChieuService;
@@ -40,5 +42,10 @@ public class LichChieuController {
 	@GetMapping(UrlConst.GET_THONG_TIN_LICH_CHIEU)
 	public Object getThongTinLichChieu(@RequestParam("MaPhim") int maPhim) {
 		return lichChieuService.searchThongTinLichChieu(maPhim);
+	}
+	
+	@GetMapping(UrlConst.GET_THONG_TIN_LICH_CHIEU_HE_THONG_RAP)
+	public Object getThongTinLichChieuHeThongRap(String maHeThongRap) {
+		return lichChieuService.searchThongTinLichChieuHeThongRap(maHeThongRap);
 	}
 }

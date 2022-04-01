@@ -8,8 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CumRapChieuHeThongRapDTO {
+	private List<PhimChieuHeThongRapDTO> danhSachPhim;
 	private String maCumRap;
 	private String tenCumRap;
 	private String diaChi;
-	private List<PhimChieuHeThongRapDTO> danhSachPhim;
 }

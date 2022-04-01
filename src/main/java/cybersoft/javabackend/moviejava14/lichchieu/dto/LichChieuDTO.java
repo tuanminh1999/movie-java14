@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 public class LichChieuDTO {
 	private int maLichChieu;
-	private Timestamp ngayChieuGioChieu;
 	private String maRap;
 	private String tenRap;
+	private Timestamp ngayChieuGioChieu;
 	private int giaVe;
 	private int thoiLuong;
 }

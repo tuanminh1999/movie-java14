@@ -1,4 +1,4 @@
-package cybersoft.javabackend.moviejava14.phịm.validation.anotation;
+package cybersoft.javabackend.moviejava14.common.validation.anotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import cybersoft.javabackend.moviejava14.phịm.validation.validator.CorrectDateFormatValidator;
+import cybersoft.javabackend.moviejava14.common.validation.validator.CorrectDateFormatValidator;
 
 @Constraint(validatedBy = CorrectDateFormatValidator.class)
 @Target(ElementType.FIELD)

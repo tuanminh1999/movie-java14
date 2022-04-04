@@ -10,13 +10,32 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class DateFormatter {
-	public static Timestamp convertStringToTimestamp(String strDate) {
+	
+	public static Timestamp convertStringToDate(String strDate) {
 		if(strDate == null) {
 			return null;
 		}
 		
 		try {
 			DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+			// you can change format of date
+			Date date = formatter.parse(strDate);
+			Timestamp timeStampDate = new Timestamp(date.getTime());
+
+			return timeStampDate;
+		} catch (ParseException e) {
+			log.error("Can not parse date: {}", e.getMessage());
+			return null;
+		}
+	}
+	
+	public static Timestamp convertStringToDateAndTime(String strDate) {
+		if(strDate == null) {
+			return null;
+		}
+		
+		try {
+			DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 			// you can change format of date
 			Date date = formatter.parse(strDate);
 			Timestamp timeStampDate = new Timestamp(date.getTime());

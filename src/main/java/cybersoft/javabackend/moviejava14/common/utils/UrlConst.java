@@ -26,6 +26,9 @@ public class UrlConst {
 	public static final String PUT_RAP = "/api/QuanLyRap/CapNhatThongTinRap";
 	public static final String DELETE_RAP = "/api/QuanLyRap/XoaRap";
 	
+	public static final String GET_THONG_TIN_LICH_CHIEU = "/api/QuanLyRap/LayThongTinLichChieuPhim";
+	public static final String GET_THONG_TIN_LICH_CHIEU_HE_THONG_RAP = "/api/QuanLyRap/LayThongTinLichChieuHeThongRap";
+	public static final String GET_THONG_TIN_CUM_RAP_THEO_HE_THONG = "/api/QuanLyRap/LayThongTinCumRapTheoHeThong";
 
 	// CumRap
 	public static final String GET_CUM_RAP = "/api/QuanLyCumRap/LayDanhSachCumRap";
@@ -34,7 +37,7 @@ public class UrlConst {
 	public static final String DELETE_CUM_RAP = "/api/QuanLyCumRap/XoaCumRap";
 	
 	// HeThongRap
-	public static final String GET_HT_RAP = "/api/QuanLyHeThongRap/LayDanhSachHeThongRap";
+	public static final String GET_HT_RAP = "/api/QuanLyRap/LayThongTinHeThongRap";
 	public static final String POST_HT_RAP = "/api/QuanLyHeThongRap/ThemHeThongRap";
 	public static final String PUT_HT_RAP = "/api/QuanLyHeThongRap/CapNhatThongTinHeThongRap";
 	public static final String DELETE_HT_RAP = "/api/QuanLyHeThongRap/XoaHeThongRap";
@@ -54,10 +57,13 @@ public class UrlConst {
 	public static final String GET_PHIM_PAGING = "/api/QuanLyPhim/LayDanhSachPhimPhanTrang";
 	public static final String GET_PHIM_BY_DATE_PAGING = "/api/QuanLyPhim/LayDanhSachPhimTheoNgay";
 
-  //	Ghe
+	//Ghe
 	public static final String GET_GHE = "/api/QuanLyLoaiGhe/LayDanhSachGhe";
 	public static final String POST_GHE = "/api/QuanLyLoaiGhe/ThemGhe";
 	public static final String PUT_GHE = "/api/QuanLyLoaiGhe/CapNhatThongTinGhe";
 	public static final String DELETE_GHE = "/api/QuanLyLoaiGhe/XoaGhe";
+	
+	//Lich Chieu
+	public static final String POST_LICH_CHIEU = "/api/QuanLyDatVe/TaoLichChieu";
 	
 }

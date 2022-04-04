@@ -93,7 +93,7 @@ public class PhimController {
 	}
 
 	@DeleteMapping(UrlConst.DELETE_PHIM)
-	public Object delete(@RequestHeader String authorization, @RequestParam("MaPhim") UUID maPhim) {
+	public Object delete(@RequestHeader String authorization, @RequestParam("MaPhim") int maPhim) {
 		phimService.delete(maPhim);
 		return new ResponseEntity<>("Xoá phim thành công!", HttpStatus.OK);
 	}

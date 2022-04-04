@@ -1,13 +1,16 @@
-package cybersoft.javabackend.moviejava14.phịm.dto;
+package cybersoft.javabackend.moviejava14.lichchieu.dto;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class PhimDTO {
+public class ThongTinLichChieuPhimDTO {
+	
+	private List<HeThongRapChieuDTO> heThongRapChieu;
 	private int maPhim;
 	private String tenPhim;
 	private String biDanh;
@@ -16,4 +19,5 @@ public class PhimDTO {
 	private String moTa;
 	private Timestamp ngayKhoiChieu;
 	private int danhGia;
+	
 }

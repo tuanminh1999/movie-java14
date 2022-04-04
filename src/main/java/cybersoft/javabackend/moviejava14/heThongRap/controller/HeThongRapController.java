@@ -65,4 +65,5 @@ public class HeThongRapController {
 		heThongRapService.delete(maHeThongRap);
 		return new ResponseEntity<Object>("Xoá hệ thống rạp thành công",HttpStatus.OK);
 	}
+		
 }

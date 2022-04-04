@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 public class HeThongRapChieuDTO {
 	
+	private List<CumRapChieuDTO> cumRapChieu;
 	private String maHeThongRap;
 	private String tenHeThongRap;
 	private String logo;
-	private List<CumRapChieuDTO> cumRapChieu;
 	
 }

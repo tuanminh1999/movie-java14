@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sun.istack.FinalArrayList;
+
 import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.common.utils.DateFormatter;
 import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
@@ -51,6 +53,7 @@ public class LichChieuServiceImpl implements LichChieuService {
 	@Override
 	public LichChieuDTO create(CreateLichChieuDTO dto) {
 		LichChieu lichChieu = new LichChieu();
+		lichChieu.setMaLichChieu(dto.getMaLichChieu());
 		lichChieu.setGiaVe(dto.getGiaVe());
 		lichChieu.setThoiLuong(120);
 		lichChieu.setPhim(phimRepository.findById(dto.getMaPhim()).get());
@@ -76,47 +79,49 @@ public class LichChieuServiceImpl implements LichChieuService {
 		Optional<List<LichChieu>> lichChieus = lichChieuRepository.findByPhim(phim.get());
 		List<LichChieuDTO> lichChieuList = new ArrayList<LichChieuDTO>();
 		LichChieuDTO lichChieuDTO = null;
-		Set<String> maRaps = new HashSet<String>();
+		Set<Rap> raps = new HashSet<Rap>();
 		for (LichChieu lc : lichChieus.get()) {
 			lichChieuDTO = new LichChieuDTO();
 			lichChieuDTO.setMaLichChieu(lc.getMaLichChieu());
 			lichChieuDTO.setGiaVe(lc.getGiaVe());
 			lichChieuDTO.setMaRap(lc.getRapLichChieu().getMaRap());
-			maRaps.add(lichChieuDTO.getMaRap());
+			raps.add(lc.getRapLichChieu());
 			lichChieuDTO.setNgayChieuGioChieu(lc.getNgayChieuGioChieu());
 			lichChieuDTO.setTenRap(lc.getRapLichChieu().getTenRap());
 			lichChieuDTO.setThoiLuong(lc.getThoiLuong());
 			lichChieuList.add(lichChieuDTO);
 		}
 
-		Set<String> maCumRaps = new HashSet<String>();
+		Set<CumRap> cumRaps = new HashSet<CumRap>();
+		for(Rap rap : raps) {
+			cumRaps.add(rap.getCumRap());
+		}
 		List<CumRapChieuDTO> cumRapChieuDTOs = new LinkedList<CumRapChieuDTO>();
 		CumRapChieuDTO cumRapChieuDTO = null;
 		List<LichChieuDTO> lichChieuList1 = null;
-		for (String maRap : maRaps) {
+		for (CumRap cumRap : cumRaps) {
 			cumRapChieuDTO = new CumRapChieuDTO();
 			lichChieuList1 = new LinkedList<LichChieuDTO>();
 			for (LichChieuDTO o : lichChieuList) {
-				if (maRap.equals(o.getMaRap())) {
+				if (cumRap.getRaps().contains(rapRepository.findById(o.getMaRap()).get())) {
 					lichChieuList1.add(o);
 				}
 			}
 			cumRapChieuDTO.setLichChieuPhim(lichChieuList1);
 			cumRapChieuDTO.setHinhAnh(null);
-			cumRapChieuDTO.setMaCumRap(rapRepository.getById(maRap).getCumRap().getMaCumRap());
-			maCumRaps.add(cumRapChieuDTO.getMaCumRap());
-			cumRapChieuDTO.setTenCumRap(rapRepository.getById(maRap).getCumRap().getTenCumRap());
+			cumRapChieuDTO.setMaCumRap(cumRap.getMaCumRap());
+			cumRapChieuDTO.setTenCumRap(cumRap.getTenCumRap());
 			cumRapChieuDTOs.add(cumRapChieuDTO);
 		}
 
 		HeThongRapChieuDTO heThongRapChieuDTO = null;
 		List<CumRapChieuDTO> cumRapList = null;
 		List<HeThongRapChieuDTO> heThongRapChieuDTOs = new LinkedList<HeThongRapChieuDTO>();
-		for (String maCumRap : maCumRaps) {
+		for (CumRap cumRap : cumRaps) {
 			heThongRapChieuDTO = new HeThongRapChieuDTO();
 			cumRapList = new LinkedList<CumRapChieuDTO>();
 			for (CumRapChieuDTO o : cumRapChieuDTOs) {
-				if (maCumRap.equals(o.getMaCumRap())) {
+				if (cumRap.getMaCumRap().equals(o.getMaCumRap())) {
 					cumRapList.add(o);
 				}
 			}

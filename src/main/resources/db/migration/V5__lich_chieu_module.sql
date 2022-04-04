@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS lich_chieu (
-	id serial,
+	id varchar(255),
 	created_date timestamp,
 	created_by varchar(36),
 	modified_date timestamp,

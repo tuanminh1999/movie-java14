@@ -3,6 +3,7 @@ package cybersoft.javabackend.moviejava14.lichchieu.controller;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +42,8 @@ public class LichChieuController {
 	
 	@GetMapping(UrlConst.GET_THONG_TIN_LICH_CHIEU)
 	public Object getThongTinLichChieu(@RequestParam("MaPhim") int maPhim) {
-		return lichChieuService.searchThongTinLichChieu(maPhim);
+		Object o = lichChieuService.searchThongTinLichChieu(maPhim);
+		return new ResponseEntity<Object>(o, HttpStatus.OK); 
 	}
 	
 	@GetMapping(UrlConst.GET_THONG_TIN_LICH_CHIEU_HE_THONG_RAP)

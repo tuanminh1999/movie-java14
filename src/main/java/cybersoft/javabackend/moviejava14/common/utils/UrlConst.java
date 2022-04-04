@@ -28,6 +28,7 @@ public class UrlConst {
 	
 	public static final String GET_THONG_TIN_LICH_CHIEU = "/api/QuanLyRap/LayThongTinLichChieuPhim";
 	public static final String GET_THONG_TIN_LICH_CHIEU_HE_THONG_RAP = "/api/QuanLyRap/LayThongTinLichChieuHeThongRap";
+	public static final String GET_THONG_TIN_CUM_RAP_THEO_HE_THONG = "/api/QuanLyRap/LayThongTinCumRapTheoHeThong";
 
 	// CumRap
 	public static final String GET_CUM_RAP = "/api/QuanLyCumRap/LayDanhSachCumRap";

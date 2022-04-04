@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 public class ThongTinLichChieuPhimDTO {
 	
+	private List<HeThongRapChieuDTO> heThongRapChieu;
 	private int maPhim;
 	private String tenPhim;
 	private String biDanh;
@@ -18,6 +19,5 @@ public class ThongTinLichChieuPhimDTO {
 	private String moTa;
 	private Timestamp ngayKhoiChieu;
 	private int danhGia;
-	private List<HeThongRapChieuDTO> heThongRapChieu;
 	
 }

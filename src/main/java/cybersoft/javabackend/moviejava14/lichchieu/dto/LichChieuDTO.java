@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LichChieuDTO {
-	private String maLichChieu;
+	private int maLichChieu;
 	private String maRap;
 	private String tenRap;
 	private Timestamp ngayChieuGioChieu;

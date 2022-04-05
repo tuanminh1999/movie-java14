@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class HeThongRapDTO {
+
 	private String maHeThongRap;
 	
 	private String tenHeThongRap;

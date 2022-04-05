@@ -1,6 +1,7 @@
 package cybersoft.javabackend.moviejava14.heThongRap.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cybersoft.javabackend.moviejava14.common.ResponseHandler;
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
+import cybersoft.javabackend.moviejava14.cumRap.dto.CumRapDTO;
 import cybersoft.javabackend.moviejava14.heThongRap.dto.CreateHeThongRapDTO;
 import cybersoft.javabackend.moviejava14.heThongRap.dto.HeThongRapDTO;
 import cybersoft.javabackend.moviejava14.heThongRap.dto.UpdateHeThongRapDTO;
@@ -34,6 +36,12 @@ public class HeThongRapController {
 	public Object getHeThongRap() {
 		List<HeThongRapDTO> heThongRaps = heThongRapService.findAll();
 		return new ResponseEntity<Object>(heThongRaps, HttpStatus.OK);
+	}
+	
+	@GetMapping(UrlConst.GET_THONG_TIN_CUM_RAP_THEO_HE_THONG)
+	public Object getCumRapTheoHeThongRap(String maHeThongRap) {
+		Set<CumRapDTO> cumRaps = heThongRapService.findById(maHeThongRap);
+		return new ResponseEntity<Object>(cumRaps, HttpStatus.OK);
 	}
 	
 	// chua valid

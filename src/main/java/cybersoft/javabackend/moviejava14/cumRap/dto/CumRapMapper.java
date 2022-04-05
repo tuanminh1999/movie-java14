@@ -14,6 +14,7 @@ public interface CumRapMapper {
 	CumRap fromCumRapDTOToEntity (CumRapDTO dto);
 	
 	CumRap fromCreateCumRapDTOtoEntity (CreateCumRapDTO dto);
+	
 }
 
 

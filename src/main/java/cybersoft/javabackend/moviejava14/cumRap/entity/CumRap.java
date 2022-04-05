@@ -62,5 +62,5 @@ public class CumRap implements Serializable {
 	private HeThongRap heThongRap;
 	
 	@OneToMany(mappedBy = "cumRap")
-	private Set<Rap> raps = new HashSet<Rap>();
+	private Set<Rap> danhSachRap = new HashSet<Rap>();
 }

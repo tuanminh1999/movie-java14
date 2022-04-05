@@ -12,9 +12,7 @@ import lombok.Setter;
 @Setter
 public class CreateLichChieuDTO {
 	
-	@NotBlank
-	private String maLichChieu;
-	
+		
 	@ExistedMaPhim
 	private int maPhim;
 	

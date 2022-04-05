@@ -2,11 +2,15 @@ package cybersoft.javabackend.moviejava14.heThongRap.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
+import cybersoft.javabackend.moviejava14.cumRap.dto.CumRapDTO;
+import cybersoft.javabackend.moviejava14.cumRap.dto.CumRapMapper;
+import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
 import cybersoft.javabackend.moviejava14.heThongRap.dto.CreateHeThongRapDTO;
 import cybersoft.javabackend.moviejava14.heThongRap.dto.HeThongRapDTO;
 import cybersoft.javabackend.moviejava14.heThongRap.dto.HeThongRapMapper;
@@ -77,7 +81,19 @@ public class HeThongRapServiceImpl implements HeThongRapService{
 		}
 		
 		heThongRapRepository.delete(heThongRapOpt.get());
+	}
+
+	@Override
+	public Set<CumRapDTO> findById(String maHeThong) {
+		Optional<HeThongRap> heThongRapOpt = heThongRapRepository.findById(maHeThong);
 		
+		if (!heThongRapOpt.isPresent()) {
+			throw new InvalidDataException("Mã hệ thống rạp không tồn tại");
+		}
+		
+		Set<CumRap> cumRapList = heThongRapOpt.get().getCumRaps();
+		
+		return cumRapList.stream().map(o -> CumRapMapper.INSTANCE.fromEntityToCumRapDTO(o)).collect(Collectors.toSet());
 		
 	}
 }

@@ -53,7 +53,6 @@ public class LichChieuServiceImpl implements LichChieuService {
 	@Override
 	public LichChieuDTO create(CreateLichChieuDTO dto) {
 		LichChieu lichChieu = new LichChieu();
-		lichChieu.setMaLichChieu(dto.getMaLichChieu());
 		lichChieu.setGiaVe(dto.getGiaVe());
 		lichChieu.setThoiLuong(120);
 		lichChieu.setPhim(phimRepository.findById(dto.getMaPhim()).get());
@@ -103,7 +102,7 @@ public class LichChieuServiceImpl implements LichChieuService {
 			cumRapChieuDTO = new CumRapChieuDTO();
 			lichChieuList1 = new LinkedList<LichChieuDTO>();
 			for (LichChieuDTO o : lichChieuList) {
-				if (cumRap.getRaps().contains(rapRepository.findById(o.getMaRap()).get())) {
+				if (cumRap.getDanhSachRap().contains(rapRepository.findById(o.getMaRap()).get())) {
 					lichChieuList1.add(o);
 				}
 			}

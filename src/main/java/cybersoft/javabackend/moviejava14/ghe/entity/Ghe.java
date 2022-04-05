@@ -2,6 +2,7 @@ package cybersoft.javabackend.moviejava14.ghe.entity;
 
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedBy;
@@ -18,7 +20,9 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import cybersoft.javabackend.moviejava14.datVe.entity.DatVe;
 import cybersoft.javabackend.moviejava14.loaiGhe.entity.LoaiGhe;
+import cybersoft.javabackend.moviejava14.nguoiDung.entity.NguoiDung;
 import cybersoft.javabackend.moviejava14.rap.entity.Rap;
 import lombok.Getter;
 import lombok.Setter;
@@ -66,5 +70,8 @@ public class Ghe {
 	@ManyToOne
 	@JoinColumn(name = "loai_ghe_id")
 	private LoaiGhe loaiGheEntity;
+	
+	@OneToMany(mappedBy = "maGhe")
+	private List<DatVe> dateVes;
 
 }

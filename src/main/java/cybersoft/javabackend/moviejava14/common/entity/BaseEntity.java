@@ -27,10 +27,6 @@ public class BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 6766470499502525551L;
 
-	@Id
-	@GeneratedValue // tự động sinh id
-	private UUID id;
-
 	@CreatedDate
 	@Column(name = "created_date")
 	private LocalDateTime createdDate;

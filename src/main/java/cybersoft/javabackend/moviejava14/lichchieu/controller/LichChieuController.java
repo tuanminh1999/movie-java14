@@ -19,8 +19,8 @@ import cybersoft.javabackend.moviejava14.lichchieu.dto.CreateLichChieuDTO;
 import cybersoft.javabackend.moviejava14.lichchieu.dto.LichChieuDTO;
 import cybersoft.javabackend.moviejava14.lichchieu.service.LichChieuService;
 
-@RestController
 @CrossOrigin
+@RestController
 public class LichChieuController {
 	
 	private LichChieuService lichChieuService;

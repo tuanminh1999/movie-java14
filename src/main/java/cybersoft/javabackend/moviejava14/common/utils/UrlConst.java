@@ -66,4 +66,8 @@ public class UrlConst {
 	//Lich Chieu
 	public static final String POST_LICH_CHIEU = "/api/QuanLyDatVe/TaoLichChieu";
 	
+	// Dat Ve
+	public static final String POST_DAT_VE = "/api/QuanLyDatVe/DatVe";
+	public static final String GET_DAT_VE = "/api/QuanLyDatVe/LayDanhSachPhongVe";
+	
 }

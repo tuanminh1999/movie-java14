@@ -19,8 +19,8 @@ import cybersoft.javabackend.moviejava14.lichchieu.dto.CreateLichChieuDTO;
 import cybersoft.javabackend.moviejava14.lichchieu.dto.LichChieuDTO;
 import cybersoft.javabackend.moviejava14.lichchieu.service.LichChieuService;
 
-@RestController
 @CrossOrigin
+@RestController
 public class LichChieuController {
 	
 	private LichChieuService lichChieuService;
@@ -43,7 +43,7 @@ public class LichChieuController {
 	@GetMapping(UrlConst.GET_THONG_TIN_LICH_CHIEU)
 	public Object getThongTinLichChieu(@RequestParam("MaPhim") int maPhim) {
 		Object o = lichChieuService.searchThongTinLichChieu(maPhim);
-		return new ResponseEntity<Object>(o, HttpStatus.OK); 
+		return new ResponseEntity<>(o, HttpStatus.OK); 
 	}
 	
 	@GetMapping(UrlConst.GET_THONG_TIN_LICH_CHIEU_HE_THONG_RAP)

@@ -4,6 +4,10 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import lombok.extern.slf4j.Slf4j;
@@ -46,5 +50,13 @@ public class DateFormatter {
 			return null;
 		}
 	}
+	
+	public static String getDate(Timestamp date) {
+        return date.toString().substring(0, 10);
+    }
+	
+	public static String getTime(Timestamp date) {
+        return date.toString().substring(11, 16);
+    }
 
 }

@@ -1,12 +1,20 @@
 package cybersoft.javabackend.moviejava14.nguoiDung.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
+import cybersoft.javabackend.moviejava14.datVe.entity.DatVe;
+import cybersoft.javabackend.moviejava14.ghe.entity.Ghe;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +28,11 @@ import lombok.Setter;
 public class NguoiDung extends BaseEntity {
 
 	private static final long serialVersionUID = 94647127648272572L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
 
 	@Column(name = "tai_khoan", unique = true)
 	private String taiKhoan;
@@ -40,4 +53,6 @@ public class NguoiDung extends BaseEntity {
 	@JoinColumn(name="loai_nguoi_dung_id")
 	private LoaiNguoiDung loaiNguoiDung;
   
+	@OneToMany(mappedBy = "taiKhoanNguoiDung")
+	private List<DatVe> dateVes;
 }

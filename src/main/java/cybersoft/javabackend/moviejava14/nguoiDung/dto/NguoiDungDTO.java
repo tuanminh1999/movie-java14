@@ -1,5 +1,7 @@
 package cybersoft.javabackend.moviejava14.nguoiDung.dto;
 
+import java.util.UUID;
+
 import cybersoft.javabackend.moviejava14.common.dto.BaseDTO;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +11,8 @@ import lombok.Setter;
 public class NguoiDungDTO extends BaseDTO {
 
 	private static final long serialVersionUID = 8859379178070216980L;
+	
+	private int id;
 	
 	private String taiKhoan;
 	

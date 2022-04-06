@@ -43,7 +43,7 @@ public class DatVeServiceImpl implements DatVeService{
 	private DatVeRepository datVeRepository;
 
 	@Override
-	public Object create(CreateDatVeDTO dto) {
+	public boolean create(CreateDatVeDTO dto) {
 		DatVe datVe = null;
 		for(DanhSachVeDTO o : dto.getDanhSachVe()) {
 			datVe = new DatVe();
@@ -55,6 +55,7 @@ public class DatVeServiceImpl implements DatVeService{
 			ghe.setDaDat(true);
 			gheRepository.save(ghe);
 			datVe.setGiaVe(o.getGiaVe());
+			datVeRepository.save(datVe);
 		}
 		
 //		Optional<LoaiNguoiDung> loaiNguoiDung = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
@@ -63,8 +64,7 @@ public class DatVeServiceImpl implements DatVeService{
 //		} else {
 //			nguoiDung.setLoaiNguoiDung(loaiNguoiDung.get());
 //		}
-		DatVe createDatVe = datVeRepository.save(datVe);
-		return createDatVe;
+		return true;
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class DatVeServiceImpl implements DatVeService{
 		thongTinPhimDTO.setTenPhim(lc.getPhim().getTenPhim());
 		thongTinPhimDTO.setHinhAnh(lc.getPhim().getHinhAnh());
 		thongTinPhimDTO.setDiaChi(lc.getRapLichChieu().getCumRap().getDiaChi());
-		thongTinPhimDTO.setNgayChieu(DateFormatter.getDate(lc.getNgayChieuGioChieu()));
+		thongTinPhimDTO.setNgayChieu(DateFormatter.convertIntoVietNameseDate(DateFormatter.getDate(lc.getNgayChieuGioChieu())));
 		thongTinPhimDTO.setGioChieu(DateFormatter.getTime(lc.getNgayChieuGioChieu()));
 		
 		List<DanhSachGheDTO> danhSachGheDTOList = new LinkedList<DanhSachGheDTO>();
@@ -89,7 +89,11 @@ public class DatVeServiceImpl implements DatVeService{
 			danhSachGheDTO.setTenGhe(o.getTenGhe());
 			danhSachGheDTO.setLoaiGhe(o.getLoaiGheEntity().getMaLoaiGhe());
 			danhSachGheDTO.setStt(o.getStt());
-			danhSachGheDTO.setGiaVe(lc.getGiaVe());
+			if(o.getLoaiGheEntity().getMaLoaiGhe().equals("Vip")) {
+				danhSachGheDTO.setGiaVe(lc.getGiaVe() * 2);
+			} else {
+				danhSachGheDTO.setGiaVe(lc.getGiaVe());
+			}
 			danhSachGheDTO.setDaDat(o.isDaDat());
 			for(DatVe o1 : datVeRepository.findByMaGhe(o).get()){
 				if(o.equals(o1.getMaGhe())) {

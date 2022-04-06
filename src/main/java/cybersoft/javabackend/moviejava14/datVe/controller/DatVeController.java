@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.datVe.dto.CreateDatVeDTO;
-import cybersoft.javabackend.moviejava14.datVe.dto.DatVeDTO;
 import cybersoft.javabackend.moviejava14.datVe.service.DatVeService;
 
 @CrossOrigin
@@ -32,9 +31,15 @@ public class DatVeController {
 //			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 //		}
 
-		Object createdDatVe = datVeService.create(dto);
+		String createdDatVe = "";
+		
+		if(datVeService.create(dto)) {
+			createdDatVe = "Đặt vé thành công";
+		} else {
+			createdDatVe = "Đặt vé thất bại";
+		}
 
-		return createdDatVe == null ? "Đặt vé thất bại" : "Đặt vé thành công";
+		return new ResponseEntity<>(createdDatVe, HttpStatus.OK); 
 	}
 	
 	@GetMapping(UrlConst.GET_DAT_VE)

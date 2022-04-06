@@ -12,7 +12,7 @@ public class CustomUserDetails extends User implements UserDetails {
 
 	private String hoTen;
 	private String email;
-	private String soDt;
+	private String soDT;
 	private String maLoaiNguoiDung;
 
 	public CustomUserDetails(String username, String password, Collection<? extends GrantedAuthority> authorities) {
@@ -36,12 +36,12 @@ public class CustomUserDetails extends User implements UserDetails {
 		this.email = email;
 	}
 
-	public String getSoDt() {
-		return soDt;
+	public String getSoDT() {
+		return soDT;
 	}
 
-	public void setSoDt(String soDt) {
-		this.soDt = soDt;
+	public void setSoDt(String soDT) {
+		this.soDT = soDT;
 	}
 
 	public String getMaLoaiNguoiDung() {

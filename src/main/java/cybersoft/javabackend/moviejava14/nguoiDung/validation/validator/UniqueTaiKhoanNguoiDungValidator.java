@@ -8,6 +8,7 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
+import cybersoft.javabackend.moviejava14.nguoiDung.repository.NguoiDungRepository;
 import cybersoft.javabackend.moviejava14.nguoiDung.service.NguoiDungService;
 import cybersoft.javabackend.moviejava14.nguoiDung.validation.annotation.UniqueTaiKhoanNguoiDung;
 
@@ -25,7 +26,7 @@ public class UniqueTaiKhoanNguoiDungValidator implements ConstraintValidator<Uni
 	
 	@Override
 	public boolean isValid(String taiKhoan, ConstraintValidatorContext context) {
-		Optional<NguoiDungDTO> nguoiDungOpt = nguoiDungService.getNguoiDungByTaiKhoan(taiKhoan);
+		NguoiDungDTO nguoiDungOpt = nguoiDungService.getNguoiDungByTaiKhoan(taiKhoan);
 		
 		if(nguoiDungOpt == null) {
 			return true;

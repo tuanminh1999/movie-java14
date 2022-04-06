@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.CreateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
+import cybersoft.javabackend.moviejava14.nguoiDung.dto.ThongTinTaiKhoanDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.UpdateNguoiDungDTO;
 
 public interface NguoiDungService {
@@ -18,7 +19,9 @@ public interface NguoiDungService {
 
 	Optional<NguoiDungDTO> getNguoiDungByEmail(String emailNguoiDung);
 	
-	Optional<NguoiDungDTO> getNguoiDungByTaiKhoan(String taiKhoan);
+	NguoiDungDTO getNguoiDungByTaiKhoan(String taiKhoan);
+	
+	ThongTinTaiKhoanDTO getThongTinTaiKhoanByTaiKhoan(String taiKhoan);
 	
 	Optional<NguoiDungDTO> getNguoiDungBySoDt(String soDt);
 

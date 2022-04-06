@@ -68,5 +68,6 @@ public class UrlConst {
 	
 	// Dat Ve
 	public static final String POST_DAT_VE = "/api/QuanLyDatVe/DatVe";
+	public static final String GET_DAT_VE = "/api/QuanLyDatVe/LayDanhSachPhongVe";
 	
 }

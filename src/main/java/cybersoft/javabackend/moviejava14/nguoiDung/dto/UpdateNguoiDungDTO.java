@@ -3,6 +3,7 @@ package cybersoft.javabackend.moviejava14.nguoiDung.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import cybersoft.javabackend.moviejava14.nguoiDung.validation.annotation.ExistedMaLoaiNguoiDung;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,6 +25,7 @@ public class UpdateNguoiDungDTO {
 	private String soDt;
 	
 	@NotBlank(message = "{loai_nguoi_dung.id.not_blank}")
+	@ExistedMaLoaiNguoiDung
 	private String maLoaiNguoiDung;
 
 }

@@ -24,24 +24,24 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 	}
 	
 	@Override
-	public Optional<LoaiNguoiDungDTO> getNguoiDungById(String id) {
+	public LoaiNguoiDungDTO getNguoiDungById(String id) {
 		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepository.findById(id);
 
 		if (!loaiNguoiDungOpt.isPresent()) {
 			return null;
 		}
 		
-		return Optional.ofNullable(LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(loaiNguoiDungOpt.get()));
+		return LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(loaiNguoiDungOpt.get());
 	}
 
 	@Override
-	public Optional<LoaiNguoiDungDTO> findByTenLoai(String tenLoai) {
+	public LoaiNguoiDungDTO findByTenLoai(String tenLoai) {
 		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepository.findByTenLoai(tenLoai);
 		if (!loaiNguoiDungOpt.isPresent()) {
 			return null;
 		}
 
-		return Optional.ofNullable(LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(loaiNguoiDungOpt.get()));
+		return LoaiNguoiDungMapper.INSTANCE.fromEntityToLoaiNguoiDungDTO(loaiNguoiDungOpt.get());
 	}
 
 	@Override

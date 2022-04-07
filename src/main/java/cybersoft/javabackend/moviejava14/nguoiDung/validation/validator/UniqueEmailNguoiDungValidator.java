@@ -7,14 +7,14 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
-import cybersoft.javabackend.moviejava14.nguoiDung.service.NguoiDungService;
+import cybersoft.javabackend.moviejava14.nguoiDung.entity.NguoiDung;
+import cybersoft.javabackend.moviejava14.nguoiDung.repository.NguoiDungRepository;
 import cybersoft.javabackend.moviejava14.nguoiDung.validation.annotation.UniqueEmailNguoiDung;
 
 public class UniqueEmailNguoiDungValidator implements ConstraintValidator<UniqueEmailNguoiDung, String>{
 
 	@Autowired
-	private NguoiDungService nguoiDungService;
+	private NguoiDungRepository nguoiDungRepository;
 	
 	private String message;
 	
@@ -26,9 +26,9 @@ public class UniqueEmailNguoiDungValidator implements ConstraintValidator<Unique
 	
 	@Override
 	public boolean isValid(String emailNguoiDung, ConstraintValidatorContext context) {
-		Optional<NguoiDungDTO> nguoiDungOpt = nguoiDungService.getNguoiDungByEmail(emailNguoiDung);
+		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByEmail(emailNguoiDung);
 		
-		if(nguoiDungOpt == null) {
+		if(!nguoiDungOpt.isPresent()) {
 			return true;
 		}
 		

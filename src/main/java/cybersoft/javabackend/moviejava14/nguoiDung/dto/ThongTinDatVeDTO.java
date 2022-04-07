@@ -1,7 +1,7 @@
 package cybersoft.javabackend.moviejava14.nguoiDung.dto;
 
 import java.sql.Timestamp;
-import java.util.Set;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ThongTinDatVeDTO {
-	private Set<DanhSachGheNguoiDungDTO> danhSachGhe;
+	private List<DanhSachGheNguoiDungDTO> danhSachGhe;
 	private int maVe;
 	private Timestamp ngayDat;
 	private String tenPhim;

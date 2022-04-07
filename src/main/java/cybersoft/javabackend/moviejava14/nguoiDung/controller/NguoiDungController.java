@@ -86,7 +86,7 @@ public class NguoiDungController {
 
 		NguoiDungDTO creatednguoiDung = nguoiDungService.create(dto);
 
-		return new ResponseEntity<Object>(creatednguoiDung, HttpStatus.OK);
+		return new ResponseEntity<>(creatednguoiDung, HttpStatus.OK);
 	}
 
 	@GetMapping(UrlConst.SEARCH_NGUOIDUNG)
@@ -120,7 +120,7 @@ public class NguoiDungController {
 	@PostMapping(UrlConst.GET_NGUOI_DUNG_FROM_TAIKHOAN)
 	public Object getNguoiDungByTaiKhoan(@RequestBody TaiKhoanNguoiDungDTO taiKhoanNguoiDungDTO) {
 		ThongTinTaiKhoanDTO thongTinTaiKhoanDTO = nguoiDungService.getThongTinTaiKhoanByTaiKhoan(taiKhoanNguoiDungDTO.getTaiKhoan());
-		return new ResponseEntity<Object>(thongTinTaiKhoanDTO, HttpStatus.OK);
+		return new ResponseEntity<>(thongTinTaiKhoanDTO, HttpStatus.OK);
 	}
 
 }

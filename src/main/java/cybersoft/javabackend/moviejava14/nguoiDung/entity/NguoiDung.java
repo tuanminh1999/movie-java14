@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.datVe.entity.DatVe;
-import cybersoft.javabackend.moviejava14.ghe.entity.Ghe;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

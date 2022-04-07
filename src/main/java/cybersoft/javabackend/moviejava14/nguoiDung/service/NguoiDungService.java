@@ -1,7 +1,6 @@
 package cybersoft.javabackend.moviejava14.nguoiDung.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.domain.Pageable;
 
@@ -16,15 +15,9 @@ public interface NguoiDungService {
 	NguoiDungDTO create(CreateNguoiDungDTO dto);
 
 	NguoiDungDTO update(UpdateNguoiDungDTO dto);
-
-	Optional<NguoiDungDTO> getNguoiDungByEmail(String emailNguoiDung);
-	
-	NguoiDungDTO getNguoiDungByTaiKhoan(String taiKhoan);
 	
 	ThongTinTaiKhoanDTO getThongTinTaiKhoanByTaiKhoan(String taiKhoan);
 	
-	Optional<NguoiDungDTO> getNguoiDungBySoDt(String soDt);
-
 	void delete(String taiKhoan);
 	
 	List<NguoiDungDTO> searchNguoiDung(String tuKhoa, Pageable pageable);

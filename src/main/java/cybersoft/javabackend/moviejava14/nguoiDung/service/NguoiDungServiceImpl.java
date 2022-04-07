@@ -1,10 +1,8 @@
 package cybersoft.javabackend.moviejava14.nguoiDung.service;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -41,17 +39,6 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	}
 
 	@Override
-	public Optional<NguoiDungDTO> getNguoiDungByEmail(String email) {
-		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByEmail(email);
-
-		if (!nguoiDungOpt.isPresent()) {
-			return null;
-		}
-
-		return Optional.ofNullable(NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(nguoiDungOpt.get()));
-	}
-
-	@Override
 	public ThongTinTaiKhoanDTO getThongTinTaiKhoanByTaiKhoan(String taiKhoan) {
 		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(taiKhoan);
 
@@ -71,9 +58,9 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 
 		List<ThongTinDatVeDTO> thongTinDatVeDTOs = new LinkedList<ThongTinDatVeDTO>();
 		ThongTinDatVeDTO thongTinDatVeDTO = null;
-		Set<DanhSachGheNguoiDungDTO> danhSachGheNguoiDungDTOs = null;
+		List<DanhSachGheNguoiDungDTO> danhSachGheNguoiDungDTOs = null;
 		for (DatVe o : nd.getDateVes()) {
-			danhSachGheNguoiDungDTOs = new HashSet<DanhSachGheNguoiDungDTO>();
+			danhSachGheNguoiDungDTOs = new LinkedList<DanhSachGheNguoiDungDTO>();
 			thongTinDatVeDTO = new ThongTinDatVeDTO();
 			DanhSachGheNguoiDungDTO danhSachGheNguoiDungDTO = new DanhSachGheNguoiDungDTO();
 			danhSachGheNguoiDungDTO.setMaHeThongRap(
@@ -101,23 +88,12 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	}
 
 	@Override
-	public Optional<NguoiDungDTO> getNguoiDungBySoDt(String soDT) {
-		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findBySoDt(soDT);
-
-		if (!nguoiDungOpt.isPresent()) {
-			return null;
-		}
-
-		return Optional.ofNullable(NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(nguoiDungOpt.get()));
-	}
-
-	@Override
 	public NguoiDungDTO create(CreateNguoiDungDTO dto) {
 		NguoiDung nguoiDung = NguoiDungMapper.INSTANCE.fromCreateNguoiDungDTOToEntity(dto);
 		nguoiDung.setMatKhau(encoder.encode(dto.getMatKhau()));
 		Optional<LoaiNguoiDung> loaiNguoiDung = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
 		if (!loaiNguoiDung.isPresent()) {
-			throw new InvalidDataException("Loại người dùng không tồn tại");
+			throw new InvalidDataException("Loại người dùng không tồn tại. ");
 		} else {
 			nguoiDung.setLoaiNguoiDung(loaiNguoiDung.get());
 		}
@@ -133,21 +109,21 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(dto.getTaiKhoan());
 
 		if (!nguoiDungOpt.isPresent()) {
-			throw new InvalidDataException("Tài khoản người dùng không tồn tại");
+			throw new InvalidDataException("Tài khoản người dùng không tồn tại. ");
 		}
 
 		NguoiDung nguoiDung = nguoiDungOpt.get();
 
 		if (!nguoiDung.getEmail().equals(dto.getEmail())) {
 			if (nguoiDungRepository.findByEmail(dto.getEmail()).isPresent()) {
-				throw new InvalidDataException("Email người dùng đã tồn tại");
+				throw new InvalidDataException("Email người dùng đã tồn tại. ");
 			}
 			nguoiDung.setEmail(dto.getEmail());
 		}
 
 		if (!nguoiDung.getSoDt().equals(dto.getSoDt())) {
 			if (nguoiDungRepository.findBySoDt(dto.getSoDt()).isPresent()) {
-				throw new InvalidDataException("Số điện thoại người dùng đã tồn tại");
+				throw new InvalidDataException("Số điện thoại người dùng đã tồn tại. ");
 			}
 			nguoiDung.setSoDt(dto.getSoDt());
 		}
@@ -157,7 +133,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		if (!nguoiDung.getLoaiNguoiDung().getMaLoaiNguoiDung().equals(dto.getMaLoaiNguoiDung())) {
 			Optional<LoaiNguoiDung> loaiNguoiDung = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
 			if (!loaiNguoiDung.isPresent()) {
-				throw new InvalidDataException("Loại người dùng không tồn tại");
+				throw new InvalidDataException("Loại người dùng không tồn tại. ");
 			} else {
 				nguoiDung.setLoaiNguoiDung(loaiNguoiDung.get());
 			}
@@ -175,7 +151,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(taiKhoan);
 
 		if (!nguoiDungOpt.isPresent()) {
-			throw new InvalidDataException("Tài khoản người dùng không tồn tại");
+			throw new InvalidDataException("Tài khoản người dùng không tồn tại. ");
 		}
 
 		nguoiDungRepository.delete(nguoiDungOpt.get());
@@ -215,17 +191,6 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		page.setTotalPages(totalPages);
 		page.setItems(nguoiDungs);
 		return page;
-	}
-
-	@Override
-	public NguoiDungDTO getNguoiDungByTaiKhoan(String taiKhoan) {
-		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(taiKhoan);
-
-		if (!nguoiDungOpt.isPresent()) {
-			return null;
-		}
-
-		return NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(nguoiDungOpt.get());
 	}
 
 }

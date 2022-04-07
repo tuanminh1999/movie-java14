@@ -1,21 +1,15 @@
 package cybersoft.javabackend.moviejava14.heThongRap.entity;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-
+import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +18,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "he_thong_rap")
-public class HeThongRap implements Serializable {
+public class HeThongRap extends BaseEntity {
 
 	private static final long serialVersionUID = 2503631661050612697L;
 	
@@ -32,32 +26,18 @@ public class HeThongRap implements Serializable {
 	@Column(name = "id")
 	private String maHeThongRap;
 	
-	@CreatedDate
-	@Column(name = "created_date")
-	private LocalDateTime createdDate;
-
-	@CreatedBy
-	@Column(name = "created_by")
-	private String createdBy;
-
-	@LastModifiedDate
-	@Column(name = "modified_date")
-	private LocalDateTime modifiedDate;
-
-	@LastModifiedBy
-	@Column(name = "modified_by")
-	private String modifiedBy;
-	
-	@Column(name="ten_he_thong_rap")
+	@Column(name="ten_he_thong_rap", unique = true)
+	@NotNull
 	private String tenHeThongRap;
 	
-	@Column(name="bi_danh")
+	@Column(name="bi_danh", unique = true)
+	@NotNull
 	private String biDanh;
 	
 	@Column(name="logo")
 	private String logo;
 	
-	@OneToMany(mappedBy = "heThongRap", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
+	@OneToMany(mappedBy = "heThongRap") 
 	private Set<CumRap> cumRaps;
 	
 }

@@ -15,7 +15,7 @@ import cybersoft.javabackend.moviejava14.nguoiDung.validation.validator.UniqueEm
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UniqueEmailNguoiDung {
 	
-	String message() default "Email người dùng đã được sử dụng";
+	String message() default "Email người dùng đã được sử dụng. ";
 	
 	Class<?>[] groups() default {};
 	

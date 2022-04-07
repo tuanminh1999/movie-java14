@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS nguoi_dung(
 	mat_khau varchar(255) not null,
 	email varchar(255) not null unique,
 	so_dien_thoai varchar(255) not null unique,
-	loai_nguoi_dung_id varchar(100),
+	loai_nguoi_dung_id varchar(100) not null,
 	primary key (id)
 );
 
@@ -32,7 +32,7 @@ ALTER TABLE nguoi_dung
 	VALUES ('KhachHang', null, '', null, '', 'Khách Hàng'),
 		   ('QuanTri', null, '', null, '', 'Quản Trị');
 
--- INSERT nguoi_dung
+-- INSERT nguoi_dung (mat_khau:123456789)
 	INSERT INTO nguoi_dung(created_date, created_by, modified_date, modified_by, 
 						   tai_khoan, ho_ten, mat_khau, email, so_dien_thoai, loai_nguoi_dung_id)
 	VALUES (null, '', null, '', 'tuanminh', 'Trương Tuấn Minh', '$2a$10$ovoPySZ0mVog7YDDpnk8felVUf4IC7UUKHfLxqUKIvyjo0RCUGNde', 'tuanminh01659889@gmail.com', '0359492889', 'QuanTri'),

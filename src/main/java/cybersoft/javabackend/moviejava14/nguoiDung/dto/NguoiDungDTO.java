@@ -1,7 +1,5 @@
 package cybersoft.javabackend.moviejava14.nguoiDung.dto;
 
-import java.util.UUID;
-
 import cybersoft.javabackend.moviejava14.common.dto.BaseDTO;
 import lombok.Getter;
 import lombok.Setter;

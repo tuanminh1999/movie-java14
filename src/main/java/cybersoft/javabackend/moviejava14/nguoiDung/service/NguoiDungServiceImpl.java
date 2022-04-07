@@ -9,12 +9,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
+import cybersoft.javabackend.moviejava14.common.exeption.ExistedDataException;
 import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
+import cybersoft.javabackend.moviejava14.datVe.entity.DatVe;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.repositoty.LoaiNguoiDungRepository;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.CreateNguoiDungDTO;
+import cybersoft.javabackend.moviejava14.nguoiDung.dto.DanhSachGheNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungMapper;
+import cybersoft.javabackend.moviejava14.nguoiDung.dto.ThongTinDatVeDTO;
+import cybersoft.javabackend.moviejava14.nguoiDung.dto.ThongTinTaiKhoanDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.UpdateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.entity.NguoiDung;
 import cybersoft.javabackend.moviejava14.nguoiDung.repository.NguoiDungRepository;
@@ -25,6 +30,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	private NguoiDungRepository nguoiDungRepository;
 	private LoaiNguoiDungRepository loaiNguoiDungRepository;
 	private PasswordEncoder encoder;
+	
 
 	public NguoiDungServiceImpl(NguoiDungRepository nguoiDungRepository, PasswordEncoder encoder,
 			LoaiNguoiDungRepository loaiNguoiDungRepository) {
@@ -34,47 +40,64 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	}
 
 	@Override
-	public Optional<NguoiDungDTO> getNguoiDungByEmail(String email) {
-		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByEmail(email);
-
-		if (!nguoiDungOpt.isPresent()) {
-			return null;
-		}
-
-		return Optional.ofNullable(NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(nguoiDungOpt.get()));
-	}
-
-	@Override
-	public Optional<NguoiDungDTO> getNguoiDungByTaiKhoan(String taiKhoan) {
+	public ThongTinTaiKhoanDTO getThongTinTaiKhoanByTaiKhoan(String taiKhoan) {
 		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(taiKhoan);
 
 		if (!nguoiDungOpt.isPresent()) {
 			return null;
 		}
 
-		return Optional.ofNullable(NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(nguoiDungOpt.get()));
-	}
+		NguoiDung nd = nguoiDungOpt.get();
 
-	@Override
-	public Optional<NguoiDungDTO> getNguoiDungBySoDt(String soDt) {
-		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findBySoDt(soDt);
+		ThongTinTaiKhoanDTO thongTinTaiKhoanDTO = new ThongTinTaiKhoanDTO();
+		thongTinTaiKhoanDTO.setTaiKhoan(nd.getTaiKhoan());
+		thongTinTaiKhoanDTO.setMatKhau(nd.getMatKhau());
+		thongTinTaiKhoanDTO.setHoTen(nd.getHoTen());
+		thongTinTaiKhoanDTO.setEmail(nd.getEmail());
+		thongTinTaiKhoanDTO.setSoDT(nd.getSoDt());
+		thongTinTaiKhoanDTO.setLoaiNguoiDung(nd.getLoaiNguoiDung().getTenLoai());
 
-		if (!nguoiDungOpt.isPresent()) {
-			return null;
+		List<ThongTinDatVeDTO> thongTinDatVeDTOs = new LinkedList<ThongTinDatVeDTO>();
+		ThongTinDatVeDTO thongTinDatVeDTO = null;
+		List<DanhSachGheNguoiDungDTO> danhSachGheNguoiDungDTOs = null;
+		for (DatVe o : nd.getDateVes()) {
+			danhSachGheNguoiDungDTOs = new LinkedList<DanhSachGheNguoiDungDTO>();
+			thongTinDatVeDTO = new ThongTinDatVeDTO();
+			DanhSachGheNguoiDungDTO danhSachGheNguoiDungDTO = new DanhSachGheNguoiDungDTO();
+			danhSachGheNguoiDungDTO.setMaHeThongRap(
+					o.getMaLichChieu().getRapLichChieu().getCumRap().getHeThongRap().getMaHeThongRap());
+			danhSachGheNguoiDungDTO.setTenHeThongRap(
+					o.getMaLichChieu().getRapLichChieu().getCumRap().getHeThongRap().getTenHeThongRap());
+			danhSachGheNguoiDungDTO.setMaCumRap(o.getMaLichChieu().getRapLichChieu().getCumRap().getMaCumRap());
+			danhSachGheNguoiDungDTO.setTenCumRap(o.getMaLichChieu().getRapLichChieu().getCumRap().getTenCumRap());
+			danhSachGheNguoiDungDTO.setMaRap(o.getMaLichChieu().getRapLichChieu().getMaRap());
+			danhSachGheNguoiDungDTO.setTenRap(o.getMaLichChieu().getRapLichChieu().getTenRap());
+			danhSachGheNguoiDungDTO.setMaGhe(o.getMaGhe().getMaGhe());
+			danhSachGheNguoiDungDTO.setTenGhe(o.getMaGhe().getTenGhe());
+			danhSachGheNguoiDungDTOs.add(danhSachGheNguoiDungDTO);
+			thongTinDatVeDTO.setMaVe(o.getId());
+			thongTinDatVeDTO.setNgayDat(o.getNgayDat());
+			thongTinDatVeDTO.setTenPhim(o.getMaLichChieu().getPhim().getTenPhim());
+			thongTinDatVeDTO.setGiaVe(o.getGiaVe());
+			thongTinDatVeDTO.setThoiLuongPhim(o.getMaLichChieu().getThoiLuong());
+			thongTinDatVeDTO.setDanhSachGhe(danhSachGheNguoiDungDTOs);
+			thongTinDatVeDTOs.add(thongTinDatVeDTO);
 		}
+		thongTinTaiKhoanDTO.setThongTinDatVe(thongTinDatVeDTOs);
+		return thongTinTaiKhoanDTO;
 
-		return Optional.ofNullable(NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(nguoiDungOpt.get()));
 	}
 
 	@Override
 	public NguoiDungDTO create(CreateNguoiDungDTO dto) {
 		NguoiDung nguoiDung = NguoiDungMapper.INSTANCE.fromCreateNguoiDungDTOToEntity(dto);
 		nguoiDung.setMatKhau(encoder.encode(dto.getMatKhau()));
-		Optional<LoaiNguoiDung> loaiNguoiDung = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
-		if (!loaiNguoiDung.isPresent()) {
-			throw new InvalidDataException("Loại người dùng không tồn tại");
+		
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
+		if (!loaiNguoiDungOpt.isPresent()) {
+			throw new InvalidDataException("Loại người dùng không tồn tại. ");
 		} else {
-			nguoiDung.setLoaiNguoiDung(loaiNguoiDung.get());
+			nguoiDung.setLoaiNguoiDung(loaiNguoiDungOpt.get());
 		}
 		NguoiDung createNguoiDung = nguoiDungRepository.save(nguoiDung);
 		NguoiDungDTO nguoiDungDTO = NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(createNguoiDung);
@@ -88,21 +111,21 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(dto.getTaiKhoan());
 
 		if (!nguoiDungOpt.isPresent()) {
-			throw new InvalidDataException("Tài khoản người dùng không tồn tại");
+			throw new InvalidDataException("Tài khoản người dùng không tồn tại. ");
 		}
 
 		NguoiDung nguoiDung = nguoiDungOpt.get();
 
 		if (!nguoiDung.getEmail().equals(dto.getEmail())) {
 			if (nguoiDungRepository.findByEmail(dto.getEmail()).isPresent()) {
-				throw new InvalidDataException("Email người dùng đã tồn tại");
+				throw new ExistedDataException("Email người dùng đã tồn tại. ");
 			}
 			nguoiDung.setEmail(dto.getEmail());
 		}
 
 		if (!nguoiDung.getSoDt().equals(dto.getSoDt())) {
 			if (nguoiDungRepository.findBySoDt(dto.getSoDt()).isPresent()) {
-				throw new InvalidDataException("Số điện thoại người dùng đã tồn tại");
+				throw new ExistedDataException("Số điện thoại người dùng đã tồn tại. ");
 			}
 			nguoiDung.setSoDt(dto.getSoDt());
 		}
@@ -112,7 +135,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		if (!nguoiDung.getLoaiNguoiDung().getMaLoaiNguoiDung().equals(dto.getMaLoaiNguoiDung())) {
 			Optional<LoaiNguoiDung> loaiNguoiDung = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
 			if (!loaiNguoiDung.isPresent()) {
-				throw new InvalidDataException("Loại người dùng không tồn tại");
+				throw new InvalidDataException("Loại người dùng không tồn tại. ");
 			} else {
 				nguoiDung.setLoaiNguoiDung(loaiNguoiDung.get());
 			}
@@ -130,7 +153,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(taiKhoan);
 
 		if (!nguoiDungOpt.isPresent()) {
-			throw new InvalidDataException("Tài khoản người dùng không tồn tại");
+			throw new InvalidDataException("Tài khoản người dùng không tồn tại. ");
 		}
 
 		nguoiDungRepository.delete(nguoiDungOpt.get());
@@ -140,7 +163,7 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	public List<NguoiDungDTO> searchNguoiDung(String tuKhoa, Pageable pageable) {
 		List<NguoiDung> nguoiDungs = null;
 		List<NguoiDungDTO> nguoiDungDTOs = new LinkedList<NguoiDungDTO>();
-		
+
 		if (tuKhoa != null && pageable == null) {
 			nguoiDungs = nguoiDungRepository.findByTaiKhoanContainingOrHoTenContaining(tuKhoa, tuKhoa);
 		} else if (tuKhoa == null && pageable != null) {

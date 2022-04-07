@@ -33,7 +33,7 @@ public class LoaiNguoiDungController{
 	@GetMapping(UrlConst.GET_LOAI_NGUOI_DUNG)
 	public Object getLoaiNguoiDung() {
 		List<LoaiNguoiDungDTO> loaiNguoiDungs = loaiNguoiDungService.findAll();
-		return new ResponseEntity<Object>(loaiNguoiDungs, HttpStatus.OK);
+		return new ResponseEntity<>(loaiNguoiDungs, HttpStatus.OK);
 	}
 	
 	@PostMapping(UrlConst.POST_LOAI_NGUOI_DUNG)
@@ -44,7 +44,7 @@ public class LoaiNguoiDungController{
 		
 		LoaiNguoiDungDTO createdLoaiNguoiDung = loaiNguoiDungService.create(dto);
 		
-		return new ResponseEntity<Object>(createdLoaiNguoiDung, HttpStatus.OK);
+		return new ResponseEntity<>(createdLoaiNguoiDung, HttpStatus.OK);
 	}
 
 	@PutMapping(UrlConst.PUT_LOAI_NGUOI_DUNG)
@@ -55,13 +55,13 @@ public class LoaiNguoiDungController{
 		
 		LoaiNguoiDungDTO updatedLoaiNguoiDung = loaiNguoiDungService.update(dto);
 		
-		return new ResponseEntity<Object>(updatedLoaiNguoiDung, HttpStatus.OK);
+		return new ResponseEntity<>(updatedLoaiNguoiDung, HttpStatus.OK);
 	}
 
 	@DeleteMapping(UrlConst.DELETE_LOAI_NGUOI_DUNG)
 	public Object deleteLoaiNguoiDung(String maLoaiNguoiDung) {
 		loaiNguoiDungService.delete(maLoaiNguoiDung);
-		return new ResponseEntity<Object>("Xoá loại người dùng thành công!", HttpStatus.OK);
+		return new ResponseEntity<>("Xoá loại người dùng thành công!", HttpStatus.OK);
 	}
 
 }

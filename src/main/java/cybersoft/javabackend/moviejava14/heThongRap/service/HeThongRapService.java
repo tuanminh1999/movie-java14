@@ -18,6 +18,6 @@ public interface HeThongRapService {
 
 	void delete(String maHeThongRap);
 
-	Set<CumRapDTO> findById(String maHeThong);
+	Set<CumRapDTO> getCumRapsById(String maHeThong);
 
 }

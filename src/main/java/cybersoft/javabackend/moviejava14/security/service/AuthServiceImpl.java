@@ -38,15 +38,15 @@ public class AuthServiceImpl implements AuthService {
 	public Object login(LoginDTO dto) {
 		
 		// 1. searcgh nguoiDung by taiKhoan and matKhau
-		Optional<NguoiDung> userOpt = nguoiDungRepository.findByTaiKhoan(
+		Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findByTaiKhoan(
 				dto.getTaiKhoan());
 		
 		// 2. if user is null return IncorrectLoginException
-		if (!userOpt.isPresent()) {
+		if (!nguoiDungOpt.isPresent()) {
 			throw new MovieIncorrectLoginException("Tài khoản hoặc mật khẩu không đúng");
 		}
 		
-		String encodedPassword = userOpt.get().getMatKhau();
+		String encodedPassword = nguoiDungOpt.get().getMatKhau();
 		
 		if (!encoder.matches(dto.getMatKhau(), encodedPassword)) {
 			throw new MovieIncorrectLoginException("Tài khoản hoặc mật khẩu không đúng");
@@ -67,7 +67,7 @@ public class AuthServiceImpl implements AuthService {
 		map.put("taiKhoan", user.getUsername());
 		map.put("hoTen", user.getHoTen());
 		map.put("email", user.getEmail());
-		map.put("soDt", user.getSoDt());
+		map.put("soDT", user.getSoDT());
 		map.put("maLoaiNguoiDung", user.getMaLoaiNguoiDung());
 		map.put("accessToken", token);
 		

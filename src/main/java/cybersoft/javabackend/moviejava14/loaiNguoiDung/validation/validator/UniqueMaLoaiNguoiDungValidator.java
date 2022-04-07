@@ -7,14 +7,14 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungDTO;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.service.LoaiNguoiDungService;
+import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
+import cybersoft.javabackend.moviejava14.loaiNguoiDung.repositoty.LoaiNguoiDungRepository;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation.UniqueMaLoaiNguoiDung;
 
 public class UniqueMaLoaiNguoiDungValidator implements ConstraintValidator<UniqueMaLoaiNguoiDung, String> {
 
 	@Autowired
-	private LoaiNguoiDungService loaiNguoiDungService;
+	private LoaiNguoiDungRepository loaiNguoiDungRepository;
 	
 	private String message;
 	
@@ -26,9 +26,9 @@ public class UniqueMaLoaiNguoiDungValidator implements ConstraintValidator<Uniqu
 	
 	@Override
 	public boolean isValid(String maLoaiNguoiDung, ConstraintValidatorContext context) {
-		Optional<LoaiNguoiDungDTO> roleOpt = loaiNguoiDungService.getNguoiDungById(maLoaiNguoiDung);
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepository.findById(maLoaiNguoiDung);
 		
-		if(roleOpt == null) {
+		if(!loaiNguoiDungOpt.isPresent()) {
 			return true;
 		}
 		

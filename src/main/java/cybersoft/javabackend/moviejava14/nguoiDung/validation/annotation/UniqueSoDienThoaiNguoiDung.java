@@ -15,7 +15,7 @@ import cybersoft.javabackend.moviejava14.nguoiDung.validation.validator.UniqueSo
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UniqueSoDienThoaiNguoiDung {
 	
-	String message() default "Số điện thoại người dùng đã được sử dụng";
+	String message() default "Số điện thoại người dùng đã được sử dụng. ";
 	
 	Class<?>[] groups() default {};
 	

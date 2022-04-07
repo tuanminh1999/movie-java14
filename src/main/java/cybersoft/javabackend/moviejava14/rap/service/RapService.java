@@ -1,7 +1,6 @@
 package cybersoft.javabackend.moviejava14.rap.service;
 
 import java.util.List;
-import java.util.UUID;
 
 import cybersoft.javabackend.moviejava14.rap.dto.CreateRapDTO;
 import cybersoft.javabackend.moviejava14.rap.dto.RapDTO;

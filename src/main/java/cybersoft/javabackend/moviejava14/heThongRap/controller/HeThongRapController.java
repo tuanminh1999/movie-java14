@@ -40,11 +40,11 @@ public class HeThongRapController {
 	
 	@GetMapping(UrlConst.GET_THONG_TIN_CUM_RAP_THEO_HE_THONG)
 	public Object getCumRapTheoHeThongRap(String maHeThongRap) {
-		Set<CumRapDTO> cumRaps = heThongRapService.findById(maHeThongRap);
+		Set<CumRapDTO> cumRaps = heThongRapService.getCumRapsById(maHeThongRap);
 		return new ResponseEntity<Object>(cumRaps, HttpStatus.OK);
 	}
 	
-	// chua valid
+	
 	@PostMapping(UrlConst.POST_HT_RAP)
 	public Object createHeThongRap(@RequestBody CreateHeThongRapDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
@@ -56,7 +56,6 @@ public class HeThongRapController {
 		return new ResponseEntity<Object>(createdheThongRapDTO,HttpStatus.OK);
 	}
 	
-	// chua valid
 	@PutMapping(UrlConst.PUT_HT_RAP)
 	public Object updateHeThongRap(@RequestBody UpdateHeThongRapDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {

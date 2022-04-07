@@ -1,6 +1,5 @@
 package cybersoft.javabackend.moviejava14.rap.entity;
 
-import java.time.LocalDateTime;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,11 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-
+import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
 import cybersoft.javabackend.moviejava14.ghe.entity.Ghe;
 import cybersoft.javabackend.moviejava14.lichchieu.entity.LichChieu;
@@ -27,27 +22,13 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "rap")
-public class Rap{
+public class Rap extends BaseEntity{
 	
+	private static final long serialVersionUID = -3185533762721286682L;
+
 	@Id
 	@Column (name = "id")
 	private String maRap;
-	
-	@CreatedDate
-	@Column(name = "created_date")
-	private LocalDateTime createdDate;
-
-	@CreatedBy
-	@Column(name = "created_by")
-	private String createdBy;
-
-	@LastModifiedDate
-	@Column(name = "modified_date")
-	private LocalDateTime modifiedDate;
-
-	@LastModifiedBy
-	@Column(name = "modified_by")
-	private String modifiedBy;
 	
 	@Column(name = "ten_rap")
 	private String tenRap;

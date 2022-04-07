@@ -24,6 +24,8 @@ import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.CreateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
+import cybersoft.javabackend.moviejava14.nguoiDung.dto.TaiKhoanNguoiDungDTO;
+import cybersoft.javabackend.moviejava14.nguoiDung.dto.ThongTinTaiKhoanDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.dto.UpdateNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.nguoiDung.service.NguoiDungService;
 
@@ -84,7 +86,7 @@ public class NguoiDungController {
 
 		NguoiDungDTO creatednguoiDung = nguoiDungService.create(dto);
 
-		return new ResponseEntity<Object>(creatednguoiDung, HttpStatus.OK);
+		return new ResponseEntity<>(creatednguoiDung, HttpStatus.OK);
 	}
 
 	@GetMapping(UrlConst.SEARCH_NGUOIDUNG)
@@ -115,10 +117,10 @@ public class NguoiDungController {
 		return new ResponseEntity<>(nguoiDungs, HttpStatus.OK);
 	}
 
-//	@PostMapping(UrlConst.GET_NGUOI_DUNG_FROM_TAIKHOAN)
-//	public Object getNguoiDungByTaiKhoan(@RequestBody TaiKhoanNguoiDungDTO taiKhoanNguoiDungDTO) {
-//		Optional<NguoiDungDTO> nguoiDungDTO = nguoiDungService.getNguoiDungByTaiKhoan(taiKhoanNguoiDungDTO.getTaiKhoan());
-//		return new ResponseEntity<Object>(nguoiDungDTO, HttpStatus.OK);
-//	}
+	@PostMapping(UrlConst.GET_NGUOI_DUNG_FROM_TAIKHOAN)
+	public Object getNguoiDungByTaiKhoan(@RequestBody TaiKhoanNguoiDungDTO taiKhoanNguoiDungDTO) {
+		ThongTinTaiKhoanDTO thongTinTaiKhoanDTO = nguoiDungService.getThongTinTaiKhoanByTaiKhoan(taiKhoanNguoiDungDTO.getTaiKhoan());
+		return new ResponseEntity<>(thongTinTaiKhoanDTO, HttpStatus.OK);
+	}
 
 }

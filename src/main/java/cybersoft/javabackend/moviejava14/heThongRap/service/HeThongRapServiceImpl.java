@@ -57,13 +57,21 @@ public class HeThongRapServiceImpl implements HeThongRapService{
 		HeThongRap heThongRap = heThongRapOpt.get();
 		
 		if (!heThongRap.getTenHeThongRap().equals(dto.getTenHeThongRap())) {
-			// check ten he thong da ton tai chua
+			
 			if (heThongRapRepository.findByTenHeThongRap(dto.getTenHeThongRap()).isPresent()) {
 				throw new InvalidDataException("Tên hệ thống rạp đã tồn tại");
 			}
 			heThongRap.setTenHeThongRap(dto.getTenHeThongRap());
-			
 		}
+		
+		if (!heThongRap.getTenHeThongRap().equals(dto.getBiDanh())) {
+			
+			if (heThongRapRepository.findByBiDanh(dto.getBiDanh()).isPresent()) {
+				throw new InvalidDataException("Tên hệ thống rạp đã tồn tại");
+			}
+			heThongRap.setBiDanh(dto.getBiDanh());
+		}
+		
 		heThongRap.setBiDanh(dto.getBiDanh());
 		heThongRap.setLogo(dto.getLogo());
 		
@@ -84,7 +92,7 @@ public class HeThongRapServiceImpl implements HeThongRapService{
 	}
 
 	@Override
-	public Set<CumRapDTO> findById(String maHeThong) {
+	public Set<CumRapDTO> getCumRapsById(String maHeThong) {
 		Optional<HeThongRap> heThongRapOpt = heThongRapRepository.findById(maHeThong);
 		
 		if (!heThongRapOpt.isPresent()) {

@@ -14,7 +14,7 @@ import cybersoft.javabackend.moviejava14.nguoiDung.validation.validator.UniqueTa
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UniqueTaiKhoanNguoiDung {
-	String message() default "Tài khoản người dùng đã được sử dụng";
+	String message() default "Tài khoản người dùng đã được sử dụng. ";
 	
 	Class<?>[] groups() default {};
 	

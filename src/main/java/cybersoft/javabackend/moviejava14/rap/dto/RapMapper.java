@@ -7,6 +7,7 @@ import cybersoft.javabackend.moviejava14.rap.entity.Rap;
 
 @Mapper
 public interface RapMapper {
+	
 	RapMapper INSTANCE = Mappers.getMapper(RapMapper.class);
 	
 	RapDTO fromEntitytoRapDTO (Rap rap);

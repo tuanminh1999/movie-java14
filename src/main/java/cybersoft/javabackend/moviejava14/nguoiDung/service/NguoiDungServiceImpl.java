@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
+import cybersoft.javabackend.moviejava14.common.exeption.ExistedDataException;
 import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.datVe.entity.DatVe;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
@@ -91,11 +92,12 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 	public NguoiDungDTO create(CreateNguoiDungDTO dto) {
 		NguoiDung nguoiDung = NguoiDungMapper.INSTANCE.fromCreateNguoiDungDTOToEntity(dto);
 		nguoiDung.setMatKhau(encoder.encode(dto.getMatKhau()));
-		Optional<LoaiNguoiDung> loaiNguoiDung = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
-		if (!loaiNguoiDung.isPresent()) {
+		
+		Optional<LoaiNguoiDung> loaiNguoiDungOpt = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
+		if (!loaiNguoiDungOpt.isPresent()) {
 			throw new InvalidDataException("Loại người dùng không tồn tại. ");
 		} else {
-			nguoiDung.setLoaiNguoiDung(loaiNguoiDung.get());
+			nguoiDung.setLoaiNguoiDung(loaiNguoiDungOpt.get());
 		}
 		NguoiDung createNguoiDung = nguoiDungRepository.save(nguoiDung);
 		NguoiDungDTO nguoiDungDTO = NguoiDungMapper.INSTANCE.fromEntityToNguoiDungDTO(createNguoiDung);
@@ -116,14 +118,14 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 
 		if (!nguoiDung.getEmail().equals(dto.getEmail())) {
 			if (nguoiDungRepository.findByEmail(dto.getEmail()).isPresent()) {
-				throw new InvalidDataException("Email người dùng đã tồn tại. ");
+				throw new ExistedDataException("Email người dùng đã tồn tại. ");
 			}
 			nguoiDung.setEmail(dto.getEmail());
 		}
 
 		if (!nguoiDung.getSoDt().equals(dto.getSoDt())) {
 			if (nguoiDungRepository.findBySoDt(dto.getSoDt()).isPresent()) {
-				throw new InvalidDataException("Số điện thoại người dùng đã tồn tại. ");
+				throw new ExistedDataException("Số điện thoại người dùng đã tồn tại. ");
 			}
 			nguoiDung.setSoDt(dto.getSoDt());
 		}

@@ -1,16 +1,19 @@
 package cybersoft.javabackend.moviejava14.rap.dto;
 
-import java.util.UUID;
-
+import cybersoft.javabackend.moviejava14.common.dto.BaseDTO;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
-public class RapDTO {
+public class RapDTO extends BaseDTO {
+
+	private static final long serialVersionUID = 6406279914445291101L;
+
 	private String maRap;
-	
+
 	private String tenRap;
+	
+	private String maCumRap;
+	
 }

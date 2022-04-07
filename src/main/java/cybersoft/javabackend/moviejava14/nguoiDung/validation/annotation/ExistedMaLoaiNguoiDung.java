@@ -14,7 +14,7 @@ import cybersoft.javabackend.moviejava14.nguoiDung.validation.validator.ExistedM
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ExistedMaLoaiNguoiDung {
-	String message() default "Mã loại người dùng không tồn tại";
+	String message() default "Mã loại người dùng không tồn tại. ";
 	
 	Class<?>[] groups() default {};
 	

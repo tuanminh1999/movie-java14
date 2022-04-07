@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import cybersoft.javabackend.moviejava14.common.exeption.ExistedDataException;
 import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.CreateLoaiNguoiDungDTO;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.LoaiNguoiDungDTO;
@@ -71,7 +72,7 @@ public class LoaiNguoiDungServiceImpl implements LoaiNguoiDungService {
 		
 		if(!loaiNguoiDung.getTenLoai().equals(dto.getTenLoai())) {
 			if (loaiNguoiDungRepository.findByTenLoai(dto.getTenLoai()).isPresent()) {
-				throw new InvalidDataException("Tên loại người dùng đã tồn tại");
+				throw new ExistedDataException("Tên loại người dùng đã tồn tại");
 			}
 			loaiNguoiDung.setTenLoai(dto.getTenLoai());
 		}

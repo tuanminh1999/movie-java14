@@ -12,7 +12,7 @@ import cybersoft.javabackend.moviejava14.rap.entity.Rap;
 @Repository
 public interface RapRepository extends JpaRepository<Rap, String>{
 
-	boolean findByTenRap(String tenRap);
+	Optional<Rap> findByTenRap(String tenRap);
 
 	Optional<List<Rap>> findByCumRap(CumRap byId);
 	

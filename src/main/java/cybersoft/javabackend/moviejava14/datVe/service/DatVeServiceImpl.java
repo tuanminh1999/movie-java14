@@ -3,12 +3,10 @@ package cybersoft.javabackend.moviejava14.datVe.service;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.common.utils.DateFormatter;
 import cybersoft.javabackend.moviejava14.datVe.dto.CreateDatVeDTO;
 import cybersoft.javabackend.moviejava14.datVe.dto.DanhSachGheDTO;
@@ -21,10 +19,6 @@ import cybersoft.javabackend.moviejava14.ghe.entity.Ghe;
 import cybersoft.javabackend.moviejava14.ghe.repository.GheRepository;
 import cybersoft.javabackend.moviejava14.lichchieu.entity.LichChieu;
 import cybersoft.javabackend.moviejava14.lichchieu.repository.LichChieuRepository;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
-import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungDTO;
-import cybersoft.javabackend.moviejava14.nguoiDung.dto.NguoiDungMapper;
-import cybersoft.javabackend.moviejava14.nguoiDung.entity.NguoiDung;
 import cybersoft.javabackend.moviejava14.nguoiDung.repository.NguoiDungRepository;
 
 @Service
@@ -51,19 +45,9 @@ public class DatVeServiceImpl implements DatVeService{
 			datVe.setMaLichChieu(lichChieuRepository.findById(dto.getMaLichChieu()).get());
 			datVe.setTaiKhoanNguoiDung(nguoiDungRepository.findByTaiKhoan(dto.getTaiKhoanNguoiDung()).get());
 			datVe.setMaGhe(gheRepository.findById(o.getMaGhe()).get());
-			Ghe ghe = datVe.getMaGhe();
-			ghe.setDaDat(true);
-			gheRepository.save(ghe);
 			datVe.setGiaVe(o.getGiaVe());
 			datVeRepository.save(datVe);
 		}
-		
-//		Optional<LoaiNguoiDung> loaiNguoiDung = loaiNguoiDungRepository.findById(dto.getMaLoaiNguoiDung());
-//		if (!loaiNguoiDung.isPresent()) {
-//			throw new InvalidDataException("Loại người dùng không tồn tại");
-//		} else {
-//			nguoiDung.setLoaiNguoiDung(loaiNguoiDung.get());
-//		}
 		return true;
 	}
 
@@ -94,11 +78,13 @@ public class DatVeServiceImpl implements DatVeService{
 			} else {
 				danhSachGheDTO.setGiaVe(lc.getGiaVe());
 			}
-			danhSachGheDTO.setDaDat(o.isDaDat());
+			
 			for(DatVe o1 : datVeRepository.findByMaGhe(o).get()){
-				if(o.equals(o1.getMaGhe())) {
+				if(o.equals(o1.getMaGhe()) && lc.getMaLichChieu() == o1.getMaLichChieu().getMaLichChieu()) {
+					danhSachGheDTO.setDaDat(true);
 					danhSachGheDTO.setTaiKhoanNguoiDat(o1.getTaiKhoanNguoiDung().getTaiKhoan());
 				} else {
+					danhSachGheDTO.setDaDat(false);
 					danhSachGheDTO.setTaiKhoanNguoiDat(null);
 				}
 			}

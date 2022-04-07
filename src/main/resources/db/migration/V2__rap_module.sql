@@ -4,8 +4,8 @@ CREATE TABLE IF NOT EXISTS he_thong_rap(
 	created_by varchar(36),
 	modified_date timestamp,
 	modified_by varchar(36),
-	ten_he_thong_rap varchar(255),
-	bi_danh varchar(255),
+	ten_he_thong_rap varchar(255) not null unique,
+	bi_danh varchar(255) not null unique,
 	logo varchar(255),
 	primary key (id)
 );
@@ -16,9 +16,9 @@ CREATE TABLE IF NOT EXISTS cum_rap(
 	created_by varchar(36),
 	modified_date timestamp,
 	modified_by varchar(36),
-	ten_cum_rap varchar(255),
-	dia_chi varchar(255),
-	he_thong_rap_id varchar(255),
+	ten_cum_rap varchar(255) not null unique,
+	dia_chi varchar(255) not null unique,
+	he_thong_rap_id varchar(255) not null,
 	primary key (id)
 );
 
@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS rap(
 	created_by varchar(36),
 	modified_date timestamp,
 	modified_by varchar(36),
-	ten_rap varchar(255),
-	cum_rap_id varchar(255),
+	ten_rap varchar(255) not null,
+	cum_rap_id varchar(255) not null,
 	primary key (id)
 );
 

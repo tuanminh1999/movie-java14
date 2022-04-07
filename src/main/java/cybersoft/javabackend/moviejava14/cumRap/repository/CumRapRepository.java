@@ -13,7 +13,9 @@ import cybersoft.javabackend.moviejava14.heThongRap.entity.HeThongRap;
 @Repository
 public interface CumRapRepository extends JpaRepository<CumRap, String> {
 
-	boolean findByTenCumRap(String tenCumRap);
+	Optional<CumRap> findByTenCumRap(String tenCumRap);
+	
+	Optional<CumRap> findByDiaChi(String diaChi);
 
 	Optional<List<CumRap>> findByHeThongRap(HeThongRap heThongRap);
 

@@ -2,7 +2,8 @@ package cybersoft.javabackend.moviejava14.cumRap.dto;
 
 import javax.validation.constraints.NotNull;
 
-import cybersoft.javabackend.moviejava14.cumRap.validation.anotation.ExistedMaHeThongRap;
+import cybersoft.javabackend.moviejava14.cumRap.validation.anotation.ExistedMaCumRap;
+import cybersoft.javabackend.moviejava14.heThongRap.validation.anotation.ExistedMaHeThongRap;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import lombok.Setter;
 public class UpdateCumRapDTO {
 	
 	@NotNull(message = "{cum_rap.ma.not-blank}")
+	@ExistedMaCumRap
 	private String maCumRap;
 	
 	@NotNull(message = "{cum_rap.ten.not-blank}")

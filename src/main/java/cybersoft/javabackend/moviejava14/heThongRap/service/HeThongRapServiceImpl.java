@@ -99,7 +99,7 @@ public class HeThongRapServiceImpl implements HeThongRapService{
 			throw new InvalidDataException("Mã hệ thống rạp không tồn tại");
 		}
 		
-		Set<CumRap> cumRapList = heThongRapOpt.get().getCumRaps();
+		Set<CumRap> cumRapList = heThongRapOpt.get().getDanhSachCumRap();
 		
 		return cumRapList.stream().map(o -> CumRapMapper.INSTANCE.fromEntityToCumRapDTO(o)).collect(Collectors.toSet());
 		

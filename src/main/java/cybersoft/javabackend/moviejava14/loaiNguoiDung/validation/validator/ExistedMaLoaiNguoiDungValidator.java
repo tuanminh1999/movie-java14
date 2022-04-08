@@ -1,4 +1,4 @@
-package cybersoft.javabackend.moviejava14.nguoiDung.validation.validator;
+package cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.validator;
 
 import java.util.Optional;
 
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.repositoty.LoaiNguoiDungRepository;
-import cybersoft.javabackend.moviejava14.nguoiDung.validation.annotation.ExistedMaLoaiNguoiDung;
+import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation.ExistedMaLoaiNguoiDung;
 
 public class ExistedMaLoaiNguoiDungValidator implements ConstraintValidator<ExistedMaLoaiNguoiDung, String>{
 	

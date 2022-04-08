@@ -2,7 +2,7 @@ package cybersoft.javabackend.moviejava14.rap.dto;
 
 import javax.validation.constraints.NotNull;
 
-import cybersoft.javabackend.moviejava14.rap.validation.anotation.ExistedMaCumRap;
+import cybersoft.javabackend.moviejava14.cumRap.validation.anotation.ExistedMaCumRap;
 import cybersoft.javabackend.moviejava14.rap.validation.anotation.UniqueMaRap;
 import cybersoft.javabackend.moviejava14.rap.validation.anotation.UniqueTenRap;
 import lombok.Getter;

@@ -3,6 +3,7 @@ package cybersoft.javabackend.moviejava14.loaiNguoiDung.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -31,6 +32,6 @@ public class LoaiNguoiDung extends BaseEntity{
 	@NotNull
 	private String tenLoai;
 
-	@OneToMany(mappedBy = "loaiNguoiDung")
+	@OneToMany(mappedBy = "loaiNguoiDung", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	private Set<NguoiDung> danhSachNguoiDung = new HashSet<NguoiDung>();
 }

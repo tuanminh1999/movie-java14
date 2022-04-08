@@ -4,8 +4,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import cybersoft.javabackend.moviejava14.loaiGhe.entity.LoaiGhe;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.dto.CreateLoaiNguoiDungDTO;
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
 
 @Mapper
 public interface LoaiGheMapper {

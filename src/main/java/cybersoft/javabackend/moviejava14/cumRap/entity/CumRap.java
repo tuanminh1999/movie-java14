@@ -3,6 +3,7 @@ package cybersoft.javabackend.moviejava14.cumRap.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -43,6 +44,6 @@ public class CumRap extends BaseEntity {
 	@NotNull
 	private HeThongRap heThongRap;
 	
-	@OneToMany(mappedBy = "cumRap")
+	@OneToMany(mappedBy = "cumRap", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	private Set<Rap> danhSachRap = new HashSet<Rap>();
 }

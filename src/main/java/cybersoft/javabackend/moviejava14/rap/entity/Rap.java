@@ -38,8 +38,8 @@ public class Rap extends BaseEntity{
 	private CumRap cumRap;
 	
 	@OneToMany(mappedBy = "rap")
-	private Set<Ghe> ghes;
+	private Set<Ghe> danhSachGhe;
 	
 	@OneToMany(mappedBy = "rapLichChieu", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
-	private Set<LichChieu> lichChieuRaps;
+	private Set<LichChieu> danhSachLichChieu;
 }

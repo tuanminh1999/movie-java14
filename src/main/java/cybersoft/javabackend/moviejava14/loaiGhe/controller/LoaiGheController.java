@@ -1,7 +1,6 @@
 package cybersoft.javabackend.moviejava14.loaiGhe.controller;
 
 import java.util.List;
-import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -56,9 +55,9 @@ public class LoaiGheController {
 	}
 
 	@DeleteMapping(UrlConst.DELETE_LOAI_GHE)
-	public Object deleteLoaiGhe(UUID id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Object deleteLoaiGhe(String id) {
+		loaiGheService.delete(id);
+		return new ResponseEntity<>("Xoá loại ghế thành công!", HttpStatus.OK);
 	}
 
 	

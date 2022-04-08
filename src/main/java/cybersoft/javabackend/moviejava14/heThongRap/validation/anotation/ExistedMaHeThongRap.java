@@ -1,4 +1,4 @@
-package cybersoft.javabackend.moviejava14.nguoiDung.validation.annotation;
+package cybersoft.javabackend.moviejava14.heThongRap.validation.anotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,13 +8,14 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import cybersoft.javabackend.moviejava14.nguoiDung.validation.validator.ExistedMaLoaiNguoiDungValidator;
+import cybersoft.javabackend.moviejava14.heThongRap.validation.validator.ExistedMaHeThongRapValidator;
 
-@Constraint(validatedBy = ExistedMaLoaiNguoiDungValidator.class)
+@Constraint(validatedBy = ExistedMaHeThongRapValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ExistedMaLoaiNguoiDung {
-	String message() default "Mã loại người dùng không tồn tại. ";
+public @interface ExistedMaHeThongRap {
+	
+	String message() default "Mã hệ thống rạp không tồn tại. ";
 	
 	Class<?>[] groups() default {};
 	

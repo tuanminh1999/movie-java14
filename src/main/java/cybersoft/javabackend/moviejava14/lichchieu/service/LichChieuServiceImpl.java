@@ -170,8 +170,8 @@ public class LichChieuServiceImpl implements LichChieuService {
 		List<LichChieu> lichChieus = new ArrayList<LichChieu>();
 
 		for (Rap o : raps) {
-			if (o.getLichChieuRaps() != null) {
-				for (LichChieu lc : o.getLichChieuRaps()) {
+			if (o.getDanhSachLichChieu() != null) {
+				for (LichChieu lc : o.getDanhSachLichChieu()) {
 					lichChieus.add(lc);
 				}
 			}
@@ -229,7 +229,7 @@ public class LichChieuServiceImpl implements LichChieuService {
 		List<CumRapChieuHeThongRapDTO> cumRapChieuHeThongRapList = null;
 
 		for (HeThongRap o : heThongRaps) {
-			Set<CumRap> cumRaps = o.getCumRaps();
+			Set<CumRap> cumRaps = o.getDanhSachCumRap();
 			cumRapChieuHeThongRapList = new ArrayList<CumRapChieuHeThongRapDTO>();
 			thongTinLichChieuHeThongRapDTO = new ThongTinLichChieuHeThongRapDTO();
 
@@ -255,8 +255,8 @@ public class LichChieuServiceImpl implements LichChieuService {
 				
 				lichChieus = new ArrayList<LichChieu>();
 				for (Rap o2 : raps) {
-					if (o2.getLichChieuRaps() != null) {
-						for (LichChieu lc : o2.getLichChieuRaps()) {
+					if (o2.getDanhSachLichChieu() != null) {
+						for (LichChieu lc : o2.getDanhSachLichChieu()) {
 							lichChieus.add(lc);
 						}
 					}

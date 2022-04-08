@@ -1,4 +1,4 @@
-package cybersoft.javabackend.moviejava14.cumRap.validation.validator;
+package cybersoft.javabackend.moviejava14.heThongRap.validation.validator;
 
 import java.util.Optional;
 
@@ -7,9 +7,9 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cybersoft.javabackend.moviejava14.cumRap.validation.anotation.ExistedMaHeThongRap;
 import cybersoft.javabackend.moviejava14.heThongRap.entity.HeThongRap;
 import cybersoft.javabackend.moviejava14.heThongRap.repository.HeThongRapRepository;
+import cybersoft.javabackend.moviejava14.heThongRap.validation.anotation.ExistedMaHeThongRap;
 
 public class ExistedMaHeThongRapValidator implements ConstraintValidator<ExistedMaHeThongRap, String>{
 	

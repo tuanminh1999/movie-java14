@@ -14,6 +14,6 @@ public interface RapRepository extends JpaRepository<Rap, String>{
 
 	Optional<Rap> findByTenRap(String tenRap);
 
-	Optional<List<Rap>> findByCumRap(CumRap byId);
+	Optional<List<Rap>> findByCumRap(CumRap cumRap);
 	
 }

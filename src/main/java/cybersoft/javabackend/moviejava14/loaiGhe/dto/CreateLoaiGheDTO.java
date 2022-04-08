@@ -1,9 +1,9 @@
 package cybersoft.javabackend.moviejava14.loaiGhe.dto;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
-import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation.UniqueTenLoaiNguoiDung;
+import cybersoft.javabackend.moviejava14.loaiGhe.validation.annotation.UniqueMaLoaiGhe;
+import cybersoft.javabackend.moviejava14.loaiGhe.validation.annotation.UniqueTenLoaiGhe;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,12 +11,12 @@ import lombok.Setter;
 @Setter
 public class CreateLoaiGheDTO {
 	
-	@NotBlank
+	@NotBlank(message = "{loai_ghe.id.not_blank}")
+	@UniqueMaLoaiGhe
 	private String maLoaiGhe;
 
-	@NotBlank(message = "{loai_ghe.not_blank}")
-	@Size(min = 3, max = 50, message = "{loai_ghe.ten.size}")
-	@UniqueTenLoaiNguoiDung(message = "{{loai_ghe.ten.unique}")
+	@NotBlank(message = "{loai_ghe.ten.not_blank}")
+	@UniqueTenLoaiGhe
 	private String tenLoaiGhe;
 	
 	private String moTa;

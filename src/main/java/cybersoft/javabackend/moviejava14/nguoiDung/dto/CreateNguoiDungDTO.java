@@ -3,7 +3,7 @@ package cybersoft.javabackend.moviejava14.nguoiDung.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import cybersoft.javabackend.moviejava14.nguoiDung.validation.annotation.ExistedMaLoaiNguoiDung;
+import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation.ExistedMaLoaiNguoiDung;
 import cybersoft.javabackend.moviejava14.nguoiDung.validation.annotation.UniqueEmailNguoiDung;
 import cybersoft.javabackend.moviejava14.nguoiDung.validation.annotation.UniqueSoDienThoaiNguoiDung;
 import cybersoft.javabackend.moviejava14.nguoiDung.validation.annotation.UniqueTaiKhoanNguoiDung;

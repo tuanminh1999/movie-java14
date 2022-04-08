@@ -1,4 +1,4 @@
-package cybersoft.javabackend.moviejava14.rap.validation.anotation;
+package cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,14 +8,13 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import cybersoft.javabackend.moviejava14.rap.validation.validator.ExistedMaCumRapValidator;
+import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.validator.ExistedMaLoaiNguoiDungValidator;
 
-@Constraint(validatedBy = ExistedMaCumRapValidator.class)
+@Constraint(validatedBy = ExistedMaLoaiNguoiDungValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ExistedMaCumRap {
-	
-	String message() default "Mã cụm rạp không tồn tại. ";
+public @interface ExistedMaLoaiNguoiDung {
+	String message() default "Mã loại người dùng không tồn tại. ";
 	
 	Class<?>[] groups() default {};
 	

@@ -1,12 +1,12 @@
 package cybersoft.javabackend.moviejava14.ghe.service;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import cybersoft.javabackend.moviejava14.common.exeption.ExistedDataException;
 import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.ghe.dto.CreateGheDTO;
 import cybersoft.javabackend.moviejava14.ghe.dto.GheDTO;
@@ -34,21 +34,18 @@ public class GheServiceImpl implements GheService {
 	}
 
 	@Override
-	public Optional<GheDTO> findByTenGhe(String tenGhe) {
-		Optional<Ghe> ghe = gheRepository.findByTenGhe(tenGhe);
-		if (!ghe.isPresent()) {
-			return null;
+	public List<GheDTO> findAll() {
+		List<Ghe> ghes = gheRepository.findAll();
+		List<GheDTO> gheDTOs = new LinkedList<GheDTO>();
+
+		for (Ghe o : ghes) {
+			GheDTO g = GheMapper.INSTANCE.fromEntityToGheDTO(o);
+			g.setLoaiGhe(o.getLoaiGheEntity().getMaLoaiGhe());
+			g.setMaRap(o.getRap().getMaRap());
+			gheDTOs.add(g);
 		}
 
-		return Optional.ofNullable(GheMapper.INSTANCE.fromEntityToGheDTO(ghe.get()));
-
-	}
-
-	@Override
-	public List<GheDTO> findAll() {
-		List<Ghe> ghe = gheRepository.findAll();
-
-		return ghe.stream().map(o -> GheMapper.INSTANCE.fromEntityToGheDTO(o)).collect(Collectors.toList());
+		return gheDTOs;
 	}
 
 	@Override
@@ -61,10 +58,23 @@ public class GheServiceImpl implements GheService {
 		} else {
 			ghe.setLoaiGheEntity(loaiGhe.get());
 		}
+
 		if (!rap.isPresent()) {
 			throw new InvalidDataException("Rạp không tồn tại");
 		} else {
 			ghe.setRap(rap.get());
+		}
+
+		if (gheRepository.findByTenGheAndRap(dto.getTenGhe(), ghe.getRap()).isPresent()) {
+			throw new ExistedDataException("Tên ghế đã tồn tại trong rạp này");
+		} else {
+			ghe.setTenGhe(dto.getTenGhe());
+		}
+
+		if (gheRepository.findBySttAndRap(dto.getStt(), ghe.getRap()).isPresent()) {
+			throw new ExistedDataException("Stt ghế đã tồn tại trong rạp này");
+		} else {
+			ghe.setStt(dto.getStt());
 		}
 		Ghe createGhe = gheRepository.save(ghe);
 		GheDTO gheDTO = GheMapper.INSTANCE.fromEntityToGheDTO(createGhe);
@@ -84,8 +94,8 @@ public class GheServiceImpl implements GheService {
 		Ghe ghe = gheOpt.get();
 
 		if (!ghe.getTenGhe().equals(dto.getTenGhe())) {
-			if (gheRepository.findByTenGheAndMaRap(dto.getTenGhe(), dto.getMaRap()).isPresent()) {
-				throw new InvalidDataException("Tên ghế đã tồn tại");
+			if (gheRepository.findByTenGheAndRap(dto.getTenGhe(), ghe.getRap()).isPresent()) {
+				throw new InvalidDataException("Tên ghế đã tồn tại trong rạp này");
 			}
 			ghe.setTenGhe(dto.getTenGhe());
 		}
@@ -93,7 +103,7 @@ public class GheServiceImpl implements GheService {
 		ghe.setDaDat(dto.isDaDat());
 
 		if (ghe.getStt() != dto.getStt()) {
-			if (gheRepository.findBySttAndMaRap(dto.getStt(), dto.getMaRap()).isPresent()) {
+			if (gheRepository.findBySttAndRap(dto.getStt(), ghe.getRap()).isPresent()) {
 				throw new InvalidDataException("Stt ghế đã tồn tại trong rạp này");
 			}
 			ghe.setStt(dto.getStt());

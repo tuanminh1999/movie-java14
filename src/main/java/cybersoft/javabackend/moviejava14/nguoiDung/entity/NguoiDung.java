@@ -2,6 +2,7 @@ package cybersoft.javabackend.moviejava14.nguoiDung.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ import lombok.Setter;
 public class NguoiDung extends BaseEntity {
 
 	private static final long serialVersionUID = 94647127648272572L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -48,17 +49,17 @@ public class NguoiDung extends BaseEntity {
 
 	@Column(name = "email", unique = true)
 	@NotNull
-	private  String email;
+	private String email;
 
 	@Column(name = "so_dien_thoai", unique = true)
 	@NotNull
 	private String soDt;
-	
+
 	@ManyToOne
-	@JoinColumn(name="loai_nguoi_dung_id")
+	@JoinColumn(name = "loai_nguoi_dung_id")
 	@NotNull
 	private LoaiNguoiDung loaiNguoiDung;
-  
-	@OneToMany(mappedBy = "taiKhoanNguoiDung")
+
+	@OneToMany(mappedBy = "taiKhoanNguoiDung", cascade = { CascadeType.MERGE, CascadeType.PERSIST })
 	private List<DatVe> dateVes;
 }

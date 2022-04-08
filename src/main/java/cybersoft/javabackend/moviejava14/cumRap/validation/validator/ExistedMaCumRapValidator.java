@@ -1,4 +1,4 @@
-package cybersoft.javabackend.moviejava14.rap.validation.validator;
+package cybersoft.javabackend.moviejava14.cumRap.validation.validator;
 
 import java.util.Optional;
 
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
 import cybersoft.javabackend.moviejava14.cumRap.repository.CumRapRepository;
-import cybersoft.javabackend.moviejava14.rap.validation.anotation.ExistedMaCumRap;
+import cybersoft.javabackend.moviejava14.cumRap.validation.anotation.ExistedMaCumRap;
 
 public class ExistedMaCumRapValidator implements ConstraintValidator<ExistedMaCumRap, String>{
 	

@@ -2,6 +2,7 @@ package cybersoft.javabackend.moviejava14.heThongRap.dto;
 
 import javax.validation.constraints.NotBlank;
 
+import cybersoft.javabackend.moviejava14.heThongRap.validation.anotation.ExistedMaHeThongRap;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import lombok.Setter;
 public class UpdateHeThongRapDTO {
 
 	@NotBlank(message = "{he_thong_rap.ma.not-blank}")
+	@ExistedMaHeThongRap
 	private String maHeThongRap;
 	
 	@NotBlank(message = "{he_thong_rap.ten.not-blank}")

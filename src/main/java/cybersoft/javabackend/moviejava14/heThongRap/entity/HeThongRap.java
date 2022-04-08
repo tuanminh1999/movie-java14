@@ -2,6 +2,7 @@ package cybersoft.javabackend.moviejava14.heThongRap.entity;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,23 +22,23 @@ import lombok.Setter;
 public class HeThongRap extends BaseEntity {
 
 	private static final long serialVersionUID = 2503631661050612697L;
-	
+
 	@Id
 	@Column(name = "id")
 	private String maHeThongRap;
-	
-	@Column(name="ten_he_thong_rap", unique = true)
+
+	@Column(name = "ten_he_thong_rap", unique = true)
 	@NotNull
 	private String tenHeThongRap;
-	
-	@Column(name="bi_danh", unique = true)
+
+	@Column(name = "bi_danh", unique = true)
 	@NotNull
 	private String biDanh;
-	
-	@Column(name="logo")
+
+	@Column(name = "logo")
 	private String logo;
-	
-	@OneToMany(mappedBy = "heThongRap") 
-	private Set<CumRap> cumRaps;
-	
+
+	@OneToMany(mappedBy = "heThongRap", cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+	private Set<CumRap> danhSachCumRap;
+
 }

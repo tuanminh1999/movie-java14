@@ -3,7 +3,7 @@ package cybersoft.javabackend.moviejava14.nguoiDung.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import cybersoft.javabackend.moviejava14.nguoiDung.validation.annotation.ExistedMaLoaiNguoiDung;
+import cybersoft.javabackend.moviejava14.loaiNguoiDung.validation.annotation.ExistedMaLoaiNguoiDung;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +12,7 @@ import lombok.Setter;
 public class UpdateNguoiDungDTO {
 	
 	@NotBlank(message = "{nguoi_dung.tai_khoan.not-blank}")
+	@Size(min = 3, max = 30, message = "{nguoi_dung.tai_khoan.size}")
 	private String taiKhoan;
 	
 	@NotBlank(message = "{nguoi_dung.ten.not-blank}")
@@ -22,6 +23,7 @@ public class UpdateNguoiDungDTO {
 	private String email;
 	
 	@NotBlank(message = "{nguoi_dung.so_dien_thoai.not-blank}")
+	@Size(min = 10, max = 10, message = "{nguoi_dung.so_dien_thoai.size}")
 	private String soDt;
 	
 	@NotBlank(message = "{loai_nguoi_dung.id.not_blank}")

@@ -8,14 +8,14 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import cybersoft.javabackend.moviejava14.loaiGhe.validation.validator.UniqueTenLoaiGheValidator;
+import cybersoft.javabackend.moviejava14.loaiGhe.validation.validator.ExistedMaLoaiGheValidator;
 
-@Constraint(validatedBy = UniqueTenLoaiGheValidator.class)
+@Constraint(validatedBy = ExistedMaLoaiGheValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UniqueTenLoaiGhe {
+public @interface ExistedMaLoaiGhe {
 	
-	String message() default "Tên loại ghế đã được sử dụng";
+	String message() default "Mã loại ghế không tồn tại. ";
 	
 	Class<?>[] groups() default {};
 	

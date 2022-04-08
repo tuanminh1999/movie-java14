@@ -1,4 +1,4 @@
-package cybersoft.javabackend.moviejava14.cumRap.validation.anotation;
+package cybersoft.javabackend.moviejava14.loaiGhe.validation.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,14 +8,14 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import cybersoft.javabackend.moviejava14.cumRap.validation.validator.ExistedMaHeThongRapValidator;
+import cybersoft.javabackend.moviejava14.loaiGhe.validation.validator.UniqueMaLoaiGheValidator;
 
-@Constraint(validatedBy = ExistedMaHeThongRapValidator.class)
+@Constraint(validatedBy = UniqueMaLoaiGheValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ExistedMaHeThongRap {
+public @interface UniqueMaLoaiGhe {
 	
-	String message() default "Mã hệ thống rạp không tồn tại. ";
+	String message() default "Mã loại ghế đã được sử dụng";
 	
 	Class<?>[] groups() default {};
 	

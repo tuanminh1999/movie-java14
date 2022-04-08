@@ -56,6 +56,7 @@ public class UrlConst {
 	public static final String DELETE_PHIM = "/api/QuanLyPhim/XoaPhim";
 	public static final String GET_PHIM_PAGING = "/api/QuanLyPhim/LayDanhSachPhimPhanTrang";
 	public static final String GET_PHIM_BY_DATE_PAGING = "/api/QuanLyPhim/LayDanhSachPhimTheoNgay";
+	public static final String GET_PHIM_BY_MA_PHIM = "/api/QuanLyPhim/LayThongTinPhim";
 
 	//Ghe
 	public static final String GET_GHE = "/api/QuanLyLoaiGhe/LayDanhSachGhe";

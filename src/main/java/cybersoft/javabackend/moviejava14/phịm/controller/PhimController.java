@@ -25,6 +25,7 @@ import cybersoft.javabackend.moviejava14.common.utils.FileUpload;
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.phịm.dto.CreatePhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.PhimDTO;
+import cybersoft.javabackend.moviejava14.phịm.dto.ThongTinPhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.UpdatePhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.service.PhimService;
 
@@ -42,6 +43,12 @@ public class PhimController {
 	public Object getPhims(String tenPhim) {
 		List<PhimDTO> phims = phimService.searchPhim(tenPhim, null);
 		return new ResponseEntity<>(phims, HttpStatus.OK);
+	}
+	
+	@GetMapping(UrlConst.GET_PHIM_BY_MA_PHIM)
+	public Object getPhimsByMaPhim(@RequestParam("MaPhim") int maPhim) {
+		ThongTinPhimDTO thongTinPhimDTO = phimService.getPhimByMaPhim(maPhim);
+		return new ResponseEntity<>(thongTinPhimDTO, HttpStatus.OK);
 	}
 
 	@GetMapping(UrlConst.GET_PHIM_PAGING)

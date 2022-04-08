@@ -1,6 +1,7 @@
 package cybersoft.javabackend.moviejava14.phịm.service;
 
 import java.sql.Timestamp;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -12,9 +13,13 @@ import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
 import cybersoft.javabackend.moviejava14.common.exeption.DateFormatException;
 import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.common.utils.DateFormatter;
+import cybersoft.javabackend.moviejava14.lichchieu.entity.LichChieu;
 import cybersoft.javabackend.moviejava14.phịm.dto.CreatePhimDTO;
+import cybersoft.javabackend.moviejava14.phịm.dto.LichChieuPhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.PhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.PhimMapper;
+import cybersoft.javabackend.moviejava14.phịm.dto.ThongTinPhimDTO;
+import cybersoft.javabackend.moviejava14.phịm.dto.ThongTinRapDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.UpdatePhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.entity.Phim;
 import cybersoft.javabackend.moviejava14.phịm.repository.PhimRepository;
@@ -179,6 +184,42 @@ public class PhimServiceImpl implements PhimService {
 		}
 
 		phimRepository.delete(phimOpt.get());
+	}
+
+	@Override
+	public ThongTinPhimDTO getPhimByMaPhim(int maPhim) {
+		Optional<Phim> phimOpt = phimRepository.findById(maPhim);
+		if(!phimOpt.isPresent()) {
+			throw new InvalidDataException("Mã phim không tồn tại");
+		}
+		Phim phim = phimOpt.get();
+		
+		ThongTinPhimDTO thongTinPhimDTO = PhimMapper.INSTANCE.fromThongTinPhimDTOToEntity(phim);
+		
+		List<LichChieuPhimDTO> lichChieuPhimDTOs = new LinkedList<LichChieuPhimDTO>();
+		for(LichChieu lc : phim.getLichChieuPhims()) {
+			LichChieuPhimDTO lichChieuPhimDTO = new LichChieuPhimDTO();
+			lichChieuPhimDTO.setMaLichChieu(lc.getMaLichChieu());
+			lichChieuPhimDTO.setMaRap(lc.getRapLichChieu().getMaRap());
+			lichChieuPhimDTO.setMaPhim(lc.getPhim().getMaPhim());
+			lichChieuPhimDTO.setNgayChieuGioChieu(lc.getNgayChieuGioChieu());
+			lichChieuPhimDTO.setGiaVe(lc.getGiaVe());
+			lichChieuPhimDTO.setThoiLuong(lc.getThoiLuong());
+			
+			ThongTinRapDTO thongTinRapDTO = new ThongTinRapDTO();
+			thongTinRapDTO.setMaRap(lc.getRapLichChieu().getMaRap());
+			thongTinRapDTO.setTenRap(lc.getRapLichChieu().getTenRap());
+			thongTinRapDTO.setMaCumRap(lc.getRapLichChieu().getCumRap().getMaCumRap());
+			thongTinRapDTO.setTenCumRap(lc.getRapLichChieu().getCumRap().getTenCumRap());
+			thongTinRapDTO.setMaHeThongRap(lc.getRapLichChieu().getCumRap().getHeThongRap().getMaHeThongRap());
+			thongTinRapDTO.setTenHeThongRap(lc.getRapLichChieu().getCumRap().getHeThongRap().getTenHeThongRap());
+			
+			lichChieuPhimDTO.setThongTinRap(thongTinRapDTO);
+			lichChieuPhimDTOs.add(lichChieuPhimDTO);
+		}
+		thongTinPhimDTO.setLichChieu(lichChieuPhimDTOs);
+		
+		return thongTinPhimDTO;
 	}
 
 }

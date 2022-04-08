@@ -13,5 +13,7 @@ public interface PhimMapper {
 	
 	PhimDTO fromEntityToPhimDTO(Phim phim);
 	Phim fromPhimDTOToEntity(PhimDTO phimDTO);
+	
+	ThongTinPhimDTO fromThongTinPhimDTOToEntity(Phim phim);
 		
 }

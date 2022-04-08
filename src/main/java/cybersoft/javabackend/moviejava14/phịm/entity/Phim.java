@@ -69,6 +69,6 @@ public class Phim {
 	@Column(name = "danh_gia")
 	private int danhGia;
 	
-	@OneToMany(mappedBy = "phim", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
+	@OneToMany(mappedBy = "phim", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE }) 
 	private Set<LichChieu> lichChieuPhims;
 }

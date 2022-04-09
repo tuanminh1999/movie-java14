@@ -103,28 +103,6 @@ public class PhimServiceImpl implements PhimService {
 		page.setItems(phimDTOs);
 		return page;
 	}
-
-	@Override
-	public Optional<PhimDTO> getPhimByTenPhim(String tenPhim) {
-		Optional<Phim> phimOpt = phimRepository.findByTenPhim(tenPhim);
-		
-		if(!phimOpt.isPresent()) {
-			return null;
-		}
-		
-		return Optional.ofNullable(PhimMapper.INSTANCE.fromEntityToPhimDTO(phimOpt.get()));
-	}
-
-	@Override
-	public Optional<PhimDTO> getPhimByBiDanh(String biDanh) {
-		Optional<Phim> phimOpt = phimRepository.findByBiDanh(biDanh);
-		
-		if(!phimOpt.isPresent()) {
-			return null;
-		}
-		
-		return Optional.ofNullable(PhimMapper.INSTANCE.fromEntityToPhimDTO(phimOpt.get()));
-	}
 	
 	@Override
 	public PhimDTO create(CreatePhimDTO dto, String fileName) {
@@ -200,19 +178,19 @@ public class PhimServiceImpl implements PhimService {
 		for(LichChieu lc : phim.getLichChieuPhims()) {
 			LichChieuPhimDTO lichChieuPhimDTO = new LichChieuPhimDTO();
 			lichChieuPhimDTO.setMaLichChieu(lc.getMaLichChieu());
-			lichChieuPhimDTO.setMaRap(lc.getRapLichChieu().getMaRap());
+			lichChieuPhimDTO.setMaRap(lc.getRap().getMaRap());
 			lichChieuPhimDTO.setMaPhim(lc.getPhim().getMaPhim());
 			lichChieuPhimDTO.setNgayChieuGioChieu(lc.getNgayChieuGioChieu());
 			lichChieuPhimDTO.setGiaVe(lc.getGiaVe());
 			lichChieuPhimDTO.setThoiLuong(lc.getThoiLuong());
 			
 			ThongTinRapDTO thongTinRapDTO = new ThongTinRapDTO();
-			thongTinRapDTO.setMaRap(lc.getRapLichChieu().getMaRap());
-			thongTinRapDTO.setTenRap(lc.getRapLichChieu().getTenRap());
-			thongTinRapDTO.setMaCumRap(lc.getRapLichChieu().getCumRap().getMaCumRap());
-			thongTinRapDTO.setTenCumRap(lc.getRapLichChieu().getCumRap().getTenCumRap());
-			thongTinRapDTO.setMaHeThongRap(lc.getRapLichChieu().getCumRap().getHeThongRap().getMaHeThongRap());
-			thongTinRapDTO.setTenHeThongRap(lc.getRapLichChieu().getCumRap().getHeThongRap().getTenHeThongRap());
+			thongTinRapDTO.setMaRap(lc.getRap().getMaRap());
+			thongTinRapDTO.setTenRap(lc.getRap().getTenRap());
+			thongTinRapDTO.setMaCumRap(lc.getRap().getCumRap().getMaCumRap());
+			thongTinRapDTO.setTenCumRap(lc.getRap().getCumRap().getTenCumRap());
+			thongTinRapDTO.setMaHeThongRap(lc.getRap().getCumRap().getHeThongRap().getMaHeThongRap());
+			thongTinRapDTO.setTenHeThongRap(lc.getRap().getCumRap().getHeThongRap().getTenHeThongRap());
 			
 			lichChieuPhimDTO.setThongTinRap(thongTinRapDTO);
 			lichChieuPhimDTOs.add(lichChieuPhimDTO);

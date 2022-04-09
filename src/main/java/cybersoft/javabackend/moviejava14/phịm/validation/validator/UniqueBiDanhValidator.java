@@ -7,14 +7,14 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cybersoft.javabackend.moviejava14.phịm.dto.PhimDTO;
-import cybersoft.javabackend.moviejava14.phịm.service.PhimService;
+import cybersoft.javabackend.moviejava14.phịm.entity.Phim;
+import cybersoft.javabackend.moviejava14.phịm.repository.PhimRepository;
 import cybersoft.javabackend.moviejava14.phịm.validation.anotation.UniqueBiDanh;
 
 public class UniqueBiDanhValidator implements ConstraintValidator<UniqueBiDanh, String>{
 
 	@Autowired
-	private PhimService phimService;
+	private PhimRepository phimRepository;
 	
 	private String message;
 	
@@ -26,9 +26,9 @@ public class UniqueBiDanhValidator implements ConstraintValidator<UniqueBiDanh, 
 
 	@Override
 	public boolean isValid(String biDanh, ConstraintValidatorContext context) {
-		Optional<PhimDTO> phimOpt = phimService.getPhimByBiDanh(biDanh);
+		Optional<Phim> phimOpt = phimRepository.findByBiDanh(biDanh);
 		
-		if(phimOpt == null) {
+		if(!phimOpt.isPresent()) {
 			return true;
 		}
 		

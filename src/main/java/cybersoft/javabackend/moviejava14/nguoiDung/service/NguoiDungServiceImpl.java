@@ -65,13 +65,13 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 			thongTinDatVeDTO = new ThongTinDatVeDTO();
 			DanhSachGheNguoiDungDTO danhSachGheNguoiDungDTO = new DanhSachGheNguoiDungDTO();
 			danhSachGheNguoiDungDTO.setMaHeThongRap(
-					o.getMaLichChieu().getRapLichChieu().getCumRap().getHeThongRap().getMaHeThongRap());
+					o.getMaLichChieu().getRap().getCumRap().getHeThongRap().getMaHeThongRap());
 			danhSachGheNguoiDungDTO.setTenHeThongRap(
-					o.getMaLichChieu().getRapLichChieu().getCumRap().getHeThongRap().getTenHeThongRap());
-			danhSachGheNguoiDungDTO.setMaCumRap(o.getMaLichChieu().getRapLichChieu().getCumRap().getMaCumRap());
-			danhSachGheNguoiDungDTO.setTenCumRap(o.getMaLichChieu().getRapLichChieu().getCumRap().getTenCumRap());
-			danhSachGheNguoiDungDTO.setMaRap(o.getMaLichChieu().getRapLichChieu().getMaRap());
-			danhSachGheNguoiDungDTO.setTenRap(o.getMaLichChieu().getRapLichChieu().getTenRap());
+					o.getMaLichChieu().getRap().getCumRap().getHeThongRap().getTenHeThongRap());
+			danhSachGheNguoiDungDTO.setMaCumRap(o.getMaLichChieu().getRap().getCumRap().getMaCumRap());
+			danhSachGheNguoiDungDTO.setTenCumRap(o.getMaLichChieu().getRap().getCumRap().getTenCumRap());
+			danhSachGheNguoiDungDTO.setMaRap(o.getMaLichChieu().getRap().getMaRap());
+			danhSachGheNguoiDungDTO.setTenRap(o.getMaLichChieu().getRap().getTenRap());
 			danhSachGheNguoiDungDTO.setMaGhe(o.getMaGhe().getMaGhe());
 			danhSachGheNguoiDungDTO.setTenGhe(o.getMaGhe().getTenGhe());
 			danhSachGheNguoiDungDTOs.add(danhSachGheNguoiDungDTO);

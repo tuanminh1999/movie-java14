@@ -1,5 +1,6 @@
 package cybersoft.javabackend.moviejava14.rap.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -22,24 +23,24 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "rap")
-public class Rap extends BaseEntity{
-	
+public class Rap extends BaseEntity {
+
 	private static final long serialVersionUID = -3185533762721286682L;
 
 	@Id
-	@Column (name = "id")
+	@Column(name = "id")
 	private String maRap;
-	
+
 	@Column(name = "ten_rap")
 	private String tenRap;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "cum_rap_id")
 	private CumRap cumRap;
-	
-	@OneToMany(mappedBy = "rap")
-	private Set<Ghe> danhSachGhe;
-	
-	@OneToMany(mappedBy = "rapLichChieu", cascade = { CascadeType.PERSIST, CascadeType.MERGE }) 
-	private Set<LichChieu> danhSachLichChieu;
+
+	@OneToMany(mappedBy = "rap", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	private Set<Ghe> danhSachGhe = new HashSet<Ghe>();
+
+	@OneToMany(mappedBy = "rap", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	private Set<LichChieu> danhSachLichChieu = new HashSet<LichChieu>();
 }

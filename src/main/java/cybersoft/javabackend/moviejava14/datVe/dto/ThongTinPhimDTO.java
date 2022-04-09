@@ -1,7 +1,5 @@
 package cybersoft.javabackend.moviejava14.datVe.dto;
 
-import java.sql.Timestamp;
-
 import lombok.Getter;
 import lombok.Setter;
 

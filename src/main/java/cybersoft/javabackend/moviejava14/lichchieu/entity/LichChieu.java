@@ -1,7 +1,6 @@
 package cybersoft.javabackend.moviejava14.lichchieu.entity;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,11 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-
+import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.datVe.entity.DatVe;
 import cybersoft.javabackend.moviejava14.phịm.entity.Phim;
 import cybersoft.javabackend.moviejava14.rap.entity.Rap;
@@ -29,32 +24,18 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "lich_chieu")
-public class LichChieu {
+public class LichChieu extends BaseEntity{
 	
+	private static final long serialVersionUID = 937278456525378407L;
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int maLichChieu;
-
-	@CreatedDate
-	@Column(name = "created_date")
-	private LocalDateTime createdDate;
-
-	@CreatedBy
-	@Column(name = "created_by")
-	private String createdBy;
-
-	@LastModifiedDate
-	@Column(name = "modified_date")
-	private LocalDateTime modifiedDate;
-
-	@LastModifiedBy
-	@Column(name = "modified_by")
-	private String modifiedBy;
 	
 	@ManyToOne
 	@JoinColumn(name = "rap_id")
-	private Rap rapLichChieu;
+	private Rap rap;
 	
 	@ManyToOne
 	@JoinColumn(name = "phim_id")

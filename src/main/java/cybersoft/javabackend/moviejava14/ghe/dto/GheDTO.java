@@ -1,13 +1,16 @@
 package cybersoft.javabackend.moviejava14.ghe.dto;
 
 
+import cybersoft.javabackend.moviejava14.common.dto.BaseDTO;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class GheDTO {
+public class GheDTO extends BaseDTO{
 	
+	private static final long serialVersionUID = -446978804635715178L;
+
 	private int maGhe;
 
 	private String tenGhe;

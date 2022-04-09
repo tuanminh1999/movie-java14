@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateDatVeDTO {	
+public class CreateDatVeDTO {
 	private int maLichChieu;
 	private List<DanhSachVeDTO> danhSachVe;
 	private String taiKhoanNguoiDung;

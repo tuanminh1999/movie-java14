@@ -7,14 +7,14 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cybersoft.javabackend.moviejava14.phịm.dto.PhimDTO;
-import cybersoft.javabackend.moviejava14.phịm.service.PhimService;
+import cybersoft.javabackend.moviejava14.phịm.entity.Phim;
+import cybersoft.javabackend.moviejava14.phịm.repository.PhimRepository;
 import cybersoft.javabackend.moviejava14.phịm.validation.anotation.UniqueTenPhim;
 
 public class UniqueTenPhimValidator implements ConstraintValidator<UniqueTenPhim, String>{
 	
 	@Autowired
-	private PhimService phimService;
+	private PhimRepository phimRepository;
 	
 	private String message;
 	
@@ -26,9 +26,9 @@ public class UniqueTenPhimValidator implements ConstraintValidator<UniqueTenPhim
 
 	@Override
 	public boolean isValid(String tenPhim, ConstraintValidatorContext context) {
-		Optional<PhimDTO> phimOpt = phimService.getPhimByTenPhim(tenPhim);
+		Optional<Phim> phimOpt = phimRepository.findByTenPhim(tenPhim);
 		
-		if(phimOpt == null) {
+		if(!phimOpt.isPresent()) {
 			return true;
 		}
 		

@@ -56,17 +56,17 @@ public class DatVeServiceImpl implements DatVeService{
 		LichChieu lc = lichChieuRepository.findById(maLichChieu).get();
 		ThongTinPhimDTO thongTinPhimDTO = new ThongTinPhimDTO();
 		thongTinPhimDTO.setMaLichChieu(lc.getMaLichChieu());
-		thongTinPhimDTO.setTenCumRap(lc.getRapLichChieu().getCumRap().getTenCumRap());
-		thongTinPhimDTO.setTenRap(lc.getRapLichChieu().getTenRap());
+		thongTinPhimDTO.setTenCumRap(lc.getRap().getCumRap().getTenCumRap());
+		thongTinPhimDTO.setTenRap(lc.getRap().getTenRap());
 		thongTinPhimDTO.setTenPhim(lc.getPhim().getTenPhim());
 		thongTinPhimDTO.setHinhAnh(lc.getPhim().getHinhAnh());
-		thongTinPhimDTO.setDiaChi(lc.getRapLichChieu().getCumRap().getDiaChi());
-		thongTinPhimDTO.setNgayChieu(DateFormatter.convertIntoVietNameseDate(DateFormatter.getDate(lc.getNgayChieuGioChieu())));
-		thongTinPhimDTO.setGioChieu(DateFormatter.getTime(lc.getNgayChieuGioChieu()));
+		thongTinPhimDTO.setDiaChi(lc.getRap().getCumRap().getDiaChi());
+		thongTinPhimDTO.setNgayChieu(DateFormatter.convertIntoVietNameseDate(DateFormatter.getDate(lc.getNgayGioChieu())));
+		thongTinPhimDTO.setGioChieu(DateFormatter.getTime(lc.getNgayGioChieu()));
 		
 		List<DanhSachGheDTO> danhSachGheDTOList = new LinkedList<DanhSachGheDTO>();
 		
-		for(Ghe o : gheRepository.findByRapOrderByMaGheAsc(lc.getRapLichChieu()).get()) {
+		for(Ghe o : gheRepository.findByRapOrderByMaGheAsc(lc.getRap()).get()) {
 			DanhSachGheDTO danhSachGheDTO = new DanhSachGheDTO();
 			danhSachGheDTO.setMaRap(o.getRap().getMaRap());
 			danhSachGheDTO.setMaGhe(o.getMaGhe());

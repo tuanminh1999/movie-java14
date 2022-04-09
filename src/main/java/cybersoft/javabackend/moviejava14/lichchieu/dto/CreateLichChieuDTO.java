@@ -11,7 +11,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateLichChieuDTO {
-	
 		
 	@ExistedMaPhim
 	private int maPhim;

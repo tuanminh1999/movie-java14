@@ -42,7 +42,7 @@ public class LichChieu extends BaseEntity{
 	private Phim phim;
 	
 	@Column(name = "ngay_chieu_gio_chieu")
-	private Timestamp ngayChieuGioChieu;
+	private Timestamp ngayGioChieu;
 	
 	@Column(name = "gia_ve")
 	private int giaVe;

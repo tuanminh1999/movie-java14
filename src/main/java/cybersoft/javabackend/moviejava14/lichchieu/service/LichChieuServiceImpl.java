@@ -54,11 +54,12 @@ public class LichChieuServiceImpl implements LichChieuService {
 		lichChieu.setThoiLuong(120);
 		lichChieu.setPhim(phimRepository.findById(dto.getMaPhim()).get());
 		lichChieu.setRap(rapRepository.findById(dto.getMaRap()).get());
-		lichChieu.setNgayChieuGioChieu(DateFormatter.convertStringToDateAndTime(dto.getNgayChieuGioChieu()));
+		lichChieu.setNgayGioChieu(DateFormatter.convertStringToDateAndTime(dto.getNgayChieuGioChieu()));
 		lichChieu = lichChieuRepository.save(lichChieu);
 		LichChieuDTO lichChieuDTO = LichChieuMapper.INSTANCE.fromEntityToLichChieuDTO(lichChieu);
 		lichChieuDTO.setMaRap(lichChieu.getRap().getMaRap());
 		lichChieuDTO.setTenRap(lichChieu.getRap().getTenRap());
+		lichChieuDTO.setNgayChieuGioChieu(lichChieu.getNgayGioChieu().toString().substring(0,19));
 		return lichChieuDTO;
 	}
 
@@ -79,6 +80,7 @@ public class LichChieuServiceImpl implements LichChieuService {
 		for (LichChieu lc : phim.get().getLichChieuPhims()) {
 			lichChieuDTO = new LichChieuDTO();
 			lichChieuDTO = LichChieuMapper.INSTANCE.fromEntityToLichChieuDTO(lc);
+			lichChieuDTO.setNgayChieuGioChieu(lc.getNgayGioChieu().toString().substring(0,19));
 			lichChieuDTO.setMaRap(lc.getRap().getMaRap());
 			raps.add(lc.getRap());
 			lichChieuDTO.setTenRap(lc.getRap().getTenRap());
@@ -144,8 +146,6 @@ public class LichChieuServiceImpl implements LichChieuService {
 			Set<LichChieu> lichChieus = new HashSet<LichChieu>();
 
 			for (Rap o : cumRap.getDanhSachRap()) {
-				System.out.println(cumRap.getTenCumRap());
-				System.out.println(o.getDanhSachLichChieu().size());
 				if (o.getDanhSachLichChieu() != null) {
 					for (LichChieu lc : o.getDanhSachLichChieu()) {
 						lichChieus.add(lc);
@@ -171,6 +171,7 @@ public class LichChieuServiceImpl implements LichChieuService {
 						lichChieuDTO = LichChieuMapper.INSTANCE.fromEntityToLichChieuDTO(lc);
 						lichChieuDTO.setMaRap(lc.getRap().getMaRap());
 						lichChieuDTO.setTenRap(lc.getRap().getTenRap());
+						lichChieuDTO.setNgayChieuGioChieu(lc.getNgayGioChieu().toString().substring(0,19));
 						lichChieuList.add(lichChieuDTO);
 					}
 				}
@@ -242,6 +243,7 @@ public class LichChieuServiceImpl implements LichChieuService {
 						lichChieuDTO = LichChieuMapper.INSTANCE.fromEntityToLichChieuDTO(lc);
 						lichChieuDTO.setMaRap(lc.getRap().getMaRap());
 						lichChieuDTO.setTenRap(lc.getRap().getTenRap());
+						lichChieuDTO.setNgayChieuGioChieu(lc.getNgayGioChieu().toString().substring(0,19));
 						lichChieuList.add(lichChieuDTO);
 					}
 				}

@@ -61,8 +61,8 @@ public class DatVeServiceImpl implements DatVeService{
 		thongTinPhimDTO.setTenPhim(lc.getPhim().getTenPhim());
 		thongTinPhimDTO.setHinhAnh(lc.getPhim().getHinhAnh());
 		thongTinPhimDTO.setDiaChi(lc.getRap().getCumRap().getDiaChi());
-		thongTinPhimDTO.setNgayChieu(DateFormatter.convertIntoVietNameseDate(DateFormatter.getDate(lc.getNgayChieuGioChieu())));
-		thongTinPhimDTO.setGioChieu(DateFormatter.getTime(lc.getNgayChieuGioChieu()));
+		thongTinPhimDTO.setNgayChieu(DateFormatter.convertIntoVietNameseDate(DateFormatter.getDate(lc.getNgayGioChieu())));
+		thongTinPhimDTO.setGioChieu(DateFormatter.getTime(lc.getNgayGioChieu()));
 		
 		List<DanhSachGheDTO> danhSachGheDTOList = new LinkedList<DanhSachGheDTO>();
 		

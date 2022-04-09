@@ -180,7 +180,7 @@ public class PhimServiceImpl implements PhimService {
 			lichChieuPhimDTO.setMaLichChieu(lc.getMaLichChieu());
 			lichChieuPhimDTO.setMaRap(lc.getRap().getMaRap());
 			lichChieuPhimDTO.setMaPhim(lc.getPhim().getMaPhim());
-			lichChieuPhimDTO.setNgayChieuGioChieu(lc.getNgayChieuGioChieu());
+			lichChieuPhimDTO.setNgayChieuGioChieu(lc.getNgayGioChieu());
 			lichChieuPhimDTO.setGiaVe(lc.getGiaVe());
 			lichChieuPhimDTO.setThoiLuong(lc.getThoiLuong());
 			

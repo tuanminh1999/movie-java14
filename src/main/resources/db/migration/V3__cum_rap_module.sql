@@ -40,3 +40,15 @@ ALTER TABLE cum_rap
 ALTER TABLE rap 
 	ADD CONSTRAINT fk_rap_cum_rap
 	FOREIGN KEY (cum_rap_id) REFERENCES cum_rap(id);
+	
+-- INSERT HE THONG RAP
+
+	INSERT INTO he_thong_rap(id, created_date, created_by, modified_date, modified_by, ten_he_thong_rap, bi_danh, logo)
+	VALUES 	('BHDStar', null, 'BQN', null, 'BQN', 'BHD Star Cineplex' , 'bhd-star-cineplex', 'http://movie0706.cybersoft.edu.vn/hinhanh/bhd-star-cineplex.png'),
+			('CGV', null, 'BQN', null, 'BQN', 'cgv', 'cgv', 'http://movie0706.cybersoft.edu.vn/hinhanh/cgv.png'),
+			('CineStar', null, 'BQN', null, 'BQN', 'CineStar' , 'cinestar', 'http://movie0706.cybersoft.edu.vn/hinhanh/cinestar.png'),
+			('Galaxy', null, 'BQN', null, 'BQN', 'Galaxy Cinema' , 'galaxy-cinema', 'http://movie0706.cybersoft.edu.vn/hinhanh/galaxy-cinema.png'),
+			('LotteCinema', null, 'BQN', null, 'BQN', 'Lotte Cinema' , 'lotte-cinema', 'http://movie0706.cybersoft.edu.vn/hinhanh/lotte-cinema.png'),
+			('MegaGS', null, 'BQN', null, 'BQN', 'MegaGS' , 'megags', 'http://movie0706.cybersoft.edu.vn/hinhanh/megags.png');
+			
+-- INSERT CUM RAP

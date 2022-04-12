@@ -1,7 +1,5 @@
 package cybersoft.javabackend.moviejava14.rap.dto;
 
-import java.util.UUID;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class RapDTO {
-	private UUID maRap;
+	private String maRap;
 	
 	private String tenRap;
 }

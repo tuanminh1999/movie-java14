@@ -14,4 +14,6 @@ public class CreateHeThongRapDTO {
 	private String biDanh;
 	
 	private String logo;
+	
+	private String maCumRap;
 }

@@ -29,7 +29,7 @@ public class HeThongRapController {
 	}
 	
 	@GetMapping(UrlConst.GET_HT_RAP)
-	public Object getHeThongRap() {
+	public Object LayDanhSachHeThongRap() {
 		List<HeThongRapDTO> heThongRaps = heThongRapService.findAll();
 		return new ResponseEntity<Object>(heThongRaps, HttpStatus.OK);
 	}

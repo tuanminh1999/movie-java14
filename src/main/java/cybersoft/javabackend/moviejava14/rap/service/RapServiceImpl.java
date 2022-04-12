@@ -39,22 +39,22 @@ public class RapServiceImpl implements RapService {
 
 	@Override
 	public RapDTO update(UpdateRapDTO dto) {
-		// 1. check maRap co trong repository
+		/* 1. check maRap co trong repository & lay rap tu repo */
 		Optional<Rap> rapOpt = rapRepository.findById(dto.getMaRap());
 		if(!rapOpt.isPresent()) {
 			throw new InvalidDataException("Mã rạp không tồn tại");
 		}
-		// 2. check cac thuoc tinh trung nhau
 		Rap rap = rapOpt.get();
-		if(!rap.getTenRap().equals(dto.getTenRap())) {
-			if(rapRepository.findByTenRap(dto.getTenRap())) {
-				throw new InvalidDataException("Tên rạp đã tồn tại");
-			}
-			rap.setTenRap(dto.getTenRap());
-		}
-		// 3 set cac gia tri dto vao rap
-		
-		// 4 xuat ket qua
+		/* 2. check cac thuoc tinh trung nhau */
+//		if(!rap.getTenRap().equals(dto.getTenRap())) {
+//			if(rapRepository.findByTenRap(dto.getTenRap())) {
+//				throw new InvalidDataException("Tên rạp đã tồn tại");
+//			}
+//			rap.setTenRap(dto.getTenRap());
+//		}
+		/* 3 set cac gia tri dto vao rap */
+		rap.setTenRap(dto.getTenRap());
+		/* 4 xuat ket qua */
 		Rap updatedRap = rapRepository.save(rap);
 		return RapMapper.INSTANCE.fromEntitytoRapDTO(updatedRap);
 	}

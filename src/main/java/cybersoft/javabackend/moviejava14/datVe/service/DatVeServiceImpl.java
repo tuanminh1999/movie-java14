@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cybersoft.javabackend.moviejava14.common.utils.DateFormatter;
+import cybersoft.javabackend.moviejava14.commones.utils.DateFormatter;
 import cybersoft.javabackend.moviejava14.datVe.dto.CreateDatVeDTO;
 import cybersoft.javabackend.moviejava14.datVe.dto.DanhSachGheDTO;
 import cybersoft.javabackend.moviejava14.datVe.dto.DanhSachVeDTO;

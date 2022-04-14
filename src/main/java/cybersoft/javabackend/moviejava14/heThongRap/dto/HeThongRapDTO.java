@@ -1,6 +1,6 @@
 package cybersoft.javabackend.moviejava14.heThongRap.dto;
 
-import cybersoft.javabackend.moviejava14.common.dto.BaseDTO;
+import cybersoft.javabackend.moviejava14.commones.dto.BaseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

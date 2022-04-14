@@ -7,9 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
-import cybersoft.javabackend.moviejava14.cumRap.dto.CumRapDTO;
-import cybersoft.javabackend.moviejava14.cumRap.dto.CumRapMapper;
+import cybersoft.javabackend.moviejava14.commones.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
 import cybersoft.javabackend.moviejava14.heThongRap.dto.CreateHeThongRapDTO;
 import cybersoft.javabackend.moviejava14.heThongRap.dto.HeThongRapDTO;

@@ -8,9 +8,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
-import cybersoft.javabackend.moviejava14.common.exeption.ExistedDataException;
-import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
+import cybersoft.javabackend.moviejava14.commones.dto.PageDTO;
+import cybersoft.javabackend.moviejava14.commones.exeption.ExistedDataException;
+import cybersoft.javabackend.moviejava14.commones.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.datVe.entity.DatVe;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.repositoty.LoaiNguoiDungRepository;

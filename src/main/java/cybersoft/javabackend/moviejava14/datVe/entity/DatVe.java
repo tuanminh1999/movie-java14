@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
+import cybersoft.javabackend.moviejava14.entities.BaseEntity;
 import cybersoft.javabackend.moviejava14.ghe.entity.Ghe;
 import cybersoft.javabackend.moviejava14.lichchieu.entity.LichChieu;
 import cybersoft.javabackend.moviejava14.nguoiDung.entity.NguoiDung;

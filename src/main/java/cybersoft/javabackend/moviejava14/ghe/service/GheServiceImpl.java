@@ -6,8 +6,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import cybersoft.javabackend.moviejava14.common.exeption.ExistedDataException;
-import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
+import cybersoft.javabackend.moviejava14.commones.exeption.ExistedDataException;
+import cybersoft.javabackend.moviejava14.commones.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.ghe.dto.CreateGheDTO;
 import cybersoft.javabackend.moviejava14.ghe.dto.GheDTO;
 import cybersoft.javabackend.moviejava14.ghe.dto.GheMapper;

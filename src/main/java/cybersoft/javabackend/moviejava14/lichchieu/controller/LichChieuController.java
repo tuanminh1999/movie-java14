@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import cybersoft.javabackend.moviejava14.common.ResponseHandler;
-import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
+import cybersoft.javabackend.moviejava14.commones.ResponseHandler;
+import cybersoft.javabackend.moviejava14.commones.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.lichchieu.dto.CreateLichChieuDTO;
 import cybersoft.javabackend.moviejava14.lichchieu.dto.LichChieuDTO;
 import cybersoft.javabackend.moviejava14.lichchieu.service.LichChieuService;

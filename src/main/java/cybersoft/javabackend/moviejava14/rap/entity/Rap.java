@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
+import cybersoft.javabackend.moviejava14.entities.BaseEntity;
 import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
 import cybersoft.javabackend.moviejava14.ghe.entity.Ghe;
 import cybersoft.javabackend.moviejava14.lichchieu.entity.LichChieu;

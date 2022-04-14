@@ -1,16 +1,17 @@
 package cybersoft.javabackend.moviejava14.cumRap.service;
 
-import java.util.List;
+import cybersoft.javabackend.moviejava14.dtos.AbstractResponse;
+import cybersoft.javabackend.moviejava14.dtos.cinemas.CreateCumRapDTO;
+import cybersoft.javabackend.moviejava14.dtos.cinemas.CumRapDTO;
+import cybersoft.javabackend.moviejava14.dtos.cinemas.UpdateCumRapDTO;
 
-import cybersoft.javabackend.moviejava14.cumRap.dto.CreateCumRapDTO;
-import cybersoft.javabackend.moviejava14.cumRap.dto.CumRapDTO;
-import cybersoft.javabackend.moviejava14.cumRap.dto.UpdateCumRapDTO;
+import java.util.List;
 
 public interface CumRapService {
 
 	List<CumRapDTO> findAll();
 
-	CumRapDTO create(CreateCumRapDTO dto);
+	AbstractResponse create(CreateCumRapDTO dto);
 
 	CumRapDTO update(UpdateCumRapDTO dto);
 

@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
+import cybersoft.javabackend.moviejava14.entities.BaseEntity;
 import cybersoft.javabackend.moviejava14.datVe.entity.DatVe;
 import cybersoft.javabackend.moviejava14.loaiNguoiDung.entity.LoaiNguoiDung;
 import lombok.Getter;

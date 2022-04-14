@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import cybersoft.javabackend.moviejava14.common.ResponseHandler;
+import cybersoft.javabackend.moviejava14.commones.ResponseHandler;
 
 @RestControllerAdvice
 public class SecurityHandlerException {

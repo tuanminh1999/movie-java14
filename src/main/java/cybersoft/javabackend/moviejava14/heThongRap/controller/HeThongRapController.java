@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import cybersoft.javabackend.moviejava14.common.ResponseHandler;
-import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
-import cybersoft.javabackend.moviejava14.cumRap.dto.CumRapDTO;
+import cybersoft.javabackend.moviejava14.commones.ResponseHandler;
+import cybersoft.javabackend.moviejava14.commones.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.heThongRap.dto.CreateHeThongRapDTO;
 import cybersoft.javabackend.moviejava14.heThongRap.dto.HeThongRapDTO;
 import cybersoft.javabackend.moviejava14.heThongRap.dto.UpdateHeThongRapDTO;

@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
-import cybersoft.javabackend.moviejava14.common.exeption.DateFormatException;
-import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
-import cybersoft.javabackend.moviejava14.common.utils.DateFormatter;
+import cybersoft.javabackend.moviejava14.commones.dto.PageDTO;
+import cybersoft.javabackend.moviejava14.commones.exeption.DateFormatException;
+import cybersoft.javabackend.moviejava14.commones.exeption.InvalidDataException;
+import cybersoft.javabackend.moviejava14.commones.utils.DateFormatter;
 import cybersoft.javabackend.moviejava14.lichchieu.entity.LichChieu;
 import cybersoft.javabackend.moviejava14.phịm.dto.CreatePhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.LichChieuPhimDTO;

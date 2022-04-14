@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
+import cybersoft.javabackend.moviejava14.entities.BaseEntity;
 import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,18 +21,16 @@ import lombok.Setter;
 @Table(name = "he_thong_rap")
 public class HeThongRap extends BaseEntity {
 
-	private static final long serialVersionUID = 2503631661050612697L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "id")
 	private String maHeThongRap;
 
-	@Column(name = "ten_he_thong_rap", unique = true)
-	@NotNull
+	@Column(name = "ten_he_thong_rap", unique = true, nullable = false, columnDefinition = "string default ''")
 	private String tenHeThongRap;
 
-	@Column(name = "bi_danh", unique = true)
-	@NotNull
+	@Column(name = "bi_danh", unique = true, nullable = false)
 	private String biDanh;
 
 	@Column(name = "logo")

@@ -1,6 +1,7 @@
 package cybersoft.javabackend.moviejava14.cumRap.entity;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
+import cybersoft.javabackend.moviejava14.entities.BaseEntity;
 import cybersoft.javabackend.moviejava14.heThongRap.entity.HeThongRap;
 import cybersoft.javabackend.moviejava14.rap.entity.Rap;
 import lombok.Getter;
@@ -38,6 +39,9 @@ public class CumRap extends BaseEntity {
 	@Column(name="dia_chi", unique = true)
 	@NotNull
 	private String diaChi;
+
+	@Column(name="unique_key", unique = true)
+	private Integer uniqueKey;
 	
 	@ManyToOne
 	@JoinColumn(name = "he_thong_rap_id")
@@ -46,4 +50,8 @@ public class CumRap extends BaseEntity {
 	
 	@OneToMany(mappedBy = "cumRap", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	private Set<Rap> danhSachRap = new HashSet<Rap>();
+
+	public void initUniqueKey() {
+		this.uniqueKey = Objects.hash(maCumRap, tenCumRap, diaChi);
+	}
 }

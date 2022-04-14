@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Pageable;
 
-import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
+import cybersoft.javabackend.moviejava14.commones.dto.PageDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.CreatePhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.PhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.ThongTinPhimDTO;

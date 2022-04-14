@@ -6,8 +6,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import cybersoft.javabackend.moviejava14.common.exeption.ExistedDataException;
-import cybersoft.javabackend.moviejava14.common.exeption.InvalidDataException;
+import cybersoft.javabackend.moviejava14.commones.exeption.ExistedDataException;
+import cybersoft.javabackend.moviejava14.commones.exeption.InvalidDataException;
 import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
 import cybersoft.javabackend.moviejava14.cumRap.repository.CumRapRepository;
 import cybersoft.javabackend.moviejava14.rap.dto.CreateRapDTO;

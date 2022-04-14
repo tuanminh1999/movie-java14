@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import cybersoft.javabackend.moviejava14.common.ResponseHandler;
-import cybersoft.javabackend.moviejava14.common.dto.PageDTO;
-import cybersoft.javabackend.moviejava14.common.utils.FileUpload;
-import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
+import cybersoft.javabackend.moviejava14.commones.ResponseHandler;
+import cybersoft.javabackend.moviejava14.commones.dto.PageDTO;
+import cybersoft.javabackend.moviejava14.commones.utils.FileUpload;
+import cybersoft.javabackend.moviejava14.commones.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.phịm.dto.CreatePhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.PhimDTO;
 import cybersoft.javabackend.moviejava14.phịm.dto.ThongTinPhimDTO;

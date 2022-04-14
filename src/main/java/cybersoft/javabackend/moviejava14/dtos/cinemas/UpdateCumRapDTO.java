@@ -1,0 +1,28 @@
+package cybersoft.javabackend.moviejava14.dtos.cinemas;
+
+import cybersoft.javabackend.moviejava14.cumRap.validation.anotation.ExistedMaCumRap;
+import cybersoft.javabackend.moviejava14.heThongRap.validation.anotation.ExistedMaHeThongRap;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.validation.constraints.NotNull;
+
+@Getter
+@Setter
+public class UpdateCumRapDTO {
+	
+	@NotNull(message = "{cum_rap.ma.not-blank}")
+	@ExistedMaCumRap
+	private String maCumRap;
+	
+	@NotNull(message = "{cum_rap.ten.not-blank}")
+	private String tenCumRap;
+	
+	@NotNull(message = "{cum_rap.dia_chi.not-blank}")
+	private String diaChi;
+	
+	@NotNull(message = "{he_thong_rap.ma.not-blank}")
+	@ExistedMaHeThongRap
+	private String maHeThongRap;
+
+}

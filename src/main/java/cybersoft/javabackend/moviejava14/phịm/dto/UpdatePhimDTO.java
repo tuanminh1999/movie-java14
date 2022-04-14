@@ -3,7 +3,7 @@ package cybersoft.javabackend.moviejava14.phịm.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import cybersoft.javabackend.moviejava14.common.validation.anotation.CorrectDateFormat;
+import cybersoft.javabackend.moviejava14.commones.validation.anotation.CorrectDateFormat;
 import lombok.Getter;
 import lombok.Setter;
 

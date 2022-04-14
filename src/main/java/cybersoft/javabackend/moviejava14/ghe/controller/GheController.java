@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import cybersoft.javabackend.moviejava14.common.ResponseHandler;
-import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
+import cybersoft.javabackend.moviejava14.commones.ResponseHandler;
+import cybersoft.javabackend.moviejava14.commones.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.ghe.dto.CreateGheDTO;
 import cybersoft.javabackend.moviejava14.ghe.dto.GheDTO;
 import cybersoft.javabackend.moviejava14.ghe.dto.UpdateGheDTO;

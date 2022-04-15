@@ -2,6 +2,8 @@ package cybersoft.javabackend.moviejava14.cumRap.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -35,7 +37,7 @@ public class CumRapController {
 	}
 	
 	@PostMapping(UrlConst.POST_CUM_RAP)
-	public Object createCumRap(@RequestBody CreateCumRapDTO dto, BindingResult bindingResult) {
+	public Object createCumRap(@Valid @RequestBody CreateCumRapDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
@@ -45,7 +47,7 @@ public class CumRapController {
 	};
 	
 	@PutMapping(UrlConst.PUT_CUM_RAP)
-	public Object updateNguoiDung(@RequestBody UpdateCumRapDTO dto, BindingResult bindingResult) {
+	public Object updateNguoiDung(@Valid @RequestBody UpdateCumRapDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}

@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.ghe.entity.Ghe;
@@ -27,11 +26,10 @@ public class LoaiGhe extends BaseEntity{
 	@Column(name = "id")
 	private String maLoaiGhe;
 	
-	@Column(name="mo_ta")
+	@Column(name="mo_ta", nullable = false)
 	private String moTa;
 	
-	@Column(name="ten_loai_ghe", unique = true)
-	@NotNull
+	@Column(name="ten_loai_ghe", unique = true, nullable = false)
 	private String tenLoaiGhe;
 	
 	@OneToMany(mappedBy = "loaiGheEntity", cascade = {CascadeType.MERGE, CascadeType.PERSIST})

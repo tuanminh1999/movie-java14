@@ -4,12 +4,12 @@ CREATE TABLE IF NOT EXISTS phim(
 	created_by varchar(36),
 	modified_date timestamp,
 	modified_by varchar(36),
-	ten_phim varchar(255),
-	bi_danh varchar(255),
+	ten_phim varchar(255) not null unique,
+	bi_danh varchar(255) not null unique,
 	trailer varchar(255),
 	hinh_anh varchar(255),
 	mo_ta text,
-	ngay_khoi_chieu timestamp,
+	ngay_khoi_chieu timestamp not null,
 	danh_gia int,
 	primary key (id)
 );

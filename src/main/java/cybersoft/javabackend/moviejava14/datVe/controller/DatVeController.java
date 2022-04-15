@@ -1,7 +1,10 @@
 package cybersoft.javabackend.moviejava14.datVe.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import cybersoft.javabackend.moviejava14.common.ResponseHandler;
 import cybersoft.javabackend.moviejava14.common.utils.UrlConst;
 import cybersoft.javabackend.moviejava14.datVe.dto.CreateDatVeDTO;
 import cybersoft.javabackend.moviejava14.datVe.service.DatVeService;
@@ -25,11 +29,11 @@ public class DatVeController {
 	}
 	
 	@PostMapping(UrlConst.POST_DAT_VE)
-	public Object createDatVe(@RequestHeader String authorization, @RequestBody CreateDatVeDTO dto) {
+	public Object createDatVe(@RequestHeader String authorization, @Valid @RequestBody CreateDatVeDTO dto, BindingResult bindingResult) {
 
-//		if (bindingResult.hasErrors()) {
-//			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
-//		}
+		if (bindingResult.hasErrors()) {
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		}
 
 		String createdDatVe = "";
 		

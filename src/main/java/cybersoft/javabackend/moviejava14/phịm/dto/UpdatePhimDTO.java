@@ -4,6 +4,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import cybersoft.javabackend.moviejava14.common.validation.anotation.CorrectDateFormat;
+import cybersoft.javabackend.moviejava14.phịm.validation.anotation.ExistedMaPhim;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import lombok.Setter;
 @Setter
 public class UpdatePhimDTO {
 	
+	@ExistedMaPhim
 	private int maPhim;
 	
 	@NotBlank(message = "{phim.ten_phim.not-blank}")

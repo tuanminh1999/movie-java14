@@ -1,4 +1,4 @@
-package cybersoft.javabackend.moviejava14.lichchieu.validation.validator;
+package cybersoft.javabackend.moviejava14.phịm.validation.validator;
 
 import java.util.Optional;
 
@@ -7,11 +7,11 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cybersoft.javabackend.moviejava14.lichchieu.validation.anotation.ExistedMaPhim;
+import cybersoft.javabackend.moviejava14.lichchieu.validation.anotation.ExistedMaLichChieu;
 import cybersoft.javabackend.moviejava14.phịm.entity.Phim;
 import cybersoft.javabackend.moviejava14.phịm.repository.PhimRepository;
 
-public class ExistedMaPhimValidator implements ConstraintValidator<ExistedMaPhim, Integer>{
+public class ExistedMaPhimValidator implements ConstraintValidator<ExistedMaLichChieu, Integer>{
 	
 	@Autowired
 	private PhimRepository phimRepository;
@@ -19,9 +19,9 @@ public class ExistedMaPhimValidator implements ConstraintValidator<ExistedMaPhim
 	private String message;
 	
 	@Override
-	public void initialize(ExistedMaPhim existedMaPhim) {
-		ConstraintValidator.super.initialize(existedMaPhim);
-		this.message = existedMaPhim.message();
+	public void initialize(ExistedMaLichChieu existedMaLichChieu) {
+		ConstraintValidator.super.initialize(existedMaLichChieu);
+		this.message = existedMaLichChieu.message();
 	}
 
 	@Override

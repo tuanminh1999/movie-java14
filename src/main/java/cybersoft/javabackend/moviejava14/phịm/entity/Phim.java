@@ -1,7 +1,6 @@
 package cybersoft.javabackend.moviejava14.phịm.entity;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,11 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-
+import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.lichchieu.entity.LichChieu;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,33 +21,19 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "phim")
-public class Phim {
+public class Phim extends BaseEntity{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int maPhim;
-
-	@CreatedDate
-	@Column(name = "created_date")
-	private LocalDateTime createdDate;
-
-	@CreatedBy
-	@Column(name = "created_by")
-	private String createdBy;
-
-	@LastModifiedDate
-	@Column(name = "modified_date")
-	private LocalDateTime modifiedDate;
-
-	@LastModifiedBy
-	@Column(name = "modified_by")
-	private String modifiedBy;
 	
-	@Column(name = "ten_phim")
+	@Column(name = "ten_phim", unique = true, nullable = false)
 	private String tenPhim;
 	
-	@Column(name = "bi_danh")
+	@Column(name = "bi_danh", unique = true, nullable = false)
 	private String biDanh;
 	
 	private String trailer;
@@ -63,7 +44,7 @@ public class Phim {
 	@Column(name = "mo_ta")
 	private String moTa;
 	
-	@Column(name = "ngay_khoi_chieu")
+	@Column(name = "ngay_khoi_chieu", nullable = false)
 	private Timestamp ngayKhoiChieu;
 	
 	@Column(name = "danh_gia")

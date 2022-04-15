@@ -3,6 +3,8 @@ package cybersoft.javabackend.moviejava14.heThongRap.controller;
 import java.util.List;
 import java.util.Set;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -46,7 +48,7 @@ public class HeThongRapController {
 	
 	
 	@PostMapping(UrlConst.POST_HT_RAP)
-	public Object createHeThongRap(@RequestBody CreateHeThongRapDTO dto, BindingResult bindingResult) {
+	public Object createHeThongRap(@Valid @RequestBody CreateHeThongRapDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
@@ -57,7 +59,7 @@ public class HeThongRapController {
 	}
 	
 	@PutMapping(UrlConst.PUT_HT_RAP)
-	public Object updateHeThongRap(@RequestBody UpdateHeThongRapDTO dto, BindingResult bindingResult) {
+	public Object updateHeThongRap(@Valid @RequestBody UpdateHeThongRapDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}

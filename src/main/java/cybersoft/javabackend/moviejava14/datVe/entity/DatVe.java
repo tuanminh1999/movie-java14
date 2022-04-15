@@ -30,21 +30,21 @@ public class DatVe extends BaseEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "ngay_dat")
+	@Column(name = "ngay_dat", nullable = false)
 	private Timestamp ngayDat;
 	
 	@ManyToOne
-	@JoinColumn(name = "lich_chieu_id")
+	@JoinColumn(name = "lich_chieu_id", nullable = false)
 	private LichChieu maLichChieu;
 	
-	@Column(name = "gia_ve")
+	@Column(name = "gia_ve", nullable = false)
 	private int giaVe;
 	
 	@ManyToOne
-	@JoinColumn(name = "ghe_id")
+	@JoinColumn(name = "ghe_id", nullable = false)
 	private Ghe maGhe;
 	
 	@ManyToOne
-	@JoinColumn(name = "nguoi_dung_id")
+	@JoinColumn(name = "nguoi_dung_id", nullable = false)
 	private NguoiDung taiKhoanNguoiDung;
 }

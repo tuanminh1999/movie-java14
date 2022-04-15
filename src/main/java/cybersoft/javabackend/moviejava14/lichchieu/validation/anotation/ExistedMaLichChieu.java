@@ -8,13 +8,13 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import cybersoft.javabackend.moviejava14.lichchieu.validation.validator.ExistedMaRapValidator;
+import cybersoft.javabackend.moviejava14.lichchieu.validation.validator.ExistedMaLichChieuValidator;
 
-@Constraint(validatedBy = ExistedMaRapValidator.class)
+@Constraint(validatedBy = ExistedMaLichChieuValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ExistedMaRap {
-	String message() default "Mã rạp không tồn tại";
+public @interface ExistedMaLichChieu {
+	String message() default "Mã lịch chiếu không tồn tại";
 	
 	Class<?>[] groups() default {};
 	

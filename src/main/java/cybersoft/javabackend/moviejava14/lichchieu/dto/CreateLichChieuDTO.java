@@ -3,8 +3,8 @@ package cybersoft.javabackend.moviejava14.lichchieu.dto;
 import javax.validation.constraints.NotBlank;
 
 import cybersoft.javabackend.moviejava14.common.validation.anotation.CorrectDateAndTimeFormat;
-import cybersoft.javabackend.moviejava14.lichchieu.validation.anotation.ExistedMaPhim;
-import cybersoft.javabackend.moviejava14.lichchieu.validation.anotation.ExistedMaRap;
+import cybersoft.javabackend.moviejava14.phịm.validation.anotation.ExistedMaPhim;
+import cybersoft.javabackend.moviejava14.rap.validation.anotation.ExistedMaRap;
 import lombok.Getter;
 import lombok.Setter;
 

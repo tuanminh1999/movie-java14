@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.datVe.entity.DatVe;
@@ -34,8 +33,7 @@ public class Ghe extends BaseEntity {
 	@Column(name = "id")
 	private int maGhe;
 
-	@Column(name = "ten_ghe")
-	@NotNull
+	@Column(name = "ten_ghe", nullable = false)
 	private String tenGhe;
 
 	@Column(name = "so_thu_tu")
@@ -45,13 +43,11 @@ public class Ghe extends BaseEntity {
 	private boolean daDat;
 
 	@ManyToOne
-	@JoinColumn(name = "rap_id")
-	@NotNull
+	@JoinColumn(name = "rap_id", nullable = false)
 	private Rap rap;
 
 	@ManyToOne
-	@JoinColumn(name = "loai_ghe_id")
-	@NotNull
+	@JoinColumn(name = "loai_ghe_id", nullable = false)
 	private LoaiGhe loaiGheEntity;
 
 	@OneToMany(mappedBy = "maGhe", cascade = {CascadeType.MERGE, CascadeType.PERSIST})

@@ -4,8 +4,8 @@ package cybersoft.javabackend.moviejava14.ghe.dto;
 import javax.validation.constraints.NotBlank;
 
 import cybersoft.javabackend.moviejava14.ghe.validation.anotation.ExistedMaGhe;
-import cybersoft.javabackend.moviejava14.lichchieu.validation.anotation.ExistedMaRap;
 import cybersoft.javabackend.moviejava14.loaiGhe.validation.annotation.ExistedMaLoaiGhe;
+import cybersoft.javabackend.moviejava14.rap.validation.anotation.ExistedMaRap;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,4 +1,4 @@
-package cybersoft.javabackend.moviejava14.lichchieu.validation.validator;
+package cybersoft.javabackend.moviejava14.rap.validation.validator;
 
 import java.util.Optional;
 
@@ -7,9 +7,9 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cybersoft.javabackend.moviejava14.lichchieu.validation.anotation.ExistedMaRap;
 import cybersoft.javabackend.moviejava14.rap.entity.Rap;
 import cybersoft.javabackend.moviejava14.rap.repository.RapRepository;
+import cybersoft.javabackend.moviejava14.rap.validation.anotation.ExistedMaRap;
 
 public class ExistedMaRapValidator implements ConstraintValidator<ExistedMaRap, String>{
 	

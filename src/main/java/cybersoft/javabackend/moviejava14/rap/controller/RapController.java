@@ -2,6 +2,8 @@ package cybersoft.javabackend.moviejava14.rap.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -34,7 +36,7 @@ public class RapController {
 	}
 	
 	@PostMapping(UrlConst.POST_RAP)
-	public Object createRap(@RequestBody CreateRapDTO dto, BindingResult bindingResult) {
+	public Object createRap(@Valid @RequestBody CreateRapDTO dto, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
@@ -44,7 +46,7 @@ public class RapController {
 	}
 	
 	@PutMapping(UrlConst.PUT_RAP)
-	public Object updateRap(@RequestBody UpdateRapDTO dto, BindingResult bindingResult) {
+	public Object updateRap(@Valid @RequestBody UpdateRapDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}

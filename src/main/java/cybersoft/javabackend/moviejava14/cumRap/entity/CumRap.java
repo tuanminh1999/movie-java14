@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.heThongRap.entity.HeThongRap;
@@ -31,17 +30,14 @@ public class CumRap extends BaseEntity {
 	@Column (name = "id")
 	private String maCumRap;
 	
-	@Column(name="ten_cum_rap", unique = true)
-	@NotNull
+	@Column(name="ten_cum_rap", unique = true, nullable = false)
 	private String tenCumRap;
 	
-	@Column(name="dia_chi", unique = true)
-	@NotNull
+	@Column(name="dia_chi", unique = true, nullable = false)
 	private String diaChi;
 	
 	@ManyToOne
-	@JoinColumn(name = "he_thong_rap_id")
-	@NotNull
+	@JoinColumn(name = "he_thong_rap_id", nullable = false)
 	private HeThongRap heThongRap;
 	
 	@OneToMany(mappedBy = "cumRap", cascade = {CascadeType.MERGE, CascadeType.PERSIST})

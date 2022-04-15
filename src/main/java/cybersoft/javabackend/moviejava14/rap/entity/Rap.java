@@ -31,11 +31,11 @@ public class Rap extends BaseEntity {
 	@Column(name = "id")
 	private String maRap;
 
-	@Column(name = "ten_rap")
+	@Column(name = "ten_rap", nullable = false)
 	private String tenRap;
 
 	@ManyToOne
-	@JoinColumn(name = "cum_rap_id")
+	@JoinColumn(name = "cum_rap_id", nullable = false)
 	private CumRap cumRap;
 
 	@OneToMany(mappedBy = "rap", cascade = { CascadeType.PERSIST, CascadeType.MERGE })

@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.cumRap.entity.CumRap;
@@ -27,12 +26,10 @@ public class HeThongRap extends BaseEntity {
 	@Column(name = "id")
 	private String maHeThongRap;
 
-	@Column(name = "ten_he_thong_rap", unique = true)
-	@NotNull
+	@Column(name = "ten_he_thong_rap", unique = true, nullable = false)
 	private String tenHeThongRap;
 
-	@Column(name = "bi_danh", unique = true)
-	@NotNull
+	@Column(name = "bi_danh", unique = true, nullable = false)
 	private String biDanh;
 
 	@Column(name = "logo")

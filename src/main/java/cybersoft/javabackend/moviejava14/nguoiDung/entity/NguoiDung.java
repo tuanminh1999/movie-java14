@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import cybersoft.javabackend.moviejava14.common.entity.BaseEntity;
 import cybersoft.javabackend.moviejava14.datVe.entity.DatVe;
@@ -35,29 +34,23 @@ public class NguoiDung extends BaseEntity {
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "tai_khoan", unique = true)
-	@NotNull
+	@Column(name = "tai_khoan", unique = true, nullable = false)
 	private String taiKhoan;
 
 	@Column(name = "ho_ten")
-	@NotNull
 	private String hoTen;
 
 	@Column(name = "mat_khau")
-	@NotNull
 	private String matKhau;
 
-	@Column(name = "email", unique = true)
-	@NotNull
+	@Column(name = "email", unique = true, nullable = false)
 	private String email;
 
-	@Column(name = "so_dien_thoai", unique = true)
-	@NotNull
+	@Column(name = "so_dien_thoai", unique = true, nullable = false)
 	private String soDt;
 
 	@ManyToOne
-	@JoinColumn(name = "loai_nguoi_dung_id")
-	@NotNull
+	@JoinColumn(name = "loai_nguoi_dung_id", nullable = false)
 	private LoaiNguoiDung loaiNguoiDung;
 
 	@OneToMany(mappedBy = "taiKhoanNguoiDung", cascade = { CascadeType.MERGE, CascadeType.PERSIST })

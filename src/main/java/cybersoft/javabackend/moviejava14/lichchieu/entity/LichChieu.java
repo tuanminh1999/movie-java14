@@ -34,20 +34,20 @@ public class LichChieu extends BaseEntity{
 	private int maLichChieu;
 	
 	@ManyToOne
-	@JoinColumn(name = "rap_id")
+	@JoinColumn(name = "rap_id", nullable = false)
 	private Rap rap;
 	
 	@ManyToOne
-	@JoinColumn(name = "phim_id")
+	@JoinColumn(name = "phim_id", nullable = false)
 	private Phim phim;
 	
-	@Column(name = "ngay_chieu_gio_chieu")
+	@Column(name = "ngay_chieu_gio_chieu", nullable = false)
 	private Timestamp ngayGioChieu;
 	
-	@Column(name = "gia_ve")
+	@Column(name = "gia_ve", nullable = false)
 	private int giaVe;
 	
-	@Column(name = "thoi_luong")
+	@Column(name = "thoi_luong", nullable = false)
 	private int thoiLuong;
 	
 	@OneToMany(mappedBy = "maLichChieu")

@@ -3,7 +3,7 @@ package cybersoft.javabackend.moviejava14.rap.dto;
 import javax.validation.constraints.NotNull;
 
 import cybersoft.javabackend.moviejava14.cumRap.validation.anotation.ExistedMaCumRap;
-import cybersoft.javabackend.moviejava14.lichchieu.validation.anotation.ExistedMaRap;
+import cybersoft.javabackend.moviejava14.rap.validation.anotation.ExistedMaRap;
 import lombok.Getter;
 import lombok.Setter;
 

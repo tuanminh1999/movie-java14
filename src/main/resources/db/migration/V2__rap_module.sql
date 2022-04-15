@@ -66,8 +66,8 @@ INSERT INTO cum_rap(id, created_date, created_by, modified_date, modified_by, te
 --		   ('bhd-star-cineplex-vincom-quang-trung', null, '', null, '', 'BHD Star Cineplex - Vincom Quang Trung', 'B1-Vincom QT, 190 Quang Trung, Gò Vấp', 'BHDStar'),
 --		   ('bhd-star-cineplex-vincom-thao-dien', null, '', null, '', 'BHD Star Cineplex - Vincom Thảo Điền', 'L5-Megamall, 159 XL Hà Nội, Q.2', 'BHDStar'),
 		   
-		   ('cgv-aeon-binh-tan', null, '', null, '', 'CGV - Aeon Bình Tân', 'Tầng 3, TTTM Aeon Mall Bình Tân, Số 1 đường số 17A, khu phố 11, Bình Trị Đông B, Bình Tân', 'CGV'),
-		   ('cgv-aeon-tan-phu', null, '', null, '', 'CGV - Aeon Tân Phú', '30 Bờ Bao Tân Thắng, Sơn Kỳ, Tân Phú', 'CGV');
+		   ('cgv-aeon-binh-tan', null, '', null, '', 'CGV - Aeon Bình Tân', 'Tầng 3, TTTM Aeon Mall Bình Tân, Số 1 đường số 17A, khu phố 11, Bình Trị Đông B, Bình Tân', 'CGV');
+--		   ('cgv-aeon-tan-phu', null, '', null, '', 'CGV - Aeon Tân Phú', '30 Bờ Bao Tân Thắng, Sơn Kỳ, Tân Phú', 'CGV'),
 --		   ('cgv-cgv-saigonres-nguyen-xi', null, '', null, '', 'CGV - CGV Saigonres Nguyễn Xí', 'Tầng 4-5, Saigonres Plaza, 79/81 Nguyễn Xí, P. 26, Bình Thạnh', 'CGV'),
 --		   ('cgv-crescent-mall', null, '', null, '', 'CGV - Crescent Mall', 'Lầu 5, Crescent Mall, Đại lộ Nguyễn Văn Linh, Phú Mỹ Hưng, Q. 7', 'CGV'),
 --		   ('cgv-ct-plaza', null, '', null, '', 'CGV - CT Plaza', '60A Trường Sơn,P. 2, Tân Bình', 'CGV'),
@@ -87,7 +87,7 @@ INSERT INTO rap(id, created_date, created_by, modified_date, modified_by, ten_ra
 --		   ('460', null, '', null, '', 'Rạp 10', 'bhd-star-cineplex-3-2'),
 	
 		   ('511', null, '', null, '', 'Rạp 1', 'cgv-aeon-binh-tan'),
-		   ('512', null, '', null, '', 'Rạp 2', 'cgv-aeon-binh-tan'),
+		   ('512', null, '', null, '', 'Rạp 2', 'cgv-aeon-binh-tan');
 --		   ('513', null, '', null, '', 'Rạp 3', 'cgv-aeon-binh-tan'),
 --		   ('514', null, '', null, '', 'Rạp 4', 'cgv-aeon-binh-tan'),
 --		   ('515', null, '', null, '', 'Rạp 5', 'cgv-aeon-binh-tan'),
@@ -97,13 +97,3 @@ INSERT INTO rap(id, created_date, created_by, modified_date, modified_by, ten_ra
 --		   ('519', null, '', null, '', 'Rạp 9', 'cgv-aeon-binh-tan'),
 --		   ('520', null, '', null, '', 'Rạp 10', 'cgv-aeon-binh-tan');
 		   
-		   ('521', null, '', null, '', 'Rạp 1', 'cgv-aeon-tan-phu'),
-		   ('522', null, '', null, '', 'Rạp 2', 'cgv-aeon-tan-phu');
---		   ('513', null, '', null, '', 'Rạp 3', 'cgv-aeon-binh-tan'),
---		   ('514', null, '', null, '', 'Rạp 4', 'cgv-aeon-binh-tan'),
---		   ('515', null, '', null, '', 'Rạp 5', 'cgv-aeon-binh-tan'),
---		   ('516', null, '', null, '', 'Rạp 6', 'cgv-aeon-binh-tan'),
---		   ('517', null, '', null, '', 'Rạp 7', 'cgv-aeon-binh-tan'),
---		   ('518', null, '', null, '', 'Rạp 8', 'cgv-aeon-binh-tan'),
---		   ('519', null, '', null, '', 'Rạp 9', 'cgv-aeon-binh-tan'),
---		   ('520', null, '', null, '', 'Rạp 10', 'cgv-aeon-binh-tan');
